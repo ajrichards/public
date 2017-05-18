@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Database &mdash; Pieris brassicae transcriptome</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Pieris brassicae transcriptome" href="../index.html" />
+    <link rel="next" title="Works cited" href="../references.html" />
+    <link rel="prev" title="Gene sets" href="../gene-sets/gene-sets.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/pieris_from_wiki.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>Pieris brassicae transcriptome</span></a></h1>
+        <h2 class="heading"><span>Database</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../gene-sets/gene-sets.html">Gene sets</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../references.html">Works cited</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="database">
+<h1>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="about-the-database">
+<h2>About the database<a class="headerlink" href="#about-the-database" title="Permalink to this headline">¶</a></h2>
+<p>The databased we used for this analysis used <a class="reference external" href="http://www.postgresql.org">PostgreSQL</a> and several python modules, including the object <a class="reference external" href="http://en.wikipedia.org/wiki/Object-relational_mapping">relational mapper</a>  provided by <a class="reference external" href="http://www.sqlalchemy.org">SQLAlchemy</a>.  The main purpose of the database is to be able to handle at a detailed level Gene Ontology <a class="reference internal" href="../references.html#ashburner00" id="id1">[Ashburner00]</a> information. Here is the relational schema produced with a tool called <a class="reference external" href="https://pypi.python.org/pypi/sqlalchemy_schemadisplay">sqlalchemy_schemadisplay</a>. The database population scripts along with a number of classes to interface with the data are made possible through a project called <a class="reference external" href="https://github.com/ajrichards/hts-integrate">hts-integrate</a>.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="../_images/dbschema.png"><img alt="database schema" src="../_images/dbschema.png" style="width: 494.9px; height: 277.9px;" /></a>
+</div>
+</div>
+<div class="section" id="database-contents">
+<h2>Database contents<a class="headerlink" href="#database-contents" title="Permalink to this headline">¶</a></h2>
+<p>The following files were downloaded on <strong>September 15, 2014</strong>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="ftp://ftp.geneontology.org/pub/go/ontology/go.obo">go.obo</a></li>
+<li><a class="reference external" href="ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz">taxdump.tar.gz</a></li>
+<li><a class="reference external" href="ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene_info.gz">gene_info.gz</a></li>
+<li><a class="reference external" href="ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2go.gz">gene2go.gz</a></li>
+<li><a class="reference external" href="ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2refseq.gz">gene2refseq.gz</a></li>
+<li><a class="reference external" href="ftp://ftp.ebi.ac.uk/pub/databases/GO/goa/UNIPROT/gene_association.goa_uniprot.gz">gene_association.goa_uniprot.gz</a></li>
+<li><a class="reference external" href="ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping.dat.gz">idmapping.dat.gz</a></li>
+<li><a class="reference external" href="ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz">uniprot_sprot.fasta.gz</a></li>
+<li><a class="reference external" href="ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_trembl.fasta.gz">uniprot_trembl.fasta.gz</a></li>
+</ul>
+</div></blockquote>
+<p>The uniprot and gene centric data from these files was parsed and used to populate the database.  The number of rows in each of the tables are shown below.</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre>There are 1262260 entries in the taxa table
+There are 681732 entries in the genes table
+There are 777608 entries in the uniprot table
+There are 42627 entries in the go_terms table
+There are 7463568 entries in the go_annotations table
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://geneontology.org/">Gene Ontology</a></li>
+<li><a class="reference external" href="http://www.geneontology.org/GO.format.gaf-2_0.shtml">GO annotation file format</a></li>
+<li><a class="reference external" href="http://www.geneontology.org/gene-associations/readme/goa.README">GO annotation README</a></li>
+<li><a class="reference external" href="http://www.ncbi.nlm.nih.gov/books/NBK21091/table/ch18.T.refseq_accession_numbers_and_mole/?report=objectonly">Refseq accession number and molecule types</a></li>
+<li><a class="reference external" href="ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/README">NCBI FTP README</a></li>
+<li><a class="reference external" href="http://www.ebi.ac.uk/uniprot">Uniprot database</a></li>
+<li><a class="reference external" href="ftp://ftp.ebi.ac.uk/pub/databases/uniprot/knowledgebase/README">Uniprot README</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../gene-sets/gene-sets.html">Gene sets</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../references.html">Works cited</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 04, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

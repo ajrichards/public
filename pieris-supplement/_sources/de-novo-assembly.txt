@@ -1,0 +1,163 @@
+.. pieris supplement
+
+Assembly summary and statistics
+=================================
+
+We carried out the *de novo* transcriptome assembly with the software
+pacakge `Trinity <http://trinityrnaseq.sourceforge.net>`_
+[Grabherr11]_.  The Trinity software suite consists of three main
+pieces:
+
+   * **Inchworm** - assembles the RNA-seq data into the unique
+     sequences of transcripts, often generating full-length transcripts
+     for a dominant isoform, but then reports just the unique portions of
+     alternative ly spliced transcripts.
+   * **Chrysalis** - clusters the Inchworm contigs into clusters and
+     constructs complete de Bruijn graphs for each cluster. Each
+     cluster represents the full transcriptonal complexity for a given
+     gene (or sets of genes that share sequences in common). Chrysalis
+     then partitions the full read set among these disjoint graphs.
+   * **Butterfly** then processes the individual graphs in parallel,
+     tracing the paths that reads and pairs of reads take within the
+     graph, ultimately reporting full-length transcripts for alternatively
+     spliced isoforms, and teasing apart transcripts that corresponds to
+     paralogous genes.
+
+
+Sequence preprocessing
+-------------------------
+
+A Python script was used to unzip, concatenate and trim the original reads via system calls (`subprocess <https://docs.python.org/2/library/subprocess.html>`_).  
+We used `Trimmomatic <http://www.usadellab.org/cms/?page=trimmomatic>`_ [Bolger14]_ to trim reads based on quality with default settings (LEADING:5 TRAILING:5 MINLEN:36).
+
+   * :download:`preprocessReads.py <../../assembly/preprocessReads.py>`
+
+There are four output files.  Two are for the *paired* output where both reads passed, and two are for corresponding *unpaired* output where only one read passed (see manual).
+
+Running Trinity
+------------------
+
+A Python script was used to generate the Trinity arguments.
+
+   * :download:`runTrinity.py <../../assembly/runTrinity.py>`
+
+
+The generalized Trinity command is shown below.
+
+   .. code-block:: bash
+
+      ~$ export TRINITY_HOME="/usr/src/trinityrnaseq-2.0.4"
+      ~$ $TRINITY_HOME/Trinity --seqType fq --output /path/to/out --trimmomatic --full_cleanup
+         --SS_lib_type FR --max_memory 26G --CPU 29 --normalize_reads
+         --left left1.fastq,left2.fastq,left3.fastq
+         --right right1.fastq,right2.fastq,right3.fastq 2>&1 | tee ./run-trinity-gg.log
+
+
+This produces the output file `./<TRINITY_OUT>/Trinity.fasta` which we can run some basic statistics on.
+
+Basic summary
+--------------
+
+Trinity groups transcripts into clusters that are *loosely referred to as a gene*.  The accession identifiers in the `./trinity_out_dir/Trinity.fasta` encode gene and isoform information.  Per the documentation (see links below) if we have the accession `>c0_g1_i1` this refers to Trinity read cluster `c0`, gene `g1` and isoform `i1`.  The gene identifier in this case is `c0_g1`.   
+
+The basic stats of the assembly are:
+
+   .. code-block:: bash
+
+      ~$ export TRINITY_HOME="/usr/src/trinityrnaseq-2.0.4"
+      ~$ $TRINITY_HOME/util/TrinityStats.pl ~/sequencing/pieris/dn-trinity/Trinity.fasta
+
+
+      ################################
+      ## Counts of transcripts, etc.
+      ################################
+      Total trinity 'genes':65012
+      Total trinity transcripts:98416
+      Percent GC: 38.04
+
+      ########################################
+      Stats based on ALL transcript contigs:
+      ########################################
+
+      Contig N10: 4650
+      Contig N20: 3779
+      Contig N30: 3184
+      Contig N40: 2645
+      Contig N50: 2155
+      
+      Median contig length: 595
+      Average contig: 1151.58
+      Total assembled bases: 113334017
+
+
+      #####################################################
+      ## Stats based on ONLY LONGEST ISOFORM per 'GENE':
+      #####################################################
+
+      Contig N10: 4325
+      Contig N20: 3444
+      Contig N30: 2704
+      Contig N40: 2056
+      Contig N50: 1496
+
+      Median contig length: 403
+      Average contig: 807.01
+      Total assembled bases: 52465576
+
+
+Map the reads using BLAST
+-----------------------------
+
+1. First, we BLAST the transcript against SwissProt (`-c` can be used to initiate cluster mode)
+
+   * :download:`runBlast.py <../../blast/runBlast.py>`
+
+2. Then, these data were are parsed and summarized.
+
+   * :download:`runBlastParse.py <../../blast/runBlastParallelParse.py>`
+   * :download:`runBlastSummarize.py <../../blast/runBlastSummarize.py>`
+   * :download:`showTaxaSummary.py <../../blast/showTaxaSummary.py>`
+
+For each *transcript* the top BLAST match with the best score was kept.  The minimum BLAST e-value was set at 0.0001.
+
+SwissProt (isoforms)
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ./figures/dn-trinity-blast-pie-isoforms.png
+   :scale: 70%
+   :align: center
+   :alt: de-novo trinity blast taxa by gene
+   :figclass: align-center
+
+BLAST agains all known D. melanogaster proteins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   .. code-block:: none
+
+      ~$ wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomes/DROME.fasta.gz
+      ~$ gunzip -c DROME.fasta.gz > DROME.fasta
+      ~$ makeblastdb -in DROME.fasta -dbtype 'prot' -out DROME
+
+Summary
+^^^^^^^^^^^^
+
+   +---------------------+---------------+---------------+---------------+
+   | BLAST DB            | Transcripts   | Genes         | Proteins      |
+   +=====================+===============+===============+===============+
+   | SwissProt           | 39,457        | 11,285        | **15,584**    |
+   +---------------------+---------------+---------------+---------------+
+   | D. melanogaster}    | 37,342        | 7,963         | **9,672**     |
+   +---------------------+---------------+---------------+---------------+
+   | Melitatea cinxia}   | ...           | ...           | ...           |
+   +---------------------+---------------+---------------+---------------+
+   | Danaus plexippus}   | ...           | ...           | ...           |
+   +---------------------+---------------+---------------+---------------+
+
+Links
+^^^^^^^^^^^^^
+
+   * `Trinity Sourceforge page <http://trinityrnaseq.sourceforge.net>`_
+   * `Example from Trinity docs <http://trinityrnaseq.sourceforge.net/analysis/full_length_transcript_analysis.html>`_
+   * `Trimmomatic <http://www.usadellab.org/cms/?page=trimmomatic>`_
+   * `Trinity output <http://trinityrnaseq.sourceforge.net/#trinity_output>`_
+   * `Trinity abundance estimation <http://trinityrnaseq.sourceforge.net/analysis/abundance_estimation.html>`_

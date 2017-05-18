@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Assembly summary and statistics &mdash; Pieris brassicae transcriptome</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Pieris brassicae transcriptome" href="index.html" />
+    <link rel="next" title="Meta-data analysis" href="meta-data.html" />
+    <link rel="prev" title="Transcriptome supplemental materials for Pieris brassicae" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="_static/pieris_from_wiki.png" alt="Logo"/><h1 class="heading"><a href="index.html">
+          <span>Pieris brassicae transcriptome</span></a></h1>
+        <h2 class="heading"><span>Assembly summary and statistics</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Transcriptome supplemental materials for <em>Pieris brassicae</em></a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="meta-data.html">Meta-data analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="assembly-summary-and-statistics">
+<h1>Assembly summary and statistics<a class="headerlink" href="#assembly-summary-and-statistics" title="Permalink to this headline">¶</a></h1>
+<p>We carried out the <em>de novo</em> transcriptome assembly with the software
+pacakge <a class="reference external" href="http://trinityrnaseq.sourceforge.net">Trinity</a>
+<a class="reference internal" href="references.html#grabherr11" id="id1">[Grabherr11]</a>.  The Trinity software suite consists of three main
+pieces:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Inchworm</strong> - assembles the RNA-seq data into the unique
+sequences of transcripts, often generating full-length transcripts
+for a dominant isoform, but then reports just the unique portions of
+alternative ly spliced transcripts.</li>
+<li><strong>Chrysalis</strong> - clusters the Inchworm contigs into clusters and
+constructs complete de Bruijn graphs for each cluster. Each
+cluster represents the full transcriptonal complexity for a given
+gene (or sets of genes that share sequences in common). Chrysalis
+then partitions the full read set among these disjoint graphs.</li>
+<li><strong>Butterfly</strong> then processes the individual graphs in parallel,
+tracing the paths that reads and pairs of reads take within the
+graph, ultimately reporting full-length transcripts for alternatively
+spliced isoforms, and teasing apart transcripts that corresponds to
+paralogous genes.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="sequence-preprocessing">
+<h2>Sequence preprocessing<a class="headerlink" href="#sequence-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>A Python script was used to unzip, concatenate and trim the original reads via system calls (<a class="reference external" href="https://docs.python.org/2/library/subprocess.html">subprocess</a>).
+We used <a class="reference external" href="http://www.usadellab.org/cms/?page=trimmomatic">Trimmomatic</a> <a class="reference internal" href="references.html#bolger14" id="id2">[Bolger14]</a> to trim reads based on quality with default settings (LEADING:5 TRAILING:5 MINLEN:36).</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="_downloads/preprocessReads.py"><tt class="xref download docutils literal"><span class="pre">preprocessReads.py</span></tt></a></li>
+</ul>
+</div></blockquote>
+<p>There are four output files.  Two are for the <em>paired</em> output where both reads passed, and two are for corresponding <em>unpaired</em> output where only one read passed (see manual).</p>
+</div>
+<div class="section" id="running-trinity">
+<h2>Running Trinity<a class="headerlink" href="#running-trinity" title="Permalink to this headline">¶</a></h2>
+<p>A Python script was used to generate the Trinity arguments.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="_downloads/runTrinity.py"><tt class="xref download docutils literal"><span class="pre">runTrinity.py</span></tt></a></li>
+</ul>
+</div></blockquote>
+<p>The generalized Trinity command is shown below.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span><span class="nb">export </span><span class="nv">TRINITY_HOME</span><span class="o">=</span><span class="s2">&quot;/usr/src/trinityrnaseq-2.0.4&quot;</span>
+~<span class="nv">$ $TRINITY_HOME</span>/Trinity --seqType fq --output /path/to/out --trimmomatic --full_cleanup
+   --SS_lib_type FR --max_memory 26G --CPU 29 --normalize_reads
+   --left left1.fastq,left2.fastq,left3.fastq
+   --right right1.fastq,right2.fastq,right3.fastq 2&gt;&amp;1 | tee ./run-trinity-gg.log
+</pre></div>
+</div>
+</div></blockquote>
+<p>This produces the output file <cite>./&lt;TRINITY_OUT&gt;/Trinity.fasta</cite> which we can run some basic statistics on.</p>
+</div>
+<div class="section" id="basic-summary">
+<h2>Basic summary<a class="headerlink" href="#basic-summary" title="Permalink to this headline">¶</a></h2>
+<p>Trinity groups transcripts into clusters that are <em>loosely referred to as a gene</em>.  The accession identifiers in the <cite>./trinity_out_dir/Trinity.fasta</cite> encode gene and isoform information.  Per the documentation (see links below) if we have the accession <cite>&gt;c0_g1_i1</cite> this refers to Trinity read cluster <cite>c0</cite>, gene <cite>g1</cite> and isoform <cite>i1</cite>.  The gene identifier in this case is <cite>c0_g1</cite>.</p>
+<p>The basic stats of the assembly are:</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span><span class="nb">export </span><span class="nv">TRINITY_HOME</span><span class="o">=</span><span class="s2">&quot;/usr/src/trinityrnaseq-2.0.4&quot;</span>
+~<span class="nv">$ $TRINITY_HOME</span>/util/TrinityStats.pl ~/sequencing/pieris/dn-trinity/Trinity.fasta
+
+
+<span class="c">################################</span>
+<span class="c">## Counts of transcripts, etc.</span>
+<span class="c">################################</span>
+Total trinity <span class="s1">&#39;genes&#39;</span>:65012
+Total trinity transcripts:98416
+Percent GC: 38.04
+
+<span class="c">########################################</span>
+Stats based on ALL transcript contigs:
+<span class="c">########################################</span>
+
+Contig N10: 4650
+Contig N20: 3779
+Contig N30: 3184
+Contig N40: 2645
+Contig N50: 2155
+
+Median contig length: 595
+Average contig: 1151.58
+Total assembled bases: 113334017
+
+
+<span class="c">#####################################################</span>
+<span class="c">## Stats based on ONLY LONGEST ISOFORM per &#39;GENE&#39;:</span>
+<span class="c">#####################################################</span>
+
+Contig N10: 4325
+Contig N20: 3444
+Contig N30: 2704
+Contig N40: 2056
+Contig N50: 1496
+
+Median contig length: 403
+Average contig: 807.01
+Total assembled bases: 52465576
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="map-the-reads-using-blast">
+<h2>Map the reads using BLAST<a class="headerlink" href="#map-the-reads-using-blast" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>First, we BLAST the transcript against SwissProt (<cite>-c</cite> can be used to initiate cluster mode)<ul>
+<li><a class="reference download internal" href="_downloads/runBlast.py"><tt class="xref download docutils literal"><span class="pre">runBlast.py</span></tt></a></li>
+</ul>
+</li>
+<li>Then, these data were are parsed and summarized.<ul>
+<li><a class="reference download internal" href="_downloads/runBlastParallelParse.py"><tt class="xref download docutils literal"><span class="pre">runBlastParse.py</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/runBlastSummarize.py"><tt class="xref download docutils literal"><span class="pre">runBlastSummarize.py</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/showTaxaSummary.py"><tt class="xref download docutils literal"><span class="pre">showTaxaSummary.py</span></tt></a></li>
+</ul>
+</li>
+</ol>
+<p>For each <em>transcript</em> the top BLAST match with the best score was kept.  The minimum BLAST e-value was set at 0.0001.</p>
+<div class="section" id="swissprot-isoforms">
+<h3>SwissProt (isoforms)<a class="headerlink" href="#swissprot-isoforms" title="Permalink to this headline">¶</a></h3>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/dn-trinity-blast-pie-isoforms.png"><img alt="de-novo trinity blast taxa by gene" src="_images/dn-trinity-blast-pie-isoforms.png" style="width: 630.0px; height: 490.0px;" /></a>
+</div>
+</div>
+<div class="section" id="blast-agains-all-known-d-melanogaster-proteins">
+<h3>BLAST agains all known D. melanogaster proteins<a class="headerlink" href="#blast-agains-all-known-d-melanogaster-proteins" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre>~$ wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomes/DROME.fasta.gz
+~$ gunzip -c DROME.fasta.gz &gt; DROME.fasta
+~$ makeblastdb -in DROME.fasta -dbtype &#39;prot&#39; -out DROME
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="23%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">BLAST DB</th>
+<th class="head">Transcripts</th>
+<th class="head">Genes</th>
+<th class="head">Proteins</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SwissProt</td>
+<td>39,457</td>
+<td>11,285</td>
+<td><strong>15,584</strong></td>
+</tr>
+<tr class="row-odd"><td><ol class="first last upperalpha simple" start="4">
+<li>melanogaster}</li>
+</ol>
+</td>
+<td>37,342</td>
+<td>7,963</td>
+<td><strong>9,672</strong></td>
+</tr>
+<tr class="row-even"><td>Melitatea cinxia}</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="row-odd"><td>Danaus plexippus}</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="links">
+<h3>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://trinityrnaseq.sourceforge.net">Trinity Sourceforge page</a></li>
+<li><a class="reference external" href="http://trinityrnaseq.sourceforge.net/analysis/full_length_transcript_analysis.html">Example from Trinity docs</a></li>
+<li><a class="reference external" href="http://www.usadellab.org/cms/?page=trimmomatic">Trimmomatic</a></li>
+<li><a class="reference external" href="http://trinityrnaseq.sourceforge.net/#trinity_output">Trinity output</a></li>
+<li><a class="reference external" href="http://trinityrnaseq.sourceforge.net/analysis/abundance_estimation.html">Trinity abundance estimation</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Transcriptome supplemental materials for <em>Pieris brassicae</em></a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="meta-data.html">Meta-data analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 04, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

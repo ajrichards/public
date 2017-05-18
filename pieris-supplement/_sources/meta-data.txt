@@ -1,0 +1,81 @@
+.. notes from the literature
+
+
+Meta-data analysis
+==========================
+
+First, we summarize the measurement co-variates for the experiment.  Then using a support vector machine and a basic univariate method we rank the features based on how well they predict the ``disperser`` - ``resident`` phenotype.  Given the most informative criteria we are interested in how the individual butterflies naturally group themselves.
+
+
+Data summary
+-------------------------
+
+.. INCLUDE ../figures/meta-data-summary.png
+
+The meta-data or data associated with the individuals are summarized in the following figure.
+
+.. image:: ./figures/meta-data-summary.png
+   :width: 50%
+
+
+Predicting phenotype
+-------------------------
+
+.. INCLUDE ../figures/feature-selection.png
+
+To investigate whether there are features that are predictive of the ``resident`` and ``disperser`` phenotype we first perform ``feature selection``
+to identify the most informative features.
+
+.. image:: ./figures/feature-selection.png
+   :width: 50%
+
+If we rank the features based on the sum of the two criteria:
+
+   1. ``thorax_length`` 0.73,1.0,1.73
+   2. ``abdomen_length`` 0.94,0.46,1.4
+   3. ``thermoreg_ability`` 1.0,0.24,1.24
+   4. ``head_length`` 0.2,0.35,0.55
+   5. ``flight_performance`` 0.25,0.21,0.46
+   6. ``length`` 0.44,0.01,0.46
+   7. ``left_forewing_surface`` 0.07,0.13,0.2
+   8. ``left_forewing_length`` 0.18,0.0,0.18
+   9. ``wing_melanin_surface`` 0.03,0.03,0.06
+
+We see that  movement phenotype.
+
+
+Support vector machine to test predictive features.
+----------------------------------------------------------
+
+.. INCLUDE ../figures/svm-classifier.png
+
+We constructed a support vector machine model to compare different features based on how well they predict the phenotype.  Shown in the image below is the model trained on only the two most informative features.
+
+.. image:: ./figures/svm-classifier.png
+   :width: 50%
+
+Finally we used the f1-score as a metric to further investigate the features predictive abilities.
+
+The samples
+
+'DL46' 'D222' 'D239' 'D231' 'DL47' 'D185' 'DL61' 'D118' 'D163' 'DL60'
+'D178' 'M2' '14' '16' '17' '18' '19' '20' '33' '39' '41' '46' '50' '51'
+'56' '61' '62' '68' '72' '83' '118' '119' '127' '128' '129' '133' '134'
+'136'
+
+**0.808** length, thermoreg_ability
+
+.. code-block:: none
+
+      D D R R R D D D D D R R D D R D R D D R D R D R R D R D D D R R R R D R D D
+   y  1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1 1 0 1 0 1 0 0 1 0 1 1 1 0 0 0 0 1 0 1 1
+   yp 1 1 1 1 1 1 1 1 1 1 0 0 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1 0 0 1 1 1 1 1 1
+
+
+**0.784** head_length, thermoreg_ability
+**0.741** length, head_length
+**0.778** length, thermoreg_ability, flight_performance
+**0.755** length, thermoreg_ability, head_length
+**0.784** length, thermoreg_ability, head_length, flight_performance
+
+

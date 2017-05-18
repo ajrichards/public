@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Meta-data analysis &mdash; Pieris brassicae transcriptome</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Pieris brassicae transcriptome" href="index.html" />
+    <link rel="next" title="Differential expression analysis" href="diff-expression.html" />
+    <link rel="prev" title="Assembly summary and statistics" href="de-novo-assembly.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="_static/pieris_from_wiki.png" alt="Logo"/><h1 class="heading"><a href="index.html">
+          <span>Pieris brassicae transcriptome</span></a></h1>
+        <h2 class="heading"><span>Meta-data analysis</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="de-novo-assembly.html">Assembly summary and statistics</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="diff-expression.html">Differential expression analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="meta-data-analysis">
+<h1>Meta-data analysis<a class="headerlink" href="#meta-data-analysis" title="Permalink to this headline">¶</a></h1>
+<p>First, we summarize the measurement co-variates for the experiment.  Then using a support vector machine and a basic univariate method we rank the features based on how well they predict the <tt class="docutils literal"><span class="pre">disperser</span></tt> - <tt class="docutils literal"><span class="pre">resident</span></tt> phenotype.  Given the most informative criteria we are interested in how the individual butterflies naturally group themselves.</p>
+<div class="section" id="data-summary">
+<h2>Data summary<a class="headerlink" href="#data-summary" title="Permalink to this headline">¶</a></h2>
+<p>The meta-data or data associated with the individuals are summarized in the following figure.</p>
+<a class="reference internal image-reference" href="_images/meta-data-summary.png"><img alt="_images/meta-data-summary.png" src="_images/meta-data-summary.png" style="width: 50%;" /></a>
+</div>
+<div class="section" id="predicting-phenotype">
+<h2>Predicting phenotype<a class="headerlink" href="#predicting-phenotype" title="Permalink to this headline">¶</a></h2>
+<p>To investigate whether there are features that are predictive of the <tt class="docutils literal"><span class="pre">resident</span></tt> and <tt class="docutils literal"><span class="pre">disperser</span></tt> phenotype we first perform <tt class="docutils literal"><span class="pre">feature</span> <span class="pre">selection</span></tt>
+to identify the most informative features.</p>
+<a class="reference internal image-reference" href="_images/feature-selection.png"><img alt="_images/feature-selection.png" src="_images/feature-selection.png" style="width: 50%;" /></a>
+<p>If we rank the features based on the sum of the two criteria:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">thorax_length</span></tt> 0.73,1.0,1.73</li>
+<li><tt class="docutils literal"><span class="pre">abdomen_length</span></tt> 0.94,0.46,1.4</li>
+<li><tt class="docutils literal"><span class="pre">thermoreg_ability</span></tt> 1.0,0.24,1.24</li>
+<li><tt class="docutils literal"><span class="pre">head_length</span></tt> 0.2,0.35,0.55</li>
+<li><tt class="docutils literal"><span class="pre">flight_performance</span></tt> 0.25,0.21,0.46</li>
+<li><tt class="docutils literal"><span class="pre">length</span></tt> 0.44,0.01,0.46</li>
+<li><tt class="docutils literal"><span class="pre">left_forewing_surface</span></tt> 0.07,0.13,0.2</li>
+<li><tt class="docutils literal"><span class="pre">left_forewing_length</span></tt> 0.18,0.0,0.18</li>
+<li><tt class="docutils literal"><span class="pre">wing_melanin_surface</span></tt> 0.03,0.03,0.06</li>
+</ol>
+</div></blockquote>
+<p>We see that  movement phenotype.</p>
+</div>
+<div class="section" id="support-vector-machine-to-test-predictive-features">
+<h2>Support vector machine to test predictive features.<a class="headerlink" href="#support-vector-machine-to-test-predictive-features" title="Permalink to this headline">¶</a></h2>
+<p>We constructed a support vector machine model to compare different features based on how well they predict the phenotype.  Shown in the image below is the model trained on only the two most informative features.</p>
+<a class="reference internal image-reference" href="_images/svm-classifier.png"><img alt="_images/svm-classifier.png" src="_images/svm-classifier.png" style="width: 50%;" /></a>
+<p>Finally we used the f1-score as a metric to further investigate the features predictive abilities.</p>
+<p>The samples</p>
+<p>&#8216;DL46&#8217; &#8216;D222&#8217; &#8216;D239&#8217; &#8216;D231&#8217; &#8216;DL47&#8217; &#8216;D185&#8217; &#8216;DL61&#8217; &#8216;D118&#8217; &#8216;D163&#8217; &#8216;DL60&#8217;
+&#8216;D178&#8217; &#8216;M2&#8217; &#8216;14&#8217; &#8216;16&#8217; &#8216;17&#8217; &#8216;18&#8217; &#8216;19&#8217; &#8216;20&#8217; &#8216;33&#8217; &#8216;39&#8217; &#8216;41&#8217; &#8216;46&#8217; &#8216;50&#8217; &#8216;51&#8217;
+&#8216;56&#8217; &#8216;61&#8217; &#8216;62&#8217; &#8216;68&#8217; &#8216;72&#8217; &#8216;83&#8217; &#8216;118&#8217; &#8216;119&#8217; &#8216;127&#8217; &#8216;128&#8217; &#8216;129&#8217; &#8216;133&#8217; &#8216;134&#8217;
+&#8216;136&#8217;</p>
+<p><strong>0.808</strong> length, thermoreg_ability</p>
+<div class="highlight-none"><div class="highlight"><pre>   D D R R R D D D D D R R D D R D R D D R D R D R R D R D D D R R R R D R D D
+y  1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1 1 0 1 0 1 0 0 1 0 1 1 1 0 0 0 0 1 0 1 1
+yp 1 1 1 1 1 1 1 1 1 1 0 0 1 1 1 1 1 1 1 0 1 1 1 1 0 1 0 1 1 1 0 0 1 1 1 1 1 1
+</pre></div>
+</div>
+<p><strong>0.784</strong> head_length, thermoreg_ability
+<strong>0.741</strong> length, head_length
+<strong>0.778</strong> length, thermoreg_ability, flight_performance
+<strong>0.755</strong> length, thermoreg_ability, head_length
+<strong>0.784</strong> length, thermoreg_ability, head_length, flight_performance</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="de-novo-assembly.html">Assembly summary and statistics</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="diff-expression.html">Differential expression analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 04, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Differential expression analysis &mdash; Pieris brassicae transcriptome</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Pieris brassicae transcriptome" href="index.html" />
+    <link rel="next" title="Gene sets" href="gene-sets/gene-sets.html" />
+    <link rel="prev" title="Meta-data analysis" href="meta-data.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="_static/pieris_from_wiki.png" alt="Logo"/><h1 class="heading"><a href="index.html">
+          <span>Pieris brassicae transcriptome</span></a></h1>
+        <h2 class="heading"><span>Differential expression analysis</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="meta-data.html">Meta-data analysis</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="gene-sets/gene-sets.html">Gene sets</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="differential-expression-analysis">
+<h1>Differential expression analysis<a class="headerlink" href="#differential-expression-analysis" title="Permalink to this headline">¶</a></h1>
+<p>These results are specific to the <a class="reference internal" href="de-novo-assembly.html"><em>de novo assembly</em></a>.</p>
+<div class="section" id="create-raw-and-normalized-count-matrices">
+<h2>Create raw and normalized count matrices<a class="headerlink" href="#create-raw-and-normalized-count-matrices" title="Permalink to this headline">¶</a></h2>
+<p>The software Sailfish was used to estimate read abundances <a class="reference internal" href="references.html#patro14" id="id1">[Patro14]</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="_downloads/runSailfish.py"><tt class="xref download docutils literal"><span class="pre">runSailfish.py</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/assembleCountMatrices.py"><tt class="xref download docutils literal"><span class="pre">assembleCountMatrices.py</span></tt></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="run-deseq">
+<h2>Run DESeq<a class="headerlink" href="#run-deseq" title="Permalink to this headline">¶</a></h2>
+<p>The R package <tt class="docutils literal"><span class="pre">DESeq2</span></tt> was used to produce the expression values <a class="reference internal" href="references.html#love14" id="id2">[Love14]</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="_downloads/runDeAnalysis.py"><tt class="xref download docutils literal"><span class="pre">runDeAnalysis.py</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/runDESeq.R"><tt class="xref download docutils literal"><span class="pre">runDESeq.R</span></tt></a></li>
+</ul>
+</div></blockquote>
+<p>Then the resulting *.csv files were summarized using</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="_downloads/summarizeResultsDE.py"><tt class="xref download docutils literal"><span class="pre">summarizeResultsDE.py</span></tt></a></li>
+</ul>
+</div></blockquote>
+<p>As a reminder this is the order of the labels. See the <a class="reference internal" href="meta-data.html"><em>meta data analysis</em></a> for more information on labeling.</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre>17,18,33,46,56,61,DL47,DL61,D163,D178,D185,D239
+ D, R, R, D, D, R,   R,   D,   D,   R,   D,   R
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="isoform-level-results">
+<h2>Isoform level results<a class="headerlink" href="#isoform-level-results" title="Permalink to this headline">¶</a></h2>
+<p>Each transcript is mapped to <em>Drosophila melanogaster</em> if possible. Otherwise, the next closest species from a SwissProt BLAST search was used.  The heatmap is a summary of the top 65 transcripts.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/heatmap-dn.png"><img alt="top 65 transcripts" src="_images/heatmap-dn.png" style="width: 900.0px; height: 1050.0px;" /></a>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="13%" />
+<col width="15%" />
+<col width="29%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">transcript ID</th>
+<th class="head">hitId</th>
+<th class="head">gene-symbol</th>
+<th class="head">species</th>
+<th class="head">e-value</th>
+<th class="head">DESeq-pval</th>
+<th class="head">DESeq-adj-pval</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>TR7886|c0_g1_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td>TR6417|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="row-even"><td>TR42778|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8I941_DROME">Q8I941_DROME</a></td>
+<td>CG32485</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td>TR34237|c0_g1_i12</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DTX_DROME">DTX_DROME</a></td>
+<td>dx</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2e-07</td>
+</tr>
+<tr class="row-even"><td>TR30599|c1_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VWF4_DROME">Q9VWF4_DROME</a></td>
+<td>MKP-4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2e-07</td>
+</tr>
+<tr class="row-odd"><td>TR46325|c0_g1_i8</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0</td>
+<td>6e-07</td>
+</tr>
+<tr class="row-even"><td>TR5608|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8IPJ7_DROME">Q8IPJ7_DROME</a></td>
+<td>Cpr</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>6e-07</td>
+</tr>
+<tr class="row-odd"><td>TR28602|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W095_DROME">Q9W095_DROME</a></td>
+<td>Gk</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1e-06</td>
+</tr>
+<tr class="row-even"><td>TR18747|c1_g4_i8</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0</td>
+<td>1.1e-06</td>
+</tr>
+<tr class="row-odd"><td>TR124|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0</td>
+<td>1.6e-06</td>
+</tr>
+<tr class="row-even"><td>TR14456|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9NEA5_DROME">M9NEA5_DROME</a></td>
+<td>ct</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.5e-06</td>
+</tr>
+<tr class="row-odd"><td>TR18154|c0_g2_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VL27_DROME">Q9VL27_DROME</a></td>
+<td>CG5731</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.9e-06</td>
+</tr>
+<tr class="row-even"><td>TR11634|c0_g1_i5</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VQE0_DROME">Q9VQE0_DROME</a></td>
+<td>Drp1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.15e-05</td>
+</tr>
+<tr class="row-odd"><td>TR36530|c0_g3_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9ND53_DROME">M9ND53_DROME</a></td>
+<td>tai</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>7.62e-05</td>
+</tr>
+<tr class="row-even"><td>TR7556|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0</td>
+<td>7.63e-05</td>
+</tr>
+<tr class="row-odd"><td>TR10908|c5_g1_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PBP3_DROME">M9PBP3_DROME</a></td>
+<td>Cip4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0001368</td>
+</tr>
+<tr class="row-even"><td>TR630|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MIB_DROME">MIB_DROME</a></td>
+<td>mib1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0001413</td>
+</tr>
+<tr class="row-odd"><td>TR14424|c0_g1_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/STAU_DROME">STAU_DROME</a></td>
+<td>stau</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1e-07</td>
+<td>0.0001473</td>
+</tr>
+<tr class="row-even"><td>TR17093|c0_g1_i10</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W423_DROME">Q9W423_DROME</a></td>
+<td>schlank</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1e-07</td>
+<td>0.0001473</td>
+</tr>
+<tr class="row-odd"><td>TR39380|c0_g1_i10</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TM131_DROME">TM131_DROME</a></td>
+<td>CG8370</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1e-07</td>
+<td>0.0002061</td>
+</tr>
+<tr class="row-even"><td>TR23279|c3_g3_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1e-07</td>
+<td>0.0002149</td>
+</tr>
+<tr class="row-odd"><td>TR20596|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SLO_DROME">SLO_DROME</a></td>
+<td>slo</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2e-07</td>
+<td>0.0003582</td>
+</tr>
+<tr class="row-even"><td>TR41537|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TIM_DROME">TIM_DROME</a></td>
+<td>tim</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2e-07</td>
+<td>0.0003883</td>
+</tr>
+<tr class="row-odd"><td>TR44400|c0_g4_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/P2R3C_DANRE">P2R3C_DANRE</a></td>
+<td>unmapped</td>
+<td>Danio rerio</td>
+<td>0.0</td>
+<td>2e-07</td>
+<td>0.0003883</td>
+</tr>
+<tr class="row-even"><td>TR6705|c0_g1_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2e-07</td>
+<td>0.0004926</td>
+</tr>
+<tr class="row-odd"><td>TR40755|c1_g1_i9</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9ND72_DROME">M9ND72_DROME</a></td>
+<td>fry</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3e-07</td>
+<td>0.0005372</td>
+</tr>
+<tr class="row-even"><td>TR31686|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SH3G3_DROME">SH3G3_DROME</a></td>
+<td>EndoA</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3e-07</td>
+<td>0.0006519</td>
+</tr>
+<tr class="row-odd"><td>TR10548|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8I077_DROME">Q8I077_DROME</a></td>
+<td>CG15817</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4e-07</td>
+<td>0.0007319</td>
+</tr>
+<tr class="row-even"><td>TR24092|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>4e-07</td>
+<td>0.0007319</td>
+</tr>
+<tr class="row-odd"><td>TR42894|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>4e-07</td>
+<td>0.000771</td>
+</tr>
+<tr class="row-even"><td>TR42773|c0_g2_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7K126_DROME">Q7K126_DROME</a></td>
+<td>Not3</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7e-07</td>
+<td>0.0011024</td>
+</tr>
+<tr class="row-odd"><td>TR10137|c0_g3_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ATC1_DROME">ATC1_DROME</a></td>
+<td>Ca-P60A</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7e-07</td>
+<td>0.0011343</td>
+</tr>
+<tr class="row-even"><td>TR8551|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8IRJ9_DROME">Q8IRJ9_DROME</a></td>
+<td>Gyk</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7e-07</td>
+<td>0.0011566</td>
+</tr>
+<tr class="row-odd"><td>TR19971|c0_g1_i9</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9NGK3_DROME">M9NGK3_DROME</a></td>
+<td>trol</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>8e-07</td>
+<td>0.0012373</td>
+</tr>
+<tr class="row-even"><td>TR12830|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VB20_DROME">Q9VB20_DROME</a></td>
+<td>dsd</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1e-06</td>
+<td>0.0015195</td>
+</tr>
+<tr class="row-odd"><td>TR39368|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.2e-06</td>
+<td>0.0016515</td>
+</tr>
+<tr class="row-even"><td>TR39378|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PH25_DROME">M9PH25_DROME</a></td>
+<td>NFAT</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.2e-06</td>
+<td>0.0016515</td>
+</tr>
+<tr class="row-odd"><td>TR24652|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/NOC3L_DROME">NOC3L_DROME</a></td>
+<td>CG1234</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.7e-06</td>
+<td>0.0023292</td>
+</tr>
+<tr class="row-even"><td>TR29188|c0_g1_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PHG4_DROME">M9PHG4_DROME</a></td>
+<td>beta-Spec</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.8e-06</td>
+<td>0.00244</td>
+</tr>
+<tr class="row-odd"><td>TR34996|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VM67_DROME">Q9VM67_DROME</a></td>
+<td>CG18304</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2.1e-06</td>
+<td>0.0026809</td>
+</tr>
+<tr class="row-even"><td>TR13117|c0_g1_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.6e-06</td>
+<td>0.0032646</td>
+</tr>
+<tr class="row-odd"><td>TR1847|c1_g1_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.8e-06</td>
+<td>0.003374</td>
+</tr>
+<tr class="row-even"><td>TR36542|c2_g1_i9</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>3e-06</td>
+<td>0.0036302</td>
+</tr>
+<tr class="row-odd"><td>TR29837|c0_g3_i5</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>3.3e-06</td>
+<td>0.0037786</td>
+</tr>
+<tr class="row-even"><td>TR32226|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VW19_DROME">Q9VW19_DROME</a></td>
+<td>CG9372</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.3e-06</td>
+<td>0.0037786</td>
+</tr>
+<tr class="row-odd"><td>TR13720|c0_g1_i8</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9V3F2_DROME">Q9V3F2_DROME</a></td>
+<td>lace</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.8e-06</td>
+<td>0.0041199</td>
+</tr>
+<tr class="row-even"><td>TR30820|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9MRJ5_DROME">M9MRJ5_DROME</a></td>
+<td>CG31886</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.8e-06</td>
+<td>0.0041199</td>
+</tr>
+<tr class="row-odd"><td>TR17851|c0_g1_i6</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>3.9e-06</td>
+<td>0.0042143</td>
+</tr>
+<tr class="row-even"><td>TR3669|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=L_ISFV">L_ISFV</a></td>
+<td>unmapped</td>
+<td>Isfahan virus</td>
+<td>0.0</td>
+<td>4.1e-06</td>
+<td>0.0042784</td>
+</tr>
+<tr class="row-odd"><td>TR31686|c0_g1_i11</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SH3G3_DROME">SH3G3_DROME</a></td>
+<td>EndoA</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.3e-06</td>
+<td>0.0044219</td>
+</tr>
+<tr class="row-even"><td>TR6365|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VHK6_DROME">Q9VHK6_DROME</a></td>
+<td>CG9836</td>
+<td>Drosophila melanogaster</td>
+<td>5.84e-05</td>
+<td>4.5e-06</td>
+<td>0.0044987</td>
+</tr>
+<tr class="row-odd"><td>TR19023|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W0L6_DROME">Q9W0L6_DROME</a></td>
+<td>CG13907</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.5e-06</td>
+<td>0.0044987</td>
+</tr>
+<tr class="row-even"><td>TR32377|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/O97365_DROME">O97365_DROME</a></td>
+<td>BM-40-SPARC</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.8e-06</td>
+<td>0.0046163</td>
+</tr>
+<tr class="row-odd"><td>TR34685|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/C49A1_DROME">C49A1_DROME</a></td>
+<td>Cyp49a1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.8e-06</td>
+<td>0.0046163</td>
+</tr>
+<tr class="row-even"><td>TR39025|c2_g1_i9</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VHC7_DROME">Q9VHC7_DROME</a></td>
+<td>rump</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.1e-06</td>
+<td>0.0047393</td>
+</tr>
+<tr class="row-odd"><td>TR24746|c0_g1_i8</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ENO_DROME">ENO_DROME</a></td>
+<td>Eno</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.5e-06</td>
+<td>0.0050502</td>
+</tr>
+<tr class="row-even"><td>TR33199|c6_g3_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/HCF_DROME">HCF_DROME</a></td>
+<td>Hcf</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.7e-06</td>
+<td>0.0051544</td>
+</tr>
+<tr class="row-odd"><td>TR49|c0_g1_i7</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>6.1e-06</td>
+<td>0.0054072</td>
+</tr>
+<tr class="row-even"><td>TR11159|c2_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DPP3_DROME">DPP3_DROME</a></td>
+<td>DppIII</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.4e-06</td>
+<td>0.0054273</td>
+</tr>
+<tr class="row-odd"><td>TR20825|c1_g1_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ADRO_DROME">ADRO_DROME</a></td>
+<td>dare</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.5e-06</td>
+<td>0.0054273</td>
+</tr>
+<tr class="row-even"><td>TR21690|c0_g3_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8MQQ3_DROME">Q8MQQ3_DROME</a></td>
+<td>pyd</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.6e-06</td>
+<td>0.0054273</td>
+</tr>
+<tr class="row-odd"><td>TR29911|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Y5902_DROME">Y5902_DROME</a></td>
+<td>CG5902</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.4e-06</td>
+<td>0.0054273</td>
+</tr>
+<tr class="row-even"><td>TR3023|c0_g2_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/EFR3_DROME">EFR3_DROME</a></td>
+<td>stmA</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.6e-06</td>
+<td>0.0054273</td>
+</tr>
+<tr class="row-odd"><td>TR17706|c1_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/JHD1_DROME">JHD1_DROME</a></td>
+<td>Kdm2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.9e-06</td>
+<td>0.0055868</td>
+</tr>
+<tr class="row-even"><td>TR2561|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>7.1e-06</td>
+<td>0.0056297</td>
+</tr>
+<tr class="row-odd"><td>TR1904|c1_g3_i8</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/CO4A1_DROME">CO4A1_DROME</a></td>
+<td>Cg25C</td>
+<td>Drosophila melanogaster</td>
+<td>8e-07</td>
+<td>7.6e-06</td>
+<td>0.005831</td>
+</tr>
+<tr class="row-even"><td>TR25678|c0_g1_i6</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>7.5e-06</td>
+<td>0.005831</td>
+</tr>
+<tr class="row-odd"><td>TR8541|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DOK7_MOUSE">DOK7_MOUSE</a></td>
+<td>unmapped</td>
+<td>Mus musculus</td>
+<td>0.0</td>
+<td>7.7e-06</td>
+<td>0.0058353</td>
+</tr>
+<tr class="row-even"><td>TR27939|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q0E8C8_DROME">Q0E8C8_DROME</a></td>
+<td>Spn77Ba</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>8.9e-06</td>
+<td>0.00635</td>
+</tr>
+<tr class="row-odd"><td>TR32516|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VAP8_DROME">Q9VAP8_DROME</a></td>
+<td>alpha-Man-Ib</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.1e-06</td>
+<td>0.00635</td>
+</tr>
+<tr class="row-even"><td>TR35659|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VW66_DROME">Q9VW66_DROME</a></td>
+<td>CG7646</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.1e-06</td>
+<td>0.00635</td>
+</tr>
+<tr class="row-odd"><td>TR35762|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9XZ21_DROME">Q9XZ21_DROME</a></td>
+<td>snama</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>8.8e-06</td>
+<td>0.00635</td>
+</tr>
+<tr class="row-even"><td>TR38833|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VXL4_DROME">Q9VXL4_DROME</a></td>
+<td>Rrp47</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9e-06</td>
+<td>0.00635</td>
+</tr>
+<tr class="row-odd"><td>TR40188|c1_g2_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W205_DROME">Q9W205_DROME</a></td>
+<td>jbug</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>8.8e-06</td>
+<td>0.00635</td>
+</tr>
+<tr class="row-even"><td>TR41654|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/FAF_DROME">FAF_DROME</a></td>
+<td>faf</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.3e-06</td>
+<td>0.0063632</td>
+</tr>
+<tr class="row-odd"><td>TR33482|c3_g7_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/IF4A3_DROME">IF4A3_DROME</a></td>
+<td>eIF4AIII</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.4e-06</td>
+<td>0.0063941</td>
+</tr>
+<tr class="row-even"><td>TR7603|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/X2JE77_DROME">X2JE77_DROME</a></td>
+<td>chas</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.9e-06</td>
+<td>0.0065433</td>
+</tr>
+<tr class="row-odd"><td>TR27200|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.01e-05</td>
+<td>0.0065433</td>
+</tr>
+<tr class="row-even"><td>TR13232|c0_g1_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/BUN2_DROME">BUN2_DROME</a></td>
+<td>bun</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.01e-05</td>
+<td>0.0065433</td>
+</tr>
+<tr class="row-odd"><td>TR32516|c0_g1_i5</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VAP8_DROME">Q9VAP8_DROME</a></td>
+<td>alpha-Man-Ib</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.02e-05</td>
+<td>0.0065433</td>
+</tr>
+<tr class="row-even"><td>TR12496|c0_g1_i12</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.05e-05</td>
+<td>0.0066587</td>
+</tr>
+<tr class="row-odd"><td>TR46349|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q961B9_DROME">Q961B9_DROME</a></td>
+<td>CG5027</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.06e-05</td>
+<td>0.0066728</td>
+</tr>
+<tr class="row-even"><td>TR43427|c0_g4_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/PEP_DROME">PEP_DROME</a></td>
+<td>Pep</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.12e-05</td>
+<td>0.0069576</td>
+</tr>
+<tr class="row-odd"><td>TR32301|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VUE8_DROME">Q9VUE8_DROME</a></td>
+<td>bbg</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.14e-05</td>
+<td>0.0070112</td>
+</tr>
+<tr class="row-even"><td>TR10152|c3_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VN29_DROME">Q9VN29_DROME</a></td>
+<td>CG31522</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.27e-05</td>
+<td>0.0076218</td>
+</tr>
+<tr class="row-odd"><td>TR46837|c3_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.26e-05</td>
+<td>0.0076218</td>
+</tr>
+<tr class="row-even"><td>TR4516|c0_g1_i5</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/RLA0_DROME">RLA0_DROME</a></td>
+<td>RpLP0</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.3e-05</td>
+<td>0.0077164</td>
+</tr>
+<tr class="row-odd"><td>TR32865|c1_g6_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.35e-05</td>
+<td>0.007915</td>
+</tr>
+<tr class="row-even"><td>TR17980|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.59e-05</td>
+<td>0.0087238</td>
+</tr>
+<tr class="row-odd"><td>TR35685|c0_g4_i12</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7K0H4_DROME">Q7K0H4_DROME</a></td>
+<td>stj</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.64e-05</td>
+<td>0.0087238</td>
+</tr>
+<tr class="row-even"><td>TR30252|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VI53_DROME">Q9VI53_DROME</a></td>
+<td>CG1105</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.57e-05</td>
+<td>0.0087238</td>
+</tr>
+<tr class="row-odd"><td>TR2653|c0_g2_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8IQH6_DROME">Q8IQH6_DROME</a></td>
+<td>CG10960</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.58e-05</td>
+<td>0.0087238</td>
+</tr>
+<tr class="row-even"><td>TR23554|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PEQ6_DROME">M9PEQ6_DROME</a></td>
+<td>CG13676</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.61e-05</td>
+<td>0.0087238</td>
+</tr>
+<tr class="row-odd"><td>TR14192|c0_g1_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.6e-05</td>
+<td>0.0087238</td>
+</tr>
+<tr class="row-even"><td>TR18084|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.64e-05</td>
+<td>0.0087238</td>
+</tr>
+<tr class="row-odd"><td>TR16643|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/HERC2_DROME">HERC2_DROME</a></td>
+<td>HERC2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.61e-05</td>
+<td>0.0087238</td>
+</tr>
+<tr class="row-even"><td>TR22734|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A8DY94_DROME">A8DY94_DROME</a></td>
+<td>CG42732</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.52e-05</td>
+<td>0.0087238</td>
+</tr>
+<tr class="row-odd"><td>TR26854|c2_g1_i12</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DYIN_DROME">DYIN_DROME</a></td>
+<td>sw</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.68e-05</td>
+<td>0.0087414</td>
+</tr>
+<tr class="row-even"><td>TR723|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.67e-05</td>
+<td>0.0087414</td>
+</tr>
+<tr class="row-odd"><td>TR35257|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.73e-05</td>
+<td>0.0088364</td>
+</tr>
+<tr class="row-even"><td>TR29898|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/INDY1_DROME">INDY1_DROME</a></td>
+<td>Indy</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.72e-05</td>
+<td>0.0088364</td>
+</tr>
+<tr class="row-odd"><td>TR41238|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>1.77e-05</td>
+<td>0.0089548</td>
+</tr>
+<tr class="row-even"><td>TR3930|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q29R48_DROME">Q29R48_DROME</a></td>
+<td>PsGEF</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>1.93e-05</td>
+<td>0.009644</td>
+</tr>
+<tr class="row-odd"><td>TR40572|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VSK1_DROME">Q9VSK1_DROME</a></td>
+<td>CG32354</td>
+<td>Drosophila melanogaster</td>
+<td>8e-07</td>
+<td>1.98e-05</td>
+<td>0.0097972</td>
+</tr>
+<tr class="row-even"><td>TR502|c0_g1_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.04e-05</td>
+<td>0.0100136</td>
+</tr>
+<tr class="row-odd"><td>TR45460|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/EXOC4_DROME">EXOC4_DROME</a></td>
+<td>Sec8</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2.08e-05</td>
+<td>0.0101039</td>
+</tr>
+<tr class="row-even"><td>TR20319|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.14e-05</td>
+<td>0.0102911</td>
+</tr>
+<tr class="row-odd"><td>TR10511|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VE54_DROME">Q9VE54_DROME</a></td>
+<td>CG31224</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2.21e-05</td>
+<td>0.0103579</td>
+</tr>
+<tr class="row-even"><td>TR26767|c0_g1_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.18e-05</td>
+<td>0.0103579</td>
+</tr>
+<tr class="row-odd"><td>TR40113|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.2e-05</td>
+<td>0.0103579</td>
+</tr>
+<tr class="row-even"><td>TR35082|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7K3V9_DROME">Q7K3V9_DROME</a></td>
+<td>CG2121</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2.27e-05</td>
+<td>0.0105102</td>
+</tr>
+<tr class="row-odd"><td>TR532|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=VIRE_HELVI">VIRE_HELVI</a></td>
+<td>unmapped</td>
+<td>Heliothis virescens</td>
+<td>2.4e-06</td>
+<td>2.32e-05</td>
+<td>0.0106582</td>
+</tr>
+<tr class="row-even"><td>TR15056|c0_g1_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.35e-05</td>
+<td>0.0106937</td>
+</tr>
+<tr class="row-odd"><td>TR24102|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.37e-05</td>
+<td>0.0107119</td>
+</tr>
+<tr class="row-even"><td>TR18178|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W204_DROME">Q9W204_DROME</a></td>
+<td>jbug</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2.42e-05</td>
+<td>0.0108321</td>
+</tr>
+<tr class="row-odd"><td>TR46486|c1_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VB51_DROME">Q9VB51_DROME</a></td>
+<td>CG5934</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2.45e-05</td>
+<td>0.0108714</td>
+</tr>
+<tr class="row-even"><td>TR5769|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.62e-05</td>
+<td>0.01151</td>
+</tr>
+<tr class="row-odd"><td>TR18004|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>2.67e-05</td>
+<td>0.011662</td>
+</tr>
+<tr class="row-even"><td>TR4264|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TSL_DROME">TSL_DROME</a></td>
+<td>tsl</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2.9e-05</td>
+<td>0.0125429</td>
+</tr>
+<tr class="row-odd"><td>TR13734|c0_g1_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VVY7_DROME">Q9VVY7_DROME</a></td>
+<td>CG32206</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3e-05</td>
+<td>0.0127546</td>
+</tr>
+<tr class="row-even"><td>TR33071|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/POE_DROME">POE_DROME</a></td>
+<td>poe</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>2.98e-05</td>
+<td>0.0127546</td>
+</tr>
+<tr class="row-odd"><td>TR17695|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/X2JGM9_DROME">X2JGM9_DROME</a></td>
+<td>RpS4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.1e-05</td>
+<td>0.0128928</td>
+</tr>
+<tr class="row-even"><td>TR2161|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/WDS_DROME">WDS_DROME</a></td>
+<td>wds</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.1e-05</td>
+<td>0.0128928</td>
+</tr>
+<tr class="row-odd"><td>TR25216|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>3.06e-05</td>
+<td>0.0128928</td>
+</tr>
+<tr class="row-even"><td>TR32865|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=RO60_CAEEL">RO60_CAEEL</a></td>
+<td>unmapped</td>
+<td>Caenorhabditis elegans</td>
+<td>3e-06</td>
+<td>3.2e-05</td>
+<td>0.0131918</td>
+</tr>
+<tr class="row-odd"><td>TR24718|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>3.32e-05</td>
+<td>0.0135589</td>
+</tr>
+<tr class="row-even"><td>TR14596|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8IRR4_DROME">Q8IRR4_DROME</a></td>
+<td>CG15771</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.38e-05</td>
+<td>0.0136113</td>
+</tr>
+<tr class="row-odd"><td>TR9033|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MED15_DROME">MED15_DROME</a></td>
+<td>MED15</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.37e-05</td>
+<td>0.0136113</td>
+</tr>
+<tr class="row-even"><td>TR39863|c1_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VHG4_DROME">Q9VHG4_DROME</a></td>
+<td>VhaM8.9</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.44e-05</td>
+<td>0.0136656</td>
+</tr>
+<tr class="row-odd"><td>TR34771|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VRV1_DROME">Q9VRV1_DROME</a></td>
+<td>CG10289</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.45e-05</td>
+<td>0.0136656</td>
+</tr>
+<tr class="row-even"><td>TR17547|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/YEMA_DROME">YEMA_DROME</a></td>
+<td>yem</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.57e-05</td>
+<td>0.0138766</td>
+</tr>
+<tr class="row-odd"><td>TR30031|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>3.58e-05</td>
+<td>0.0138766</td>
+</tr>
+<tr class="row-even"><td>TR39372|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SAC1_DROME">SAC1_DROME</a></td>
+<td>Sac1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.55e-05</td>
+<td>0.0138766</td>
+</tr>
+<tr class="row-odd"><td>TR37720|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9GQ82_DROME">Q9GQ82_DROME</a></td>
+<td>Asph</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.62e-05</td>
+<td>0.013894</td>
+</tr>
+<tr class="row-even"><td>TR19772|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MFRN_DROME">MFRN_DROME</a></td>
+<td>mfrn</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.65e-05</td>
+<td>0.0139282</td>
+</tr>
+<tr class="row-odd"><td>TR34632|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VY46_DROME">Q9VY46_DROME</a></td>
+<td>Fbxl4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.7e-05</td>
+<td>0.0140202</td>
+</tr>
+<tr class="row-even"><td>TR15011|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VVH4_DROME">Q9VVH4_DROME</a></td>
+<td>CG7589</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.81e-05</td>
+<td>0.01411</td>
+</tr>
+<tr class="row-odd"><td>TR28017|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>3.79e-05</td>
+<td>0.01411</td>
+</tr>
+<tr class="row-even"><td>TR33204|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VJZ9_DROME">Q9VJZ9_DROME</a></td>
+<td>CG9395</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.77e-05</td>
+<td>0.01411</td>
+</tr>
+<tr class="row-odd"><td>TR43461|c0_g3_i11</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q86P80_DROME">Q86P80_DROME</a></td>
+<td>CAP</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.85e-05</td>
+<td>0.0141702</td>
+</tr>
+<tr class="row-even"><td>TR46852|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>3.95e-05</td>
+<td>0.0143192</td>
+</tr>
+<tr class="row-odd"><td>TR35187|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/CLU_DROME">CLU_DROME</a></td>
+<td>clu</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>3.95e-05</td>
+<td>0.0143192</td>
+</tr>
+<tr class="row-even"><td>TR8124|c1_g7_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/EXT3_DROME">EXT3_DROME</a></td>
+<td>botv</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.16e-05</td>
+<td>0.0149975</td>
+</tr>
+<tr class="row-odd"><td>TR35082|c0_g1_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7K3V9_DROME">Q7K3V9_DROME</a></td>
+<td>CG2121</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.22e-05</td>
+<td>0.0150905</td>
+</tr>
+<tr class="row-even"><td>TR27230|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W509_DROME">Q9W509_DROME</a></td>
+<td>Mct1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.27e-05</td>
+<td>0.0151224</td>
+</tr>
+<tr class="row-odd"><td>TR43015|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>4.29e-05</td>
+<td>0.0151224</td>
+</tr>
+<tr class="row-even"><td>TR45720|c2_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1ZB71_DROME">A1ZB71_DROME</a></td>
+<td>GstE6</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.39e-05</td>
+<td>0.0153949</td>
+</tr>
+<tr class="row-odd"><td>TR45320|c0_g3_i15</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7KK96_DROME">Q7KK96_DROME</a></td>
+<td>SMC2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.8e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-even"><td>TR26629|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PCM8_DROME">M9PCM8_DROME</a></td>
+<td>Msp300</td>
+<td>Drosophila melanogaster</td>
+<td>1.2e-06</td>
+<td>4.66e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-odd"><td>TR2581|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/H9XVL7_DROME">H9XVL7_DROME</a></td>
+<td>ci</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.77e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-even"><td>TR23630|c4_g6_i6</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>4.64e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-odd"><td>TR23113|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TNG2_DROME">TNG2_DROME</a></td>
+<td>Tango2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.77e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-even"><td>TR38798|c1_g4_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>4.53e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-odd"><td>TR21212|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VNM2_DROME">Q9VNM2_DROME</a></td>
+<td>Osi24</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.49e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-even"><td>TR10487|c0_g4_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>4.68e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-odd"><td>TR12998|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VJ61_DROME">Q9VJ61_DROME</a></td>
+<td>CG10376</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.68e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-even"><td>TR22888|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>4.73e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-odd"><td>TR20433|c4_g3_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>4.65e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-even"><td>TR18761|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SYMPK_DROME">SYMPK_DROME</a></td>
+<td>Sym</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.55e-05</td>
+<td>0.0155518</td>
+</tr>
+<tr class="row-odd"><td>TR21605|c1_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TIM_DROME">TIM_DROME</a></td>
+<td>tim</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>4.84e-05</td>
+<td>0.0155827</td>
+</tr>
+<tr class="row-even"><td>TR3232|c1_g2_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ITIH4_HUMAN">ITIH4_HUMAN</a></td>
+<td>unmapped</td>
+<td>Homo sapiens</td>
+<td>0.0</td>
+<td>5.05e-05</td>
+<td>0.0161403</td>
+</tr>
+<tr class="row-odd"><td>TR24448|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PC73_DROME">M9PC73_DROME</a></td>
+<td>Liprin-alpha</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.21e-05</td>
+<td>0.0165689</td>
+</tr>
+<tr class="row-even"><td>TR34657|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/D1YSG0_DROME">D1YSG0_DROME</a></td>
+<td>bt</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.33e-05</td>
+<td>0.016831</td>
+</tr>
+<tr class="row-odd"><td>TR41224|c0_g1_i6</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>5.38e-05</td>
+<td>0.0168865</td>
+</tr>
+<tr class="row-even"><td>TR37392|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>5.43e-05</td>
+<td>0.0169299</td>
+</tr>
+<tr class="row-odd"><td>TR6913|c2_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>5.46e-05</td>
+<td>0.0169299</td>
+</tr>
+<tr class="row-even"><td>TR38967|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>5.63e-05</td>
+<td>0.0169458</td>
+</tr>
+<tr class="row-odd"><td>TR3983|c2_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VVL7_DROME">Q9VVL7_DROME</a></td>
+<td>CG7430</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.62e-05</td>
+<td>0.0169458</td>
+</tr>
+<tr class="row-even"><td>TR25978|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8SXA4_DROME">Q8SXA4_DROME</a></td>
+<td>Hr46</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.59e-05</td>
+<td>0.0169458</td>
+</tr>
+<tr class="row-odd"><td>TR19816|c0_g2_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SIDT1_HUMAN">SIDT1_HUMAN</a></td>
+<td>unmapped</td>
+<td>Homo sapiens</td>
+<td>0.0</td>
+<td>5.57e-05</td>
+<td>0.0169458</td>
+</tr>
+<tr class="row-even"><td>TR29203|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q95U54_DROME">Q95U54_DROME</a></td>
+<td>Mms19</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.52e-05</td>
+<td>0.0169458</td>
+</tr>
+<tr class="row-odd"><td>TR1170|c1_g4_i14</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W2Y5_DROME">Q9W2Y5_DROME</a></td>
+<td>ZAP3</td>
+<td>Drosophila melanogaster</td>
+<td>8e-07</td>
+<td>5.89e-05</td>
+<td>0.0172033</td>
+</tr>
+<tr class="row-even"><td>TR15781|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/HIPPO_DROME">HIPPO_DROME</a></td>
+<td>hpo</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.89e-05</td>
+<td>0.0172033</td>
+</tr>
+<tr class="row-odd"><td>TR2964|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VV72_DROME">Q9VV72_DROME</a></td>
+<td>Mipp1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.83e-05</td>
+<td>0.0172033</td>
+</tr>
+<tr class="row-even"><td>TR35280|c1_g1_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SINAL_DROME">SINAL_DROME</a></td>
+<td>sinah</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>5.91e-05</td>
+<td>0.0172033</td>
+</tr>
+<tr class="row-odd"><td>TR37283|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>5.86e-05</td>
+<td>0.0172033</td>
+</tr>
+<tr class="row-even"><td>TR44705|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>5.83e-05</td>
+<td>0.0172033</td>
+</tr>
+<tr class="row-odd"><td>TR44078|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>6.03e-05</td>
+<td>0.0174348</td>
+</tr>
+<tr class="row-even"><td>TR23092|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VEY4_DROME">Q9VEY4_DROME</a></td>
+<td>CG5916</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.21e-05</td>
+<td>0.0178549</td>
+</tr>
+<tr class="row-odd"><td>TR23068|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VWN9_DROME">Q9VWN9_DROME</a></td>
+<td>CG34401</td>
+<td>Drosophila melanogaster</td>
+<td>3.8e-06</td>
+<td>6.46e-05</td>
+<td>0.0183716</td>
+</tr>
+<tr class="row-even"><td>TR20442|c1_g2_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>6.45e-05</td>
+<td>0.0183716</td>
+</tr>
+<tr class="row-odd"><td>TR39248|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=TTCA_XANC5">TTCA_XANC5</a></td>
+<td>unmapped</td>
+<td>Xanthomonas campestris pv. vesicatoria</td>
+<td>0.0</td>
+<td>6.67e-05</td>
+<td>0.0188215</td>
+</tr>
+<tr class="row-even"><td>TR33655|c2_g10_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z6Q1_DROME">A1Z6Q1_DROME</a></td>
+<td>koi</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.69e-05</td>
+<td>0.0188215</td>
+</tr>
+<tr class="row-odd"><td>TR24142|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/X2JFM8_DROME">X2JFM8_DROME</a></td>
+<td>CG16952</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.87e-05</td>
+<td>0.0189784</td>
+</tr>
+<tr class="row-even"><td>TR25000|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/PPAN_DROME">PPAN_DROME</a></td>
+<td>ppan</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.88e-05</td>
+<td>0.0189784</td>
+</tr>
+<tr class="row-odd"><td>TR42970|c0_g1_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VIJ9_DROME">Q9VIJ9_DROME</a></td>
+<td>Ns4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>6.83e-05</td>
+<td>0.0189784</td>
+</tr>
+<tr class="row-even"><td>TR44689|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>6.89e-05</td>
+<td>0.0189784</td>
+</tr>
+<tr class="row-odd"><td>TR7278|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>7.04e-05</td>
+<td>0.0192876</td>
+</tr>
+<tr class="row-even"><td>TR31564|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VF73_DROME">Q9VF73_DROME</a></td>
+<td>CG34404</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.19e-05</td>
+<td>0.019582</td>
+</tr>
+<tr class="row-odd"><td>TR25230|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VE37_DROME">Q9VE37_DROME</a></td>
+<td>Mekk1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.45e-05</td>
+<td>0.0198009</td>
+</tr>
+<tr class="row-even"><td>TR26875|c0_g3_i5</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/GBS76_DROME">GBS76_DROME</a></td>
+<td>Gbs-76A</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.32e-05</td>
+<td>0.0198009</td>
+</tr>
+<tr class="row-odd"><td>TR34132|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7K5M0_DROME">Q7K5M0_DROME</a></td>
+<td>scaf</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.46e-05</td>
+<td>0.0198009</td>
+</tr>
+<tr class="row-even"><td>TR6865|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>7.35e-05</td>
+<td>0.0198009</td>
+</tr>
+<tr class="row-odd"><td>TR9033|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MED15_DROME">MED15_DROME</a></td>
+<td>MED15</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.41e-05</td>
+<td>0.0198009</td>
+</tr>
+<tr class="row-even"><td>TR15606|c2_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VWX8_DROME">Q9VWX8_DROME</a></td>
+<td>Frq2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.53e-05</td>
+<td>0.0198347</td>
+</tr>
+<tr class="row-odd"><td>TR17305|c0_g1_i12</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9Y150_DROME">Q9Y150_DROME</a></td>
+<td>Exn</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.55e-05</td>
+<td>0.0198347</td>
+</tr>
+<tr class="row-even"><td>TR11701|c0_g1_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>7.63e-05</td>
+<td>0.0199566</td>
+</tr>
+<tr class="row-odd"><td>TR39299|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z8R2_DROME">A1Z8R2_DROME</a></td>
+<td>CG8290</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.86e-05</td>
+<td>0.0204438</td>
+</tr>
+<tr class="row-even"><td>TR39272|c0_g1_i10</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/EXOC5_DROME">EXOC5_DROME</a></td>
+<td>Sec10</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.9e-05</td>
+<td>0.0204522</td>
+</tr>
+<tr class="row-odd"><td>TR12154|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7JR72_DROME">Q7JR72_DROME</a></td>
+<td>nemy</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>7.96e-05</td>
+<td>0.0204971</td>
+</tr>
+<tr class="row-even"><td>TR11381|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7K0X9_DROME">Q7K0X9_DROME</a></td>
+<td>Syx7</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>8.02e-05</td>
+<td>0.0205455</td>
+</tr>
+<tr class="row-odd"><td>TR34483|c2_g3_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>8.07e-05</td>
+<td>0.0205664</td>
+</tr>
+<tr class="row-even"><td>TR33886|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>8.12e-05</td>
+<td>0.0206067</td>
+</tr>
+<tr class="row-odd"><td>TR10908|c5_g1_i11</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9ND42_DROME">M9ND42_DROME</a></td>
+<td>Cip4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>8.24e-05</td>
+<td>0.0207506</td>
+</tr>
+<tr class="row-even"><td>TR35415|c0_g2_i7</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>8.26e-05</td>
+<td>0.0207506</td>
+</tr>
+<tr class="row-odd"><td>TR18535|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>8.4e-05</td>
+<td>0.0208985</td>
+</tr>
+<tr class="row-even"><td>TR27273|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8MLQ7_DROME">Q8MLQ7_DROME</a></td>
+<td>CG4797</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>8.37e-05</td>
+<td>0.0208985</td>
+</tr>
+<tr class="row-odd"><td>TR43282|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/VATB_DROME">VATB_DROME</a></td>
+<td>Vha55</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>8.56e-05</td>
+<td>0.0211844</td>
+</tr>
+<tr class="row-even"><td>TR4516|c1_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>8.63e-05</td>
+<td>0.0212638</td>
+</tr>
+<tr class="row-odd"><td>TR6589|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>8.74e-05</td>
+<td>0.0212731</td>
+</tr>
+<tr class="row-even"><td>TR47035|c0_g1_i10</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>8.76e-05</td>
+<td>0.0212731</td>
+</tr>
+<tr class="row-odd"><td>TR29258|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VVV1_DROME">Q9VVV1_DROME</a></td>
+<td>CG3819</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>8.75e-05</td>
+<td>0.0212731</td>
+</tr>
+<tr class="row-even"><td>TR2491|c2_g2_i10</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=PRSN_PIEBR">PRSN_PIEBR</a></td>
+<td>unmapped</td>
+<td>Pieris brassicae</td>
+<td>0.0</td>
+<td>8.84e-05</td>
+<td>0.02137</td>
+</tr>
+<tr class="row-odd"><td>TR2163|c0_g3_i8</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ASND1_DROME">ASND1_DROME</a></td>
+<td>CG17486</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.04e-05</td>
+<td>0.021732</td>
+</tr>
+<tr class="row-even"><td>TR3733|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DCR1_DROME">DCR1_DROME</a></td>
+<td>Dcr-1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.07e-05</td>
+<td>0.021732</td>
+</tr>
+<tr class="row-odd"><td>TR11409|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7KVD1_DROME">Q7KVD1_DROME</a></td>
+<td>trio</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.16e-05</td>
+<td>0.0218123</td>
+</tr>
+<tr class="row-even"><td>TR11581|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7KTN9_DROME">Q7KTN9_DROME</a></td>
+<td>vri</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.19e-05</td>
+<td>0.0218123</td>
+</tr>
+<tr class="row-odd"><td>TR17851|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VDA0_DROME">Q9VDA0_DROME</a></td>
+<td>CG7922</td>
+<td>Drosophila melanogaster</td>
+<td>3e-07</td>
+<td>9.34e-05</td>
+<td>0.0220582</td>
+</tr>
+<tr class="row-even"><td>TR23300|c2_g2_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7KU95_DROME">Q7KU95_DROME</a></td>
+<td>Ank2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.53e-05</td>
+<td>0.0224003</td>
+</tr>
+<tr class="row-odd"><td>TR14208|c2_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/NPRL3_DROME">NPRL3_DROME</a></td>
+<td>CG8783</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.71e-05</td>
+<td>0.0224589</td>
+</tr>
+<tr class="row-even"><td>TR18097|c1_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TPRA1_DANRE">TPRA1_DANRE</a></td>
+<td>unmapped</td>
+<td>Danio rerio</td>
+<td>0.0</td>
+<td>9.6e-05</td>
+<td>0.0224589</td>
+</tr>
+<tr class="row-odd"><td>TR34010|c0_g1_i5</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>9.73e-05</td>
+<td>0.0224589</td>
+</tr>
+<tr class="row-even"><td>TR39864|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>9.71e-05</td>
+<td>0.0224589</td>
+</tr>
+<tr class="row-odd"><td>TR18791|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W509_DROME">Q9W509_DROME</a></td>
+<td>Mct1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.79e-05</td>
+<td>0.0225118</td>
+</tr>
+<tr class="row-even"><td>TR7088|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z8C9_DROME">A1Z8C9_DROME</a></td>
+<td>CG30016</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>9.92e-05</td>
+<td>0.0226975</td>
+</tr>
+<tr class="row-odd"><td>TR34705|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TNF13_MOUSE">TNF13_MOUSE</a></td>
+<td>unmapped</td>
+<td>Mus musculus</td>
+<td>2.65e-05</td>
+<td>0.0001002</td>
+<td>0.0228309</td>
+</tr>
+<tr class="row-even"><td>TR34237|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DTX_DROME">DTX_DROME</a></td>
+<td>dx</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001027</td>
+<td>0.0232918</td>
+</tr>
+<tr class="row-odd"><td>TR18128|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/E1JIF4_DROME">E1JIF4_DROME</a></td>
+<td>Pif1A</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001054</td>
+<td>0.0235264</td>
+</tr>
+<tr class="row-even"><td>TR29468|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/C19L1_DROME">C19L1_DROME</a></td>
+<td>CG7741</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001055</td>
+<td>0.0235264</td>
+</tr>
+<tr class="row-odd"><td>TR42603|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001047</td>
+<td>0.0235264</td>
+</tr>
+<tr class="row-even"><td>TR7800|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001054</td>
+<td>0.0235264</td>
+</tr>
+<tr class="row-odd"><td>TR27594|c2_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001066</td>
+<td>0.0235698</td>
+</tr>
+<tr class="row-even"><td>TR47296|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=CRAM_TRYBB">CRAM_TRYBB</a></td>
+<td>unmapped</td>
+<td>Trypanosoma brucei brucei</td>
+<td>3e-07</td>
+<td>0.0001064</td>
+<td>0.0235698</td>
+</tr>
+<tr class="row-odd"><td>TR163|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/NOTCH_DROME">NOTCH_DROME</a></td>
+<td>N</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001081</td>
+<td>0.0237703</td>
+</tr>
+<tr class="row-even"><td>TR19248|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/INX1_DROME">INX1_DROME</a></td>
+<td>ogre</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001085</td>
+<td>0.0237703</td>
+</tr>
+<tr class="row-odd"><td>TR10556|c1_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7KTA1_DROME">Q7KTA1_DROME</a></td>
+<td>NimB2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.00011</td>
+<td>0.0240085</td>
+</tr>
+<tr class="row-even"><td>TR4405|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001126</td>
+<td>0.024365</td>
+</tr>
+<tr class="row-odd"><td>TR16703|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PG37_DROME">M9PG37_DROME</a></td>
+<td>CLIP-190</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001122</td>
+<td>0.024365</td>
+</tr>
+<tr class="row-even"><td>TR21605|c1_g2_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001131</td>
+<td>0.0243718</td>
+</tr>
+<tr class="row-odd"><td>TR33155|c0_g3_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8IQN2_DROME">Q8IQN2_DROME</a></td>
+<td>ClC-c</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001141</td>
+<td>0.0244905</td>
+</tr>
+<tr class="row-even"><td>TR10908|c5_g1_i6</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001158</td>
+<td>0.0245423</td>
+</tr>
+<tr class="row-odd"><td>TR18374|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VMY8_DROME">Q9VMY8_DROME</a></td>
+<td>aux</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000116</td>
+<td>0.0245423</td>
+</tr>
+<tr class="row-even"><td>TR37514|c0_g1_i7</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001155</td>
+<td>0.0245423</td>
+</tr>
+<tr class="row-odd"><td>TR38460|c0_g1_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9NH46_DROME">M9NH46_DROME</a></td>
+<td>mmd</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001163</td>
+<td>0.0245423</td>
+</tr>
+<tr class="row-even"><td>TR12652|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VAH7_DROME">Q9VAH7_DROME</a></td>
+<td>yata</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001216</td>
+<td>0.0254515</td>
+</tr>
+<tr class="row-odd"><td>TR31938|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z7J7_DROME">A1Z7J7_DROME</a></td>
+<td>Sec31</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001215</td>
+<td>0.0254515</td>
+</tr>
+<tr class="row-even"><td>TR20727|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/RLA1_DROME">RLA1_DROME</a></td>
+<td>RpLP1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001231</td>
+<td>0.0255098</td>
+</tr>
+<tr class="row-odd"><td>TR21972|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001225</td>
+<td>0.0255098</td>
+</tr>
+<tr class="row-even"><td>TR30856|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/L0MN91_DROME">L0MN91_DROME</a></td>
+<td>bt</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001234</td>
+<td>0.0255098</td>
+</tr>
+<tr class="row-odd"><td>TR45936|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PB77_DROME">M9PB77_DROME</a></td>
+<td>Sema-1a</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001266</td>
+<td>0.0260734</td>
+</tr>
+<tr class="row-even"><td>TR21772|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001304</td>
+<td>0.0267579</td>
+</tr>
+<tr class="row-odd"><td>TR11793|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001319</td>
+<td>0.0267776</td>
+</tr>
+<tr class="row-even"><td>TR20330|c1_g1_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001326</td>
+<td>0.0267776</td>
+</tr>
+<tr class="row-odd"><td>TR26535|c1_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/CAPS_DROME">CAPS_DROME</a></td>
+<td>Caps</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001336</td>
+<td>0.0267776</td>
+</tr>
+<tr class="row-even"><td>TR40472|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VVK5_DROME">Q9VVK5_DROME</a></td>
+<td>Adgf-A</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001314</td>
+<td>0.0267776</td>
+</tr>
+<tr class="row-odd"><td>TR43567|c1_g1_i9</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VVA4_DROME">Q9VVA4_DROME</a></td>
+<td>CG9674</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001335</td>
+<td>0.0267776</td>
+</tr>
+<tr class="row-even"><td>TR46343|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001329</td>
+<td>0.0267776</td>
+</tr>
+<tr class="row-odd"><td>TR20723|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001366</td>
+<td>0.0271341</td>
+</tr>
+<tr class="row-even"><td>TR25748|c4_g2_i2</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=PRSN_PIEBR">PRSN_PIEBR</a></td>
+<td>unmapped</td>
+<td>Pieris brassicae</td>
+<td>0.0</td>
+<td>0.000137</td>
+<td>0.0271341</td>
+</tr>
+<tr class="row-odd"><td>TR7348|c1_g1_i5</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.000136</td>
+<td>0.0271341</td>
+</tr>
+<tr class="row-even"><td>TR43461|c0_g3_i15</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q86P80_DROME">Q86P80_DROME</a></td>
+<td>CAP</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001383</td>
+<td>0.0272905</td>
+</tr>
+<tr class="row-odd"><td>TR14073|c0_g1_i8</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MYSA_DROME">MYSA_DROME</a></td>
+<td>Mhc</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001411</td>
+<td>0.0277415</td>
+</tr>
+<tr class="row-even"><td>TR34174|c0_g1_i10</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VKL9_DROME">Q9VKL9_DROME</a></td>
+<td>CG16833</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001443</td>
+<td>0.028246</td>
+</tr>
+<tr class="row-odd"><td>TR13834|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8SXA4_DROME">Q8SXA4_DROME</a></td>
+<td>Hr46</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001449</td>
+<td>0.0282723</td>
+</tr>
+<tr class="row-even"><td>TR18896|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/B7Z0K2_DROME">B7Z0K2_DROME</a></td>
+<td>btsz</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001467</td>
+<td>0.0284976</td>
+</tr>
+<tr class="row-odd"><td>TR37338|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W1Y8_DROME">Q9W1Y8_DROME</a></td>
+<td>CG13531</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001475</td>
+<td>0.0285571</td>
+</tr>
+<tr class="row-even"><td>TR40894|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/LYSP_DROME">LYSP_DROME</a></td>
+<td>LysP</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001497</td>
+<td>0.0288212</td>
+</tr>
+<tr class="row-odd"><td>TR43692|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VB73_DROME">Q9VB73_DROME</a></td>
+<td>CG5880</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.00015</td>
+<td>0.0288212</td>
+</tr>
+<tr class="row-even"><td>TR26518|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VE56_DROME">Q9VE56_DROME</a></td>
+<td>CG14301</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001511</td>
+<td>0.028861</td>
+</tr>
+<tr class="row-odd"><td>TR39521|c2_g3_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001513</td>
+<td>0.028861</td>
+</tr>
+<tr class="row-even"><td>TR8385|c0_g1_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001522</td>
+<td>0.0289209</td>
+</tr>
+<tr class="row-odd"><td>TR11963|c1_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001549</td>
+<td>0.028928</td>
+</tr>
+<tr class="row-even"><td>TR12488|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VEF9_DROME">Q9VEF9_DROME</a></td>
+<td>CG43102</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001537</td>
+<td>0.028928</td>
+</tr>
+<tr class="row-odd"><td>TR17503|c0_g3_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A8JUR0_DROME">A8JUR0_DROME</a></td>
+<td>CG8028</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001542</td>
+<td>0.028928</td>
+</tr>
+<tr class="row-even"><td>TR18338|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001562</td>
+<td>0.028928</td>
+</tr>
+<tr class="row-odd"><td>TR22791|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/GBLP_DROME">GBLP_DROME</a></td>
+<td>Rack1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001557</td>
+<td>0.028928</td>
+</tr>
+<tr class="row-even"><td>TR41418|c0_g1_i12</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VSG9_DROME">Q9VSG9_DROME</a></td>
+<td>CG13671</td>
+<td>Drosophila melanogaster</td>
+<td>1.8e-06</td>
+<td>0.0001535</td>
+<td>0.028928</td>
+</tr>
+<tr class="row-odd"><td>TR46574|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/EMS_DROME">EMS_DROME</a></td>
+<td>ems</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001557</td>
+<td>0.028928</td>
+</tr>
+<tr class="row-even"><td>TR47703|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PGU2_DROME">M9PGU2_DROME</a></td>
+<td>pcx</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001611</td>
+<td>0.0296227</td>
+</tr>
+<tr class="row-odd"><td>TR32591|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001605</td>
+<td>0.0296227</td>
+</tr>
+<tr class="row-even"><td>TR33164|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/NCAH_DROME">NCAH_DROME</a></td>
+<td>Nca</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001637</td>
+<td>0.0298948</td>
+</tr>
+<tr class="row-odd"><td>TR41417|c0_g1_i10</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DNLI4_CHICK">DNLI4_CHICK</a></td>
+<td>unmapped</td>
+<td>Gallus gallus</td>
+<td>0.0</td>
+<td>0.0001635</td>
+<td>0.0298948</td>
+</tr>
+<tr class="row-even"><td>TR24865|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001651</td>
+<td>0.0299333</td>
+</tr>
+<tr class="row-odd"><td>TR49|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MA122_DROME">MA122_DROME</a></td>
+<td>alpha-Man-I</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001648</td>
+<td>0.0299333</td>
+</tr>
+<tr class="row-even"><td>TR32151|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001671</td>
+<td>0.0301096</td>
+</tr>
+<tr class="row-odd"><td>TR40954|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TMTC1_DROME">TMTC1_DROME</a></td>
+<td>CG31690</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001672</td>
+<td>0.0301096</td>
+</tr>
+<tr class="row-even"><td>TR16127|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/KIF1A_DROME">KIF1A_DROME</a></td>
+<td>unc-104</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001685</td>
+<td>0.0301282</td>
+</tr>
+<tr class="row-odd"><td>TR22724|c4_g1_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001683</td>
+<td>0.0301282</td>
+</tr>
+<tr class="row-even"><td>TR268|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VJY7_DROME">Q9VJY7_DROME</a></td>
+<td>CG7099</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000171</td>
+<td>0.0304703</td>
+</tr>
+<tr class="row-odd"><td>TR20596|c1_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SLO_DROME">SLO_DROME</a></td>
+<td>slo</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001726</td>
+<td>0.0306457</td>
+</tr>
+<tr class="row-even"><td>TR2751|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z6E6_DROME">A1Z6E6_DROME</a></td>
+<td>d4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001746</td>
+<td>0.0308586</td>
+</tr>
+<tr class="row-odd"><td>TR2491|c2_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001763</td>
+<td>0.0308586</td>
+</tr>
+<tr class="row-even"><td>TR21785|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VNW8_DROME">Q9VNW8_DROME</a></td>
+<td>CG7458</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001768</td>
+<td>0.0308586</td>
+</tr>
+<tr class="row-odd"><td>TR13890|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SUOX_DROME">SUOX_DROME</a></td>
+<td>CG7280</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001764</td>
+<td>0.0308586</td>
+</tr>
+<tr class="row-even"><td>TR13085|c2_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VBQ6_DROME">Q9VBQ6_DROME</a></td>
+<td>Dhap-at</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001752</td>
+<td>0.0308586</td>
+</tr>
+<tr class="row-odd"><td>TR27519|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/BRM_DROME">BRM_DROME</a></td>
+<td>brm</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001781</td>
+<td>0.0309868</td>
+</tr>
+<tr class="row-even"><td>TR19302|c2_g1_i18</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/PARP_DROME">PARP_DROME</a></td>
+<td>Parp</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001812</td>
+<td>0.0314163</td>
+</tr>
+<tr class="row-odd"><td>TR10908|c5_g1_i9</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9NF07_DROME">M9NF07_DROME</a></td>
+<td>Cip4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001849</td>
+<td>0.031555</td>
+</tr>
+<tr class="row-even"><td>TR40566|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/UNK_DROME">UNK_DROME</a></td>
+<td>unk</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001828</td>
+<td>0.031555</td>
+</tr>
+<tr class="row-odd"><td>TR43009|c0_g1_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VY45_DROME">Q9VY45_DROME</a></td>
+<td>CG1434</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001851</td>
+<td>0.031555</td>
+</tr>
+<tr class="row-even"><td>TR44086|c0_g1_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001841</td>
+<td>0.031555</td>
+</tr>
+<tr class="row-odd"><td>TR5532|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A8DY44_DROME">A8DY44_DROME</a></td>
+<td>Nipped-A</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001842</td>
+<td>0.031555</td>
+</tr>
+<tr class="row-even"><td>TR35251|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9V3H7_DROME">Q9V3H7_DROME</a></td>
+<td>Sr-CI</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001861</td>
+<td>0.0316335</td>
+</tr>
+<tr class="row-odd"><td>TR8183|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1ZB83_DROME">A1ZB83_DROME</a></td>
+<td>CG5174</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001882</td>
+<td>0.0318745</td>
+</tr>
+<tr class="row-even"><td>TR43695|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W056_DROME">Q9W056_DROME</a></td>
+<td>CG1139</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001899</td>
+<td>0.0320612</td>
+</tr>
+<tr class="row-odd"><td>TR39461|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=GAGXE_DROME">GAGXE_DROME</a></td>
+<td>unmapped</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001913</td>
+<td>0.0321996</td>
+</tr>
+<tr class="row-even"><td>TR47193|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ALF_DROME">ALF_DROME</a></td>
+<td>Ald</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001943</td>
+<td>0.0322784</td>
+</tr>
+<tr class="row-odd"><td>TR3297|c1_g1_i8</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W3W9_DROME">Q9W3W9_DROME</a></td>
+<td>CG3168</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001943</td>
+<td>0.0322784</td>
+</tr>
+<tr class="row-even"><td>TR29350|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VRG4_DROME">Q9VRG4_DROME</a></td>
+<td>CG1718</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001939</td>
+<td>0.0322784</td>
+</tr>
+<tr class="row-odd"><td>TR30034|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PE48_DROME">M9PE48_DROME</a></td>
+<td>BtbVII</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001935</td>
+<td>0.0322784</td>
+</tr>
+<tr class="row-even"><td>TR39025|c3_g3_i11</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0001952</td>
+<td>0.032323</td>
+</tr>
+<tr class="row-odd"><td>TR4664|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9Y119_DROME">Q9Y119_DROME</a></td>
+<td>Tps1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001973</td>
+<td>0.0325567</td>
+</tr>
+<tr class="row-even"><td>TR16734|c0_g1_i8</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VG72_DROME">Q9VG72_DROME</a></td>
+<td>CG5245</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0001984</td>
+<td>0.0326438</td>
+</tr>
+<tr class="row-odd"><td>TR21339|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002002</td>
+<td>0.0328284</td>
+</tr>
+<tr class="row-even"><td>TR38567|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002086</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-odd"><td>TR42742|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/THOC6_DROME">THOC6_DROME</a></td>
+<td>thoc6</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002085</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-even"><td>TR41987|c1_g1_i20</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/IDE_DROME">IDE_DROME</a></td>
+<td>Ide</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002034</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-odd"><td>TR41907|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/RY44_DROME">RY44_DROME</a></td>
+<td>RyR</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002067</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-even"><td>TR40476|c1_g1_i6</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=PER_ANTPE">PER_ANTPE</a></td>
+<td>unmapped</td>
+<td>Antheraea pernyi</td>
+<td>0.0</td>
+<td>0.0002072</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-odd"><td>TR23068|c1_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/R9PY27_DROME">R9PY27_DROME</a></td>
+<td>CG34401</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002068</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-even"><td>TR1256|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002086</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-odd"><td>TR18447|c1_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002092</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-even"><td>TR18395|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SPRI_DROME">SPRI_DROME</a></td>
+<td>spri</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002076</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-odd"><td>TR12751|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/X2JFY7_DROME">X2JFY7_DROME</a></td>
+<td>mal</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002053</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-even"><td>TR21814|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PI40_DROME">M9PI40_DROME</a></td>
+<td>CG10660</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002043</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-odd"><td>TR11172|c1_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7KV91_DROME">Q7KV91_DROME</a></td>
+<td>CG16758</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002025</td>
+<td>0.0330504</td>
+</tr>
+<tr class="row-even"><td>TR45403|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/X2J9F6_DROME">X2J9F6_DROME</a></td>
+<td>Cyp6a16</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002127</td>
+<td>0.0330896</td>
+</tr>
+<tr class="row-odd"><td>TR40987|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1ZAK1_DROME">A1ZAK1_DROME</a></td>
+<td>IntS8</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002136</td>
+<td>0.0330896</td>
+</tr>
+<tr class="row-even"><td>TR30968|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/P91634_DROME">P91634_DROME</a></td>
+<td>Pi3K92E</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002133</td>
+<td>0.0330896</td>
+</tr>
+<tr class="row-odd"><td>TR44936|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VCH5_DROME">Q9VCH5_DROME</a></td>
+<td>Nup98-96</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002101</td>
+<td>0.0330896</td>
+</tr>
+<tr class="row-even"><td>TR13940|c1_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002142</td>
+<td>0.0330896</td>
+</tr>
+<tr class="row-odd"><td>TR1179|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q3KN41_DROME">Q3KN41_DROME</a></td>
+<td>Nrx-1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002118</td>
+<td>0.0330896</td>
+</tr>
+<tr class="row-even"><td>TR10841|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z928_DROME">A1Z928_DROME</a></td>
+<td>Sin3A</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002146</td>
+<td>0.0330896</td>
+</tr>
+<tr class="row-odd"><td>TR20566|c0_g1_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9GSR1_DROME">Q9GSR1_DROME</a></td>
+<td>mus205</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002144</td>
+<td>0.0330896</td>
+</tr>
+<tr class="row-even"><td>TR35621|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VDZ4_DROME">Q9VDZ4_DROME</a></td>
+<td>CG42358</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000227</td>
+<td>0.0346867</td>
+</tr>
+<tr class="row-odd"><td>TR40410|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9ND61_DROME">M9ND61_DROME</a></td>
+<td>Unr</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002264</td>
+<td>0.0346867</td>
+</tr>
+<tr class="row-even"><td>TR5433|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002261</td>
+<td>0.0346867</td>
+</tr>
+<tr class="row-odd"><td>TR16875|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/B7Z0U1_DROME">B7Z0U1_DROME</a></td>
+<td>pyd</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000229</td>
+<td>0.0347641</td>
+</tr>
+<tr class="row-even"><td>TR37727|c1_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q59E43_DROME">Q59E43_DROME</a></td>
+<td>CG32576</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002286</td>
+<td>0.0347641</td>
+</tr>
+<tr class="row-odd"><td>TR43689|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A8JUY3_DROME">A8JUY3_DROME</a></td>
+<td>CG17209</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002295</td>
+<td>0.0347641</td>
+</tr>
+<tr class="row-even"><td>TR12541|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/COG4_DROME">COG4_DROME</a></td>
+<td>CG7456</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002321</td>
+<td>0.0349436</td>
+</tr>
+<tr class="row-odd"><td>TR33199|c4_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/X2JDY8_DROME">X2JDY8_DROME</a></td>
+<td>Graf</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002316</td>
+<td>0.0349436</td>
+</tr>
+<tr class="row-even"><td>TR20667|c0_g1_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002341</td>
+<td>0.0350364</td>
+</tr>
+<tr class="row-odd"><td>TR47340|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002337</td>
+<td>0.0350364</td>
+</tr>
+<tr class="row-even"><td>TR9281|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PCA2_DROME">M9PCA2_DROME</a></td>
+<td>CG5261</td>
+<td>Drosophila melanogaster</td>
+<td>1e-07</td>
+<td>0.0002349</td>
+<td>0.0350553</td>
+</tr>
+<tr class="row-odd"><td>TR11758|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/RAS1_DROME">RAS1_DROME</a></td>
+<td>Ras85D</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002397</td>
+<td>0.0356701</td>
+</tr>
+<tr class="row-even"><td>TR15662|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/RPP40_HUMAN">RPP40_HUMAN</a></td>
+<td>unmapped</td>
+<td>Homo sapiens</td>
+<td>0.0</td>
+<td>0.0002406</td>
+<td>0.0357107</td>
+</tr>
+<tr class="row-odd"><td>TR1936|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W350_DROME">Q9W350_DROME</a></td>
+<td>c11.1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002418</td>
+<td>0.0357859</td>
+</tr>
+<tr class="row-even"><td>TR7684|c2_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VD22_DROME">Q9VD22_DROME</a></td>
+<td>CG18596</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002433</td>
+<td>0.0359001</td>
+</tr>
+<tr class="row-odd"><td>TR32959|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002452</td>
+<td>0.0360729</td>
+</tr>
+<tr class="row-even"><td>TR20433|c3_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VEH5_DROME">Q9VEH5_DROME</a></td>
+<td>AttD</td>
+<td>Drosophila melanogaster</td>
+<td>4e-07</td>
+<td>0.0002463</td>
+<td>0.0361322</td>
+</tr>
+<tr class="row-odd"><td>TR1357|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002488</td>
+<td>0.0363995</td>
+</tr>
+<tr class="row-even"><td>TR16243|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002519</td>
+<td>0.0367407</td>
+</tr>
+<tr class="row-odd"><td>TR29196|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VQC0_DROME">Q9VQC0_DROME</a></td>
+<td>VGlut</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002531</td>
+<td>0.0368102</td>
+</tr>
+<tr class="row-even"><td>TR44705|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8IRE5_DROME">Q8IRE5_DROME</a></td>
+<td>CG32280</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002544</td>
+<td>0.0369063</td>
+</tr>
+<tr class="row-odd"><td>TR8965|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002617</td>
+<td>0.0371202</td>
+</tr>
+<tr class="row-even"><td>TR7526|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/POE_DROME">POE_DROME</a></td>
+<td>poe</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002624</td>
+<td>0.0371202</td>
+</tr>
+<tr class="row-odd"><td>TR43315|c0_g1_i8</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002609</td>
+<td>0.0371202</td>
+</tr>
+<tr class="row-even"><td>TR313|c0_g3_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002604</td>
+<td>0.0371202</td>
+</tr>
+<tr class="row-odd"><td>TR14729|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W4R2_DROME">Q9W4R2_DROME</a></td>
+<td>CG2875</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002584</td>
+<td>0.0371202</td>
+</tr>
+<tr class="row-even"><td>TR2342|c0_g2_i6</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002566</td>
+<td>0.0371202</td>
+</tr>
+<tr class="row-odd"><td>TR23335|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9MRD1_DROME">M9MRD1_DROME</a></td>
+<td>Msp300</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002584</td>
+<td>0.0371202</td>
+</tr>
+<tr class="row-even"><td>TR13007|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/RL37A_DROME">RL37A_DROME</a></td>
+<td>RpL37A</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002607</td>
+<td>0.0371202</td>
+</tr>
+<tr class="row-odd"><td>TR26183|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q5BI62_DROME">Q5BI62_DROME</a></td>
+<td>Mdr50</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000261</td>
+<td>0.0371202</td>
+</tr>
+<tr class="row-even"><td>TR47182|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002698</td>
+<td>0.0380658</td>
+</tr>
+<tr class="row-odd"><td>TR2161|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002714</td>
+<td>0.0381911</td>
+</tr>
+<tr class="row-even"><td>TR21778|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ACH3_DROME">ACH3_DROME</a></td>
+<td>nAChRbeta1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002748</td>
+<td>0.0384591</td>
+</tr>
+<tr class="row-odd"><td>TR17335|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VIQ8_DROME">Q9VIQ8_DROME</a></td>
+<td>CoIV</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002748</td>
+<td>0.0384591</td>
+</tr>
+<tr class="row-even"><td>TR14088|c0_g1_i14</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MNB_DROME">MNB_DROME</a></td>
+<td>mnb</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002756</td>
+<td>0.0384596</td>
+</tr>
+<tr class="row-odd"><td>TR4276|c2_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A8DY67_DROME">A8DY67_DROME</a></td>
+<td>ACC</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000278</td>
+<td>0.0385845</td>
+</tr>
+<tr class="row-even"><td>TR41619|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A8JUX2_DROME">A8JUX2_DROME</a></td>
+<td>Rab3-GEF</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002779</td>
+<td>0.0385845</td>
+</tr>
+<tr class="row-odd"><td>TR12959|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9U4F8_DROME">Q9U4F8_DROME</a></td>
+<td>CG11070</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002798</td>
+<td>0.0387326</td>
+</tr>
+<tr class="row-even"><td>TR13448|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9V406_DROME">Q9V406_DROME</a></td>
+<td>crp</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002806</td>
+<td>0.0387344</td>
+</tr>
+<tr class="row-odd"><td>TR7046|c1_g1_i9</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VGY2_DROME">Q9VGY2_DROME</a></td>
+<td>CG31278</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002818</td>
+<td>0.0388</td>
+</tr>
+<tr class="row-even"><td>TR14668|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002827</td>
+<td>0.0388158</td>
+</tr>
+<tr class="row-odd"><td>TR11317|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002846</td>
+<td>0.0389478</td>
+</tr>
+<tr class="row-even"><td>TR47707|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ZC3HF_DROME">ZC3HF_DROME</a></td>
+<td>CG8635</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002851</td>
+<td>0.0389478</td>
+</tr>
+<tr class="row-odd"><td>TR31779|c0_g1_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002873</td>
+<td>0.0391362</td>
+</tr>
+<tr class="row-even"><td>TR8427|c0_g4_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VFW7_DROME">Q9VFW7_DROME</a></td>
+<td>CG32473</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000288</td>
+<td>0.0391362</td>
+</tr>
+<tr class="row-odd"><td>TR33464|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TBP_DROME">TBP_DROME</a></td>
+<td>Tbp</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002899</td>
+<td>0.0392793</td>
+</tr>
+<tr class="row-even"><td>TR7867|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/LOLAL_DROME">LOLAL_DROME</a></td>
+<td>lolal</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002944</td>
+<td>0.0394797</td>
+</tr>
+<tr class="row-odd"><td>TR30802|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002931</td>
+<td>0.0394797</td>
+</tr>
+<tr class="row-even"><td>TR15587|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002925</td>
+<td>0.0394797</td>
+</tr>
+<tr class="row-odd"><td>TR18948|c0_g1_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VIH7_DROME">Q9VIH7_DROME</a></td>
+<td>sky</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002942</td>
+<td>0.0394797</td>
+</tr>
+<tr class="row-even"><td>TR37507|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PBJ8_DROME">M9PBJ8_DROME</a></td>
+<td>spen</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002958</td>
+<td>0.0395671</td>
+</tr>
+<tr class="row-odd"><td>TR351|c0_g1_i5</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0002975</td>
+<td>0.0395899</td>
+</tr>
+<tr class="row-even"><td>TR42970|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VIJ9_DROME">Q9VIJ9_DROME</a></td>
+<td>Ns4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0002973</td>
+<td>0.0395899</td>
+</tr>
+<tr class="row-odd"><td>TR29936|c2_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003008</td>
+<td>0.0398844</td>
+</tr>
+<tr class="row-even"><td>TR35946|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/X2J564_DROME">X2J564_DROME</a></td>
+<td>mon2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003013</td>
+<td>0.0398844</td>
+</tr>
+<tr class="row-odd"><td>TR1471|c0_g2_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/X2JFU3_DROME">X2JFU3_DROME</a></td>
+<td>CG5004</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003036</td>
+<td>0.0399826</td>
+</tr>
+<tr class="row-even"><td>TR6853|c1_g1_i12</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q2PDX2_DROME">Q2PDX2_DROME</a></td>
+<td>CG34001</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003036</td>
+<td>0.0399826</td>
+</tr>
+<tr class="row-odd"><td>TR39860|c0_g3_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003055</td>
+<td>0.0401377</td>
+</tr>
+<tr class="row-even"><td>TR15887|c0_g2_i19</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PE38_DROME">M9PE38_DROME</a></td>
+<td>Shab</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003065</td>
+<td>0.0401585</td>
+</tr>
+<tr class="row-odd"><td>TR41675|c0_g1_i11</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DORS_DROME">DORS_DROME</a></td>
+<td>dl</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003116</td>
+<td>0.0407198</td>
+</tr>
+<tr class="row-even"><td>TR5387|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9NEZ5_DROME">M9NEZ5_DROME</a></td>
+<td>Nrg</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003154</td>
+<td>0.0411145</td>
+</tr>
+<tr class="row-odd"><td>TR16357|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z9J3_DROME">A1Z9J3_DROME</a></td>
+<td>shot</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003176</td>
+<td>0.041304</td>
+</tr>
+<tr class="row-even"><td>TR35711|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.00032</td>
+<td>0.0415097</td>
+</tr>
+<tr class="row-odd"><td>TR21646|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003233</td>
+<td>0.0417226</td>
+</tr>
+<tr class="row-even"><td>TR41942|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003226</td>
+<td>0.0417226</td>
+</tr>
+<tr class="row-odd"><td>TR47525|c1_g3_i5</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z8L8_DROME">A1Z8L8_DROME</a></td>
+<td>CG7777</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003335</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR47282|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003341</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR46343|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003329</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR41222|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/JIL1_DROME">JIL1_DROME</a></td>
+<td>JIL-1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003301</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR38177|c0_g2_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W3H4_DROME">Q9W3H4_DROME</a></td>
+<td>sni</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003338</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR36847|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VHT2_DROME">Q9VHT2_DROME</a></td>
+<td>tex</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003395</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR33926|c5_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003255</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR33900|c3_g4_i3</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=CYTL_TACTR">CYTL_TACTR</a></td>
+<td>unmapped</td>
+<td>Tachypleus tridentatus</td>
+<td>0.0</td>
+<td>0.0003337</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR29806|c2_g1_i12</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.000336</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR29677|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VTM4_DROME">Q9VTM4_DROME</a></td>
+<td>CG11658</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003282</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR29672|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003367</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR26790|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003392</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR26011|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=A8JR47_DROME">A8JR47_DROME</a></td>
+<td>unmapped</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003293</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR20986|c0_g2_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ACH1_DROME">ACH1_DROME</a></td>
+<td>nAChRalpha1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003406</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR18933|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/NNAD_DROME">NNAD_DROME</a></td>
+<td>NnaD</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.00034</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR18896|c0_g2_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/B7Z0K2_DROME">B7Z0K2_DROME</a></td>
+<td>btsz</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003327</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR16030|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003388</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR1096|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003346</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR6198|c2_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003306</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-even"><td>TR9431|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/OSP_DROME">OSP_DROME</a></td>
+<td>osp</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003359</td>
+<td>0.0418544</td>
+</tr>
+<tr class="row-odd"><td>TR34688|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VSL8_DROME">Q9VSL8_DROME</a></td>
+<td>rhea</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003456</td>
+<td>0.0422251</td>
+</tr>
+<tr class="row-even"><td>TR31505|c1_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003462</td>
+<td>0.0422251</td>
+</tr>
+<tr class="row-odd"><td>TR42648|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MFRN_DROME">MFRN_DROME</a></td>
+<td>mfrn</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003477</td>
+<td>0.0422251</td>
+</tr>
+<tr class="row-even"><td>TR13593|c0_g1_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003476</td>
+<td>0.0422251</td>
+</tr>
+<tr class="row-odd"><td>TR27269|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/EIF3M_DROME">EIF3M_DROME</a></td>
+<td>Tango7</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003463</td>
+<td>0.0422251</td>
+</tr>
+<tr class="row-even"><td>TR2491|c2_g1_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003499</td>
+<td>0.0423936</td>
+</tr>
+<tr class="row-odd"><td>TR41675|c1_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003534</td>
+<td>0.0427167</td>
+</tr>
+<tr class="row-even"><td>TR11835|c0_g2_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/FAS3_DROME">FAS3_DROME</a></td>
+<td>Fas3</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000357</td>
+<td>0.042752</td>
+</tr>
+<tr class="row-odd"><td>TR16487|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003563</td>
+<td>0.042752</td>
+</tr>
+<tr class="row-even"><td>TR27127|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/SPTCA_DROME">SPTCA_DROME</a></td>
+<td>alpha-Spec</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003554</td>
+<td>0.042752</td>
+</tr>
+<tr class="row-odd"><td>TR36261|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003549</td>
+<td>0.042752</td>
+</tr>
+<tr class="row-even"><td>TR20244|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/E1JHK0_DROME">E1JHK0_DROME</a></td>
+<td>CLIP-190</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003601</td>
+<td>0.0428352</td>
+</tr>
+<tr class="row-odd"><td>TR36188|c1_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003587</td>
+<td>0.0428352</td>
+</tr>
+<tr class="row-even"><td>TR37948|c0_g3_i5</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q0E9E2_DROME">Q0E9E2_DROME</a></td>
+<td>CG1516</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003602</td>
+<td>0.0428352</td>
+</tr>
+<tr class="row-odd"><td>TR2345|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/PERQ1_DROME">PERQ1_DROME</a></td>
+<td>CG11148</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003624</td>
+<td>0.0430045</td>
+</tr>
+<tr class="row-even"><td>TR30697|c1_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003635</td>
+<td>0.0430273</td>
+</tr>
+<tr class="row-odd"><td>TR5045|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003668</td>
+<td>0.0432451</td>
+</tr>
+<tr class="row-even"><td>TR41943|c1_g2_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/CTLH2_DROME">CTLH2_DROME</a></td>
+<td>CG11880</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003695</td>
+<td>0.0432451</td>
+</tr>
+<tr class="row-odd"><td>TR11166|c0_g1_i5</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003675</td>
+<td>0.0432451</td>
+</tr>
+<tr class="row-even"><td>TR23949|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VQE0_DROME">Q9VQE0_DROME</a></td>
+<td>Drp1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003693</td>
+<td>0.0432451</td>
+</tr>
+<tr class="row-odd"><td>TR39081|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VIX4_DROME">Q9VIX4_DROME</a></td>
+<td>CG17544</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003684</td>
+<td>0.0432451</td>
+</tr>
+<tr class="row-even"><td>TR25107|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003718</td>
+<td>0.0434118</td>
+</tr>
+<tr class="row-odd"><td>TR10689|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DJC11_MOUSE">DJC11_MOUSE</a></td>
+<td>unmapped</td>
+<td>Mus musculus</td>
+<td>1e-07</td>
+<td>0.0003752</td>
+<td>0.0435132</td>
+</tr>
+<tr class="row-even"><td>TR29266|c0_g2_i5</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VUC7_DROME">Q9VUC7_DROME</a></td>
+<td>Pex1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003744</td>
+<td>0.0435132</td>
+</tr>
+<tr class="row-odd"><td>TR5119|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9NDX8_DROME">M9NDX8_DROME</a></td>
+<td>Spn</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003737</td>
+<td>0.0435132</td>
+</tr>
+<tr class="row-even"><td>TR35953|c0_g1_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003776</td>
+<td>0.0436969</td>
+</tr>
+<tr class="row-odd"><td>TR10470|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VBQ5_DROME">Q9VBQ5_DROME</a></td>
+<td>CG5112</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003844</td>
+<td>0.0442804</td>
+</tr>
+<tr class="row-even"><td>TR17452|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/RG92B_DROME">RG92B_DROME</a></td>
+<td>RhoGAP92B</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000384</td>
+<td>0.0442804</td>
+</tr>
+<tr class="row-odd"><td>TR34440|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W444_DROME">Q9W444_DROME</a></td>
+<td>CG5937</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003852</td>
+<td>0.0442804</td>
+</tr>
+<tr class="row-even"><td>TR22264|c1_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003902</td>
+<td>0.0445746</td>
+</tr>
+<tr class="row-odd"><td>TR21886|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8MRS5_DROME">Q8MRS5_DROME</a></td>
+<td>KrT95D</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003918</td>
+<td>0.0445746</td>
+</tr>
+<tr class="row-even"><td>TR10195|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/C1TC_DROME">C1TC_DROME</a></td>
+<td>pug</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003921</td>
+<td>0.0445746</td>
+</tr>
+<tr class="row-odd"><td>TR12745|c0_g2_i4</td>
+<td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=GRG1_NEUCR">GRG1_NEUCR</a></td>
+<td>unmapped</td>
+<td>Neurospora crassa (strain ATCC 24698 / 74-OR23-1</td>
+<td>0.0</td>
+<td>0.0003887</td>
+<td>0.0445746</td>
+</tr>
+<tr class="row-even"><td>TR17265|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003907</td>
+<td>0.0445746</td>
+</tr>
+<tr class="row-odd"><td>TR34087|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ZUFSP_HUMAN">ZUFSP_HUMAN</a></td>
+<td>unmapped</td>
+<td>Homo sapiens</td>
+<td>0.0</td>
+<td>0.0003949</td>
+<td>0.0447911</td>
+</tr>
+<tr class="row-even"><td>TR11301|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/ECM29_DROME">ECM29_DROME</a></td>
+<td>CG8858</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0003982</td>
+<td>0.0450439</td>
+</tr>
+<tr class="row-odd"><td>TR18069|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0003989</td>
+<td>0.0450439</td>
+</tr>
+<tr class="row-even"><td>TR23435|c0_g1_i9</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/RY44_DROME">RY44_DROME</a></td>
+<td>RyR</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004033</td>
+<td>0.0453279</td>
+</tr>
+<tr class="row-odd"><td>TR23867|c1_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q3KN41_DROME">Q3KN41_DROME</a></td>
+<td>Nrx-1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000404</td>
+<td>0.0453279</td>
+</tr>
+<tr class="row-even"><td>TR2455|c2_g3_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VYI2_DROME">Q9VYI2_DROME</a></td>
+<td>Brms1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004036</td>
+<td>0.0453279</td>
+</tr>
+<tr class="row-odd"><td>TR20433|c4_g3_i3</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004081</td>
+<td>0.0455632</td>
+</tr>
+<tr class="row-even"><td>TR43784|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004088</td>
+<td>0.0455632</td>
+</tr>
+<tr class="row-odd"><td>TR45979|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7K4E0_DROME">Q7K4E0_DROME</a></td>
+<td>CG30440</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004073</td>
+<td>0.0455632</td>
+</tr>
+<tr class="row-even"><td>TR39558|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004111</td>
+<td>0.045628</td>
+</tr>
+<tr class="row-odd"><td>TR25311|c3_g5_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8IQ82_DROME">Q8IQ82_DROME</a></td>
+<td>pst</td>
+<td>Drosophila melanogaster</td>
+<td>1.89e-05</td>
+<td>0.0004109</td>
+<td>0.045628</td>
+</tr>
+<tr class="row-even"><td>TR23493|c1_g1_i5</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q86PF5_DROME">Q86PF5_DROME</a></td>
+<td>PICK1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004141</td>
+<td>0.0457694</td>
+</tr>
+<tr class="row-odd"><td>TR33716|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9V4C0_DROME">Q9V4C0_DROME</a></td>
+<td>yellow-h</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004151</td>
+<td>0.0457694</td>
+</tr>
+<tr class="row-even"><td>TR38504|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z9J3_DROME">A1Z9J3_DROME</a></td>
+<td>shot</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004148</td>
+<td>0.0457694</td>
+</tr>
+<tr class="row-odd"><td>TR2539|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.000419</td>
+<td>0.0461039</td>
+</tr>
+<tr class="row-even"><td>TR43976|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/X2JGM9_DROME">X2JGM9_DROME</a></td>
+<td>RpS4</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004227</td>
+<td>0.0464065</td>
+</tr>
+<tr class="row-odd"><td>TR43843|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PG36_DROME">M9PG36_DROME</a></td>
+<td>CG8765</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000424</td>
+<td>0.04643</td>
+</tr>
+<tr class="row-even"><td>TR8870|c1_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DYHC_DROME">DYHC_DROME</a></td>
+<td>Dhc64C</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004247</td>
+<td>0.04643</td>
+</tr>
+<tr class="row-odd"><td>TR28723|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1Z784_DROME">A1Z784_DROME</a></td>
+<td>ACC</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004257</td>
+<td>0.046447</td>
+</tr>
+<tr class="row-even"><td>TR28113|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004304</td>
+<td>0.0467573</td>
+</tr>
+<tr class="row-odd"><td>TR8063|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004301</td>
+<td>0.0467573</td>
+</tr>
+<tr class="row-even"><td>TR37381|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MYO7A_DROME">MYO7A_DROME</a></td>
+<td>ck</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004352</td>
+<td>0.0470797</td>
+</tr>
+<tr class="row-odd"><td>TR13357|c0_g1_i3</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VEZ6_DROME">Q9VEZ6_DROME</a></td>
+<td>CG10407</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004361</td>
+<td>0.0470797</td>
+</tr>
+<tr class="row-even"><td>TR28485|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9W4X4_DROME">Q9W4X4_DROME</a></td>
+<td>PI4KIIIalpha</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004349</td>
+<td>0.0470797</td>
+</tr>
+<tr class="row-odd"><td>TR5500|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VN44_DROME">Q9VN44_DROME</a></td>
+<td>Karybeta3</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004393</td>
+<td>0.0473233</td>
+</tr>
+<tr class="row-even"><td>TR10201|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004441</td>
+<td>0.0477418</td>
+</tr>
+<tr class="row-odd"><td>TR39025|c2_g2_i2</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004497</td>
+<td>0.0482398</td>
+</tr>
+<tr class="row-even"><td>TR39167|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8MRL2_DROME">Q8MRL2_DROME</a></td>
+<td>CG3795</td>
+<td>Drosophila melanogaster</td>
+<td>3.6e-06</td>
+<td>0.0004553</td>
+<td>0.048743</td>
+</tr>
+<tr class="row-odd"><td>TR6145|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/U518_DROME">U518_DROME</a></td>
+<td>CG3558</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004567</td>
+<td>0.0487872</td>
+</tr>
+<tr class="row-even"><td>TR18439|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9VH01_DROME">Q9VH01_DROME</a></td>
+<td>Bruce</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004612</td>
+<td>0.0488629</td>
+</tr>
+<tr class="row-odd"><td>TR35730|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004589</td>
+<td>0.0488629</td>
+</tr>
+<tr class="row-even"><td>TR39163|c0_g1_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q8IPE8_DROME">Q8IPE8_DROME</a></td>
+<td>Mtpalpha</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004595</td>
+<td>0.0488629</td>
+</tr>
+<tr class="row-odd"><td>TR5732|c0_g3_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004607</td>
+<td>0.0488629</td>
+</tr>
+<tr class="row-even"><td>TR3787|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/POE_DROME">POE_DROME</a></td>
+<td>poe</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004651</td>
+<td>0.0491776</td>
+</tr>
+<tr class="row-odd"><td>TR45434|c1_g2_i7</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q9XZ01_DROME">Q9XZ01_DROME</a></td>
+<td>Nep2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004666</td>
+<td>0.0492353</td>
+</tr>
+<tr class="row-even"><td>TR24778|c0_g1_i4</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004704</td>
+<td>0.0495328</td>
+</tr>
+<tr class="row-odd"><td>TR1126|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004735</td>
+<td>0.04961</td>
+</tr>
+<tr class="row-even"><td>TR33352|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q7K2V9_DROME">Q7K2V9_DROME</a></td>
+<td>CG33671</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004734</td>
+<td>0.04961</td>
+</tr>
+<tr class="row-odd"><td>TR41185|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TAF8_DROME">TAF8_DROME</a></td>
+<td>Taf8</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000474</td>
+<td>0.04961</td>
+</tr>
+<tr class="row-even"><td>TR23140|c1_g1_i5</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Q0E9I0_DROME">Q0E9I0_DROME</a></td>
+<td>Dscam1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004753</td>
+<td>0.0496447</td>
+</tr>
+<tr class="row-odd"><td>TR20433|c4_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004776</td>
+<td>0.0497871</td>
+</tr>
+<tr class="row-even"><td>TR23481|c0_g1_i4</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/Y9705_DROME">Y9705_DROME</a></td>
+<td>CG9705</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004788</td>
+<td>0.0498087</td>
+</tr>
+<tr class="row-odd"><td>TR573|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9NEE2_DROME">M9NEE2_DROME</a></td>
+<td>cac</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004893</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-even"><td>TR42434|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PJQ3_DROME">M9PJQ3_DROME</a></td>
+<td>RhoGAPp190</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004917</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-odd"><td>TR41417|c0_g1_i6</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/DNLI4_CHICK">DNLI4_CHICK</a></td>
+<td>unmapped</td>
+<td>Gallus gallus</td>
+<td>0.0</td>
+<td>0.0004913</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-even"><td>TR40867|c0_g2_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004893</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-odd"><td>TR37000|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PFP9_DROME">M9PFP9_DROME</a></td>
+<td>Deaf1</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004877</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-even"><td>TR35882|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/A1ZAH3_DROME">A1ZAH3_DROME</a></td>
+<td>Syn2</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.000488</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-odd"><td>TR3532|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/MO25_DROME">MO25_DROME</a></td>
+<td>Mo25</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004903</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-even"><td>TR25937|c0_g1_i2</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/TNG6_HUMAN">TNG6_HUMAN</a></td>
+<td>unmapped</td>
+<td>Homo sapiens</td>
+<td>0.0</td>
+<td>0.0004841</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-odd"><td>TR23999|c1_g3_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004837</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-even"><td>TR22038|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004828</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-odd"><td>TR12318|c0_g1_i1</td>
+<td><a class="reference external" href="http://www.uniprot.org/uniprot/M9PI47_DROME">M9PI47_DROME</a></td>
+<td>Sap130</td>
+<td>Drosophila melanogaster</td>
+<td>0.0</td>
+<td>0.0004833</td>
+<td>0.0499375</td>
+</tr>
+<tr class="row-even"><td>TR11818|c0_g1_i1</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>0.0004916</td>
+<td>0.0499375</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="meta-data.html">Meta-data analysis</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="gene-sets/gene-sets.html">Gene sets</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 04, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

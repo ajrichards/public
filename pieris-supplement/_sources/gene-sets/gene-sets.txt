@@ -1,0 +1,125 @@
+.. xenopus supplement
+
+Gene sets
+==========
+
+Annotation Summary
+------------------------
+
+In general annotations may be associated directly with an NCBI GeneID or they may be associated with a gene product that has an assigned Uniprot accession (UniprotKB-AC) ID.  All UniprotKB-AC accessions are mapped to UniprotKb-entries.  To clarify the following tables.
+
+   * ``taxon`` - matches with the taxon summary table on the top of the page
+   * ``genes (annots)`` - The number of unique GeneIDs from NCBI that are associated with a given taxon
+   * ``uniprot (annots)``  - The identifiers from uniprot (non-unique) that are associated with a given taxon
+   * ``coding-genes`` - GeneIDs that have at least one associated uniprot identifier
+   * ``combined`` - uniprot and gene annotations with redundant annotations removed
+   * ``coverage`` - ``combined`` divided by ``genes``
+
+The ``combined`` number of annotations may be less than the total observed annotations because multiple uniprot ids may map to a single gene id.
+
+
++-------+---------------------------------------------------+------------------------------+
+| Taxon | Scientific Name                                   | Common Name                  |
++=======+===================================================+==============================+
+| 10090 | Mus musculus                                      | house mouse                  |
++-------+---------------------------------------------------+------------------------------+
+| 9606  | Homo sapiens                                      | human                        |
++-------+---------------------------------------------------+------------------------------+
+| 7227  | Drosophila melanogaster                           | fruit fly                    |
++-------+---------------------------------------------------+------------------------------+
+| 7955  | Danio rerio                                       | leopard danio                |
++-------+---------------------------------------------------+------------------------------+
+
+
+Including IEA evidence
+""""""""""""""""""""""""
+
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+| Taxon     | genes (annots)  | uniprot (annots)  | coding-genes  | combined  | coverage  |
++===========+=================+===================+===============+===========+===========+
+| 10090     | 69347 (18938)   | 16671 (15735)     | 15619         | 19006     | 27.4071   |
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+| 9606      | 47736 (18114)   | 140289 (100435)   | 18921         | 18244     | 38.2185   |
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+| 7227      | 23387 (11563)   | 40464 (26100)     | 13543         | 11870     | 50.7547   |
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+| 7955      | 36579 (14990)   | 2926 (2697)       | 2669          | 15069     | 41.1958   |
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+
+Excluding IEA evidence
+""""""""""""""""""""""""
+
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+| Taxon     | genes (annots)  | uniprot (annots)  | coding-genes  | combined  | coverage  |
++===========+=================+===================+===============+===========+===========+
+| 10090     | 69347 (15763)   | 16671 (11428)     | 15619         | 15842     | 22.8445   |
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+| 9606      | 47736 (14077)   | 140289 (17803)    | 18921         | 14263     | 29.8789   |
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+| 7227      | 23387 (10338)   | 40464 (12648)     | 13543         | 10500     | 44.8967   |
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+| 7955      | 36579 (3962)    | 2926 (1261)       | 2669          | 4006      | 10.9516   |
++-----------+-----------------+-------------------+---------------+-----------+-----------+
+
+Other organisms
+""""""""""""""""""""""""""""
+
+
+===========  ======================================  ==================  ===================
+ ncbi_id      name                                    total_genes          total_annotations
+===========  ======================================  ==================  ===================
+352472        Dictyostelium discoideum AX4            13893               46815
+243164        Dehalococcoides ethenogenes 195         1643                3903
+214684        Cryptococcus neoformans                 6618                12688
+211586        Shewanella oneidensis                   4591                10351
+227321        Aspergillus nidulans FGSC A4            9596                31811
+3702          Arabidopsis thaliana                    33584               150462
+7955          Danio rerio                             36644               91414
+9031          Gallus gallus                           25998               15334
+205920        Ehrlichia chaffeensis                   1159                2810
+7227          Drosophila melanogaster                 23387               80109
+176299        Agrobacterium fabrum                    5465                142
+246194        Carboxydothermus hydrogenoformans       2708                6282
+195099        Campylobacter jejuni RM1221             1941                4557
+9913          Bos taurus                              43990               7634
+36329         Plasmodium falciparum 3D7               5510                3448
+4536          Oryza nivara                            165                 97
+511145        Escherichia coli                        4498                5292
+265669        Listeria monocytogenes                  2935                6977
+40149         Oryza meridionalis                      124                 4
+227377        Coxiella burnetii                       2096                4449
+9606          Homo sapiens,human                      46263               204932
+243233        Methylococcus capsulatus                3053                7166
+243231        Geobacter sulfurreducens PCA            3714                7689
+39946         Oryza sativa Indica Group               161                 160
+39947         Oryza sativa Japonica Group             30535               4740
+559292        Saccharomyces cerevisiae S288c          6350                75240
+284812        Schizosaccharomyces pombe               6954                35088
+246200        Ruegeria pomeroyi                       4349                10631
+10116         Rattus norvegicus                       44939               243527
+10090         Mus musculus                            57997               267454
+212042        Anaplasma phagocytophilum str. HZ       1412                3438
+4529          Oryza rufipogon                         343                 2
+222891        Neorickettsia sennetsu                  974                 2392
+234826        Anaplasma marginale                     1005                196
+999953        Trypanosoma brucei brucei               10193               1820
+198094        Bacillus anthracis str. Ames,None,      5450                12398
+6239          Caenorhabditis elegans,nematode,        45727               65615
+223283        Pseudomonas syringae pv.                5843                9962
+===========  ======================================  ==================  ===================
+
+Gene sets used in this study
+--------------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+
+
+
+Links
+---------------
+
+   * `Statistics about the current GO annotations <http://www-test.geneontology.org/page/current-go-statistics>`_
+   * :doc:`Information about the database used for these data </methods/database>`
+   * `Guide to GO evidence codes <http://www.geneontology.org/page/guide-go-evidence-codes>`_

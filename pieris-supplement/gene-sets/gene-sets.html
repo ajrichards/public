@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Gene sets &mdash; Pieris brassicae transcriptome</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Pieris brassicae transcriptome" href="../index.html" />
+    <link rel="next" title="Database" href="../methods/database.html" />
+    <link rel="prev" title="Differential expression analysis" href="../diff-expression.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/pieris_from_wiki.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>Pieris brassicae transcriptome</span></a></h1>
+        <h2 class="heading"><span>Gene sets</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../diff-expression.html">Differential expression analysis</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../methods/database.html">Database</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="gene-sets">
+<h1>Gene sets<a class="headerlink" href="#gene-sets" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="annotation-summary">
+<h2>Annotation Summary<a class="headerlink" href="#annotation-summary" title="Permalink to this headline">¶</a></h2>
+<p>In general annotations may be associated directly with an NCBI GeneID or they may be associated with a gene product that has an assigned Uniprot accession (UniprotKB-AC) ID.  All UniprotKB-AC accessions are mapped to UniprotKb-entries.  To clarify the following tables.</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">taxon</span></tt> - matches with the taxon summary table on the top of the page</li>
+<li><tt class="docutils literal"><span class="pre">genes</span> <span class="pre">(annots)</span></tt> - The number of unique GeneIDs from NCBI that are associated with a given taxon</li>
+<li><tt class="docutils literal"><span class="pre">uniprot</span> <span class="pre">(annots)</span></tt>  - The identifiers from uniprot (non-unique) that are associated with a given taxon</li>
+<li><tt class="docutils literal"><span class="pre">coding-genes</span></tt> - GeneIDs that have at least one associated uniprot identifier</li>
+<li><tt class="docutils literal"><span class="pre">combined</span></tt> - uniprot and gene annotations with redundant annotations removed</li>
+<li><tt class="docutils literal"><span class="pre">coverage</span></tt> - <tt class="docutils literal"><span class="pre">combined</span></tt> divided by <tt class="docutils literal"><span class="pre">genes</span></tt></li>
+</ul>
+</div></blockquote>
+<p>The <tt class="docutils literal"><span class="pre">combined</span></tt> number of annotations may be less than the total observed annotations because multiple uniprot ids may map to a single gene id.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="58%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxon</th>
+<th class="head">Scientific Name</th>
+<th class="head">Common Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>10090</td>
+<td>Mus musculus</td>
+<td>house mouse</td>
+</tr>
+<tr class="row-odd"><td>9606</td>
+<td>Homo sapiens</td>
+<td>human</td>
+</tr>
+<tr class="row-even"><td>7227</td>
+<td>Drosophila melanogaster</td>
+<td>fruit fly</td>
+</tr>
+<tr class="row-odd"><td>7955</td>
+<td>Danio rerio</td>
+<td>leopard danio</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="including-iea-evidence">
+<h3>Including IEA evidence<a class="headerlink" href="#including-iea-evidence" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="23%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxon</th>
+<th class="head">genes (annots)</th>
+<th class="head">uniprot (annots)</th>
+<th class="head">coding-genes</th>
+<th class="head">combined</th>
+<th class="head">coverage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>10090</td>
+<td>69347 (18938)</td>
+<td>16671 (15735)</td>
+<td>15619</td>
+<td>19006</td>
+<td>27.4071</td>
+</tr>
+<tr class="row-odd"><td>9606</td>
+<td>47736 (18114)</td>
+<td>140289 (100435)</td>
+<td>18921</td>
+<td>18244</td>
+<td>38.2185</td>
+</tr>
+<tr class="row-even"><td>7227</td>
+<td>23387 (11563)</td>
+<td>40464 (26100)</td>
+<td>13543</td>
+<td>11870</td>
+<td>50.7547</td>
+</tr>
+<tr class="row-odd"><td>7955</td>
+<td>36579 (14990)</td>
+<td>2926 (2697)</td>
+<td>2669</td>
+<td>15069</td>
+<td>41.1958</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="excluding-iea-evidence">
+<h3>Excluding IEA evidence<a class="headerlink" href="#excluding-iea-evidence" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="23%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxon</th>
+<th class="head">genes (annots)</th>
+<th class="head">uniprot (annots)</th>
+<th class="head">coding-genes</th>
+<th class="head">combined</th>
+<th class="head">coverage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>10090</td>
+<td>69347 (15763)</td>
+<td>16671 (11428)</td>
+<td>15619</td>
+<td>15842</td>
+<td>22.8445</td>
+</tr>
+<tr class="row-odd"><td>9606</td>
+<td>47736 (14077)</td>
+<td>140289 (17803)</td>
+<td>18921</td>
+<td>14263</td>
+<td>29.8789</td>
+</tr>
+<tr class="row-even"><td>7227</td>
+<td>23387 (10338)</td>
+<td>40464 (12648)</td>
+<td>13543</td>
+<td>10500</td>
+<td>44.8967</td>
+</tr>
+<tr class="row-odd"><td>7955</td>
+<td>36579 (3962)</td>
+<td>2926 (1261)</td>
+<td>2669</td>
+<td>4006</td>
+<td>10.9516</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="other-organisms">
+<h3>Other organisms<a class="headerlink" href="#other-organisms" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="44%" />
+<col width="21%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ncbi_id</th>
+<th class="head">name</th>
+<th class="head">total_genes</th>
+<th class="head">total_annotations</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>352472</td>
+<td>Dictyostelium discoideum AX4</td>
+<td>13893</td>
+<td>46815</td>
+</tr>
+<tr class="row-odd"><td>243164</td>
+<td>Dehalococcoides ethenogenes 195</td>
+<td>1643</td>
+<td>3903</td>
+</tr>
+<tr class="row-even"><td>214684</td>
+<td>Cryptococcus neoformans</td>
+<td>6618</td>
+<td>12688</td>
+</tr>
+<tr class="row-odd"><td>211586</td>
+<td>Shewanella oneidensis</td>
+<td>4591</td>
+<td>10351</td>
+</tr>
+<tr class="row-even"><td>227321</td>
+<td>Aspergillus nidulans FGSC A4</td>
+<td>9596</td>
+<td>31811</td>
+</tr>
+<tr class="row-odd"><td>3702</td>
+<td>Arabidopsis thaliana</td>
+<td>33584</td>
+<td>150462</td>
+</tr>
+<tr class="row-even"><td>7955</td>
+<td>Danio rerio</td>
+<td>36644</td>
+<td>91414</td>
+</tr>
+<tr class="row-odd"><td>9031</td>
+<td>Gallus gallus</td>
+<td>25998</td>
+<td>15334</td>
+</tr>
+<tr class="row-even"><td>205920</td>
+<td>Ehrlichia chaffeensis</td>
+<td>1159</td>
+<td>2810</td>
+</tr>
+<tr class="row-odd"><td>7227</td>
+<td>Drosophila melanogaster</td>
+<td>23387</td>
+<td>80109</td>
+</tr>
+<tr class="row-even"><td>176299</td>
+<td>Agrobacterium fabrum</td>
+<td>5465</td>
+<td>142</td>
+</tr>
+<tr class="row-odd"><td>246194</td>
+<td>Carboxydothermus hydrogenoformans</td>
+<td>2708</td>
+<td>6282</td>
+</tr>
+<tr class="row-even"><td>195099</td>
+<td>Campylobacter jejuni RM1221</td>
+<td>1941</td>
+<td>4557</td>
+</tr>
+<tr class="row-odd"><td>9913</td>
+<td>Bos taurus</td>
+<td>43990</td>
+<td>7634</td>
+</tr>
+<tr class="row-even"><td>36329</td>
+<td>Plasmodium falciparum 3D7</td>
+<td>5510</td>
+<td>3448</td>
+</tr>
+<tr class="row-odd"><td>4536</td>
+<td>Oryza nivara</td>
+<td>165</td>
+<td>97</td>
+</tr>
+<tr class="row-even"><td>511145</td>
+<td>Escherichia coli</td>
+<td>4498</td>
+<td>5292</td>
+</tr>
+<tr class="row-odd"><td>265669</td>
+<td>Listeria monocytogenes</td>
+<td>2935</td>
+<td>6977</td>
+</tr>
+<tr class="row-even"><td>40149</td>
+<td>Oryza meridionalis</td>
+<td>124</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>227377</td>
+<td>Coxiella burnetii</td>
+<td>2096</td>
+<td>4449</td>
+</tr>
+<tr class="row-even"><td>9606</td>
+<td>Homo sapiens,human</td>
+<td>46263</td>
+<td>204932</td>
+</tr>
+<tr class="row-odd"><td>243233</td>
+<td>Methylococcus capsulatus</td>
+<td>3053</td>
+<td>7166</td>
+</tr>
+<tr class="row-even"><td>243231</td>
+<td>Geobacter sulfurreducens PCA</td>
+<td>3714</td>
+<td>7689</td>
+</tr>
+<tr class="row-odd"><td>39946</td>
+<td>Oryza sativa Indica Group</td>
+<td>161</td>
+<td>160</td>
+</tr>
+<tr class="row-even"><td>39947</td>
+<td>Oryza sativa Japonica Group</td>
+<td>30535</td>
+<td>4740</td>
+</tr>
+<tr class="row-odd"><td>559292</td>
+<td>Saccharomyces cerevisiae S288c</td>
+<td>6350</td>
+<td>75240</td>
+</tr>
+<tr class="row-even"><td>284812</td>
+<td>Schizosaccharomyces pombe</td>
+<td>6954</td>
+<td>35088</td>
+</tr>
+<tr class="row-odd"><td>246200</td>
+<td>Ruegeria pomeroyi</td>
+<td>4349</td>
+<td>10631</td>
+</tr>
+<tr class="row-even"><td>10116</td>
+<td>Rattus norvegicus</td>
+<td>44939</td>
+<td>243527</td>
+</tr>
+<tr class="row-odd"><td>10090</td>
+<td>Mus musculus</td>
+<td>57997</td>
+<td>267454</td>
+</tr>
+<tr class="row-even"><td>212042</td>
+<td>Anaplasma phagocytophilum str. HZ</td>
+<td>1412</td>
+<td>3438</td>
+</tr>
+<tr class="row-odd"><td>4529</td>
+<td>Oryza rufipogon</td>
+<td>343</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>222891</td>
+<td>Neorickettsia sennetsu</td>
+<td>974</td>
+<td>2392</td>
+</tr>
+<tr class="row-odd"><td>234826</td>
+<td>Anaplasma marginale</td>
+<td>1005</td>
+<td>196</td>
+</tr>
+<tr class="row-even"><td>999953</td>
+<td>Trypanosoma brucei brucei</td>
+<td>10193</td>
+<td>1820</td>
+</tr>
+<tr class="row-odd"><td>198094</td>
+<td>Bacillus anthracis str. Ames,None,</td>
+<td>5450</td>
+<td>12398</td>
+</tr>
+<tr class="row-even"><td>6239</td>
+<td>Caenorhabditis elegans,nematode,</td>
+<td>45727</td>
+<td>65615</td>
+</tr>
+<tr class="row-odd"><td>223283</td>
+<td>Pseudomonas syringae pv.</td>
+<td>5843</td>
+<td>9962</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="gene-sets-used-in-this-study">
+<h2>Gene sets used in this study<a class="headerlink" href="#gene-sets-used-in-this-study" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+</div>
+<div class="section" id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www-test.geneontology.org/page/current-go-statistics">Statistics about the current GO annotations</a></li>
+<li><a class="reference internal" href="../methods/database.html"><em>Information about the database used for these data</em></a></li>
+<li><a class="reference external" href="http://www.geneontology.org/page/guide-go-evidence-codes">Guide to GO evidence codes</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../diff-expression.html">Differential expression analysis</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../methods/database.html">Database</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 04, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>
