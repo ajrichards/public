@@ -1,0 +1,29 @@
+.. main file for the Pieris brassicae transcriptome
+
+Transcriptome supplemental materials for *Pieris brassicae*
+=============================================================
+
+This is the supplement for the paper entitled A functional investigation of Cabbage Butterfly (*Pieris brassicae*) dispersal transcriptome.  The large white butterfly or cabbage butterfly [Feltwell82]_ is a species that well-suited for the study of dispersal genetics [Baguette13]_.  The analysis of high-throughput sequencing data can involve piplines of many types.  In the spirit of reproducability and because there is a lot of information contained within the *P. brassicae* transcriptome we present here the assembly and supporting materials for the transcriptome manuscript.
+
+
+Assembly and Analysis
+-------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   The assembly <de-novo-assembly>
+   Meta-data analysis <meta-data>
+   Differential expression analysis <diff-expression.rst>
+   Functional gene sets <gene-sets/gene-sets>
+   Lepidoptera transcriptomes <lepidoptera>
+
+
+Additional materials
+-----------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   Database <methods/database>
+   references

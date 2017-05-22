@@ -30,7 +30,7 @@ Sequence preprocessing
 A Python script was used to unzip, concatenate and trim the original reads via system calls (`subprocess <https://docs.python.org/2/library/subprocess.html>`_).  
 We used `Trimmomatic <http://www.usadellab.org/cms/?page=trimmomatic>`_ [Bolger14]_ to trim reads based on quality with default settings (LEADING:5 TRAILING:5 MINLEN:36).
 
-   * :download:`preprocessReads.py <../../assembly/preprocessReads.py>`
+   * :download:`preprocessReads.py <../assembly/preprocessReads.py>`
 
 There are four output files.  Two are for the *paired* output where both reads passed, and two are for corresponding *unpaired* output where only one read passed (see manual).
 
@@ -39,7 +39,7 @@ Running Trinity
 
 A Python script was used to generate the Trinity arguments.
 
-   * :download:`runTrinity.py <../../assembly/runTrinity.py>`
+   * :download:`runTrinity.py <../assembly/runTrinity.py>`
 
 
 The generalized Trinity command is shown below.
@@ -55,8 +55,8 @@ The generalized Trinity command is shown below.
 
 This produces the output file `./<TRINITY_OUT>/Trinity.fasta` which we can run some basic statistics on.
 
-Basic summary
---------------
+Transcriptome summary
+-----------------------
 
 Trinity groups transcripts into clusters that are *loosely referred to as a gene*.  The accession identifiers in the `./trinity_out_dir/Trinity.fasta` encode gene and isoform information.  Per the documentation (see links below) if we have the accession `>c0_g1_i1` this refers to Trinity read cluster `c0`, gene `g1` and isoform `i1`.  The gene identifier in this case is `c0_g1`.   
 
@@ -110,13 +110,13 @@ Map the reads using BLAST
 
 1. First, we BLAST the transcript against SwissProt (`-c` can be used to initiate cluster mode)
 
-   * :download:`runBlast.py <../../blast/runBlast.py>`
+   * :download:`runBlast.py <../blast/runBlast.py>`
 
 2. Then, these data were are parsed and summarized.
 
-   * :download:`runBlastParse.py <../../blast/runBlastParallelParse.py>`
-   * :download:`runBlastSummarize.py <../../blast/runBlastSummarize.py>`
-   * :download:`showTaxaSummary.py <../../blast/showTaxaSummary.py>`
+   * :download:`runBlastParse.py <../blast/runBlastParallelParse.py>`
+   * :download:`runBlastSummarize.py <../blast/runBlastSummarize.py>`
+   * :download:`showTaxaSummary.py <../blast/showTaxaSummary.py>`
 
 For each *transcript* the top BLAST match with the best score was kept.  The minimum BLAST e-value was set at 0.0001.
 
@@ -132,25 +132,39 @@ SwissProt (isoforms)
 BLAST agains all known D. melanogaster proteins
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. code-block:: none
+   .. code-block:: bash
 
-      ~$ wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomes/DROME.fasta.gz
-      ~$ gunzip -c DROME.fasta.gz > DROME.fasta
-      ~$ makeblastdb -in DROME.fasta -dbtype 'prot' -out DROME
+      ~$ wget ftp://ftp.ensemblgenomes.org/pub/metazoa/release-28/fasta/drosophila_melanogaster/cdna/Drosophila_melanogaster.BDGP6.28.cdna.all.fa.gz
+      ~$ gunzip -c Drosophila_melanogaster.BDGP6.28.cdna.all.fa.gz > Drome.fa
+      ~$ makeblastdb -in Drome.fa -dbtype 'nucl' -out Drome 
+		   
+   * :download:`runBlastDrome.py <../blast/runBlastDrome.py>`
 
+BLAST against all know D. plexippus
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   .. code-block:: bash
+
+      ~$ wget ftp://ftp.ensemblgenomes.org/pub/metazoa/release-28/fasta/danaus_plexippus/cdna/Danaus_plexippus.DanPle_1.0.28.cdna.all.fa.gz
+      ~$ gunzip -c Danaus_plexippus.DanPle_1.0.28.cdna.all.fa.gz > Danaus.fa
+      ~$ makeblastdb -in Danaus.fa -dbtype 'nucl' -out Danaus  
+
+  * :download:`runBlastDanaus.py <../blast/runBlastDanaus.py>`
+
+      
 Summary
 ^^^^^^^^^^^^
+
+To summarize the BLAST results and map them to NCBI gene IDs.
 
    +---------------------+---------------+---------------+---------------+
    | BLAST DB            | Transcripts   | Genes         | Proteins      |
    +=====================+===============+===============+===============+
    | SwissProt           | 39,457        | 11,285        | **15,584**    |
    +---------------------+---------------+---------------+---------------+
-   | D. melanogaster}    | 37,342        | 7,963         | **9,672**     |
+   | *D. melanogaster*   | 37,342        | 7,963         | **9,672**     |
    +---------------------+---------------+---------------+---------------+
-   | Melitatea cinxia}   | ...           | ...           | ...           |
-   +---------------------+---------------+---------------+---------------+
-   | Danaus plexippus}   | ...           | ...           | ...           |
+   | *Danaus plexippus*  | 7,810         | NA            | **1,392**     |
    +---------------------+---------------+---------------+---------------+
 
 Links

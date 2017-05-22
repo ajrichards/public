@@ -16,6 +16,7 @@ Assembly and Analysis
    Meta-data analysis <meta-data>
    Differential expression analysis <diff-expression.rst>
    Functional gene sets <gene-sets/gene-sets>
+   Lepidoptera transcriptomes <lepidoptera>
 
 
 Additional materials

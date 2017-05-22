@@ -11,20 +11,20 @@ Create raw and normalized count matrices
 
 The software Sailfish was used to estimate read abundances [Patro14]_.
 
-    * :download:`runSailfish.py <../../assembly/runSailfish.py>`
-    * :download:`assembleCountMatrices.py <../../features/assembleCountMatrices.py>`
+    * :download:`runSailfish.py <../assembly/runSailfish.py>`
+    * :download:`assembleCountMatrices.py <../features/assembleCountMatrices.py>`
 
 Run DESeq
 -----------------------
 
 The R package ``DESeq2`` was used to produce the expression values [Love14]_.
 
-    * :download:`runDeAnalysis.py <../../features/runDeAnalysis.py>`
-    * :download:`runDESeq.R <../../features/runDESeq.R>`
+    * :download:`runDeAnalysis.py <../features/runDeAnalysis.py>`
+    * :download:`runDESeq.R <../features/runDESeq.R>`
 
 Then the resulting \*.csv files were summarized using
 
-    * :download:`summarizeResultsDE.py <../../features/summarizeResultsDE.py>`
+    * :download:`summarizeResultsDE.py <../features/summarizeResultsDE.py>`
 
 As a reminder this is the order of the labels. See the :doc:`meta data analysis <meta-data>` for more information on labeling. 
 
@@ -74,6 +74,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _NOC3L_DROME: http://www.uniprot.org/uniprot/NOC3L_DROME
 .. _M9PHG4_DROME: http://www.uniprot.org/uniprot/M9PHG4_DROME
 .. _Q9VM67_DROME: http://www.uniprot.org/uniprot/Q9VM67_DROME
+.. _JH391786: http://www.ncbi.nlm.nih.gov/gene/?term=JH391786
 .. _Q9VW19_DROME: http://www.uniprot.org/uniprot/Q9VW19_DROME
 .. _Q9V3F2_DROME: http://www.uniprot.org/uniprot/Q9V3F2_DROME
 .. _M9MRJ5_DROME: http://www.uniprot.org/uniprot/M9MRJ5_DROME
@@ -92,6 +93,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _Y5902_DROME: http://www.uniprot.org/uniprot/Y5902_DROME
 .. _EFR3_DROME: http://www.uniprot.org/uniprot/EFR3_DROME
 .. _JHD1_DROME: http://www.uniprot.org/uniprot/JHD1_DROME
+.. _MCINX005382-RA: http://www.ncbi.nlm.nih.gov/gene/?term=MCINX005382-RA
 .. _CO4A1_DROME: http://www.uniprot.org/uniprot/CO4A1_DROME
 .. _DOK7_MOUSE: http://www.uniprot.org/uniprot/DOK7_MOUSE
 .. _Q0E8C8_DROME: http://www.uniprot.org/uniprot/Q0E8C8_DROME
@@ -153,8 +155,10 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _M9PCM8_DROME: http://www.uniprot.org/uniprot/M9PCM8_DROME
 .. _H9XVL7_DROME: http://www.uniprot.org/uniprot/H9XVL7_DROME
 .. _TNG2_DROME: http://www.uniprot.org/uniprot/TNG2_DROME
+.. _JH379599: http://www.ncbi.nlm.nih.gov/gene/?term=JH379599
 .. _Q9VNM2_DROME: http://www.uniprot.org/uniprot/Q9VNM2_DROME
 .. _Q9VJ61_DROME: http://www.uniprot.org/uniprot/Q9VJ61_DROME
+.. _MCINX007540-RA: http://www.ncbi.nlm.nih.gov/gene/?term=MCINX007540-RA
 .. _SYMPK_DROME: http://www.uniprot.org/uniprot/SYMPK_DROME
 .. _TIM_DROME: http://www.uniprot.org/uniprot/TIM_DROME
 .. _ITIH4_HUMAN: http://www.uniprot.org/uniprot/ITIH4_HUMAN
@@ -187,8 +191,10 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _Q7JR72_DROME: http://www.uniprot.org/uniprot/Q7JR72_DROME
 .. _Q7K0X9_DROME: http://www.uniprot.org/uniprot/Q7K0X9_DROME
 .. _M9ND42_DROME: http://www.uniprot.org/uniprot/M9ND42_DROME
+.. _JH384392: http://www.ncbi.nlm.nih.gov/gene/?term=JH384392
 .. _Q8MLQ7_DROME: http://www.uniprot.org/uniprot/Q8MLQ7_DROME
 .. _VATB_DROME: http://www.uniprot.org/uniprot/VATB_DROME
+.. _MCINX011917-RA: http://www.ncbi.nlm.nih.gov/gene/?term=MCINX011917-RA
 .. _Q9VVV1_DROME: http://www.uniprot.org/uniprot/Q9VVV1_DROME
 .. _PRSN_PIEBR: http://www.ncbi.nlm.nih.gov/gene/?term=PRSN_PIEBR
 .. _ASND1_DROME: http://www.uniprot.org/uniprot/ASND1_DROME
@@ -205,12 +211,14 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _DTX_DROME: http://www.uniprot.org/uniprot/DTX_DROME
 .. _E1JIF4_DROME: http://www.uniprot.org/uniprot/E1JIF4_DROME
 .. _C19L1_DROME: http://www.uniprot.org/uniprot/C19L1_DROME
+.. _JH380043: http://www.ncbi.nlm.nih.gov/gene/?term=JH380043
 .. _CRAM_TRYBB: http://www.ncbi.nlm.nih.gov/gene/?term=CRAM_TRYBB
 .. _NOTCH_DROME: http://www.uniprot.org/uniprot/NOTCH_DROME
 .. _INX1_DROME: http://www.uniprot.org/uniprot/INX1_DROME
 .. _Q7KTA1_DROME: http://www.uniprot.org/uniprot/Q7KTA1_DROME
 .. _M9PG37_DROME: http://www.uniprot.org/uniprot/M9PG37_DROME
 .. _Q8IQN2_DROME: http://www.uniprot.org/uniprot/Q8IQN2_DROME
+.. _JH384370: http://www.ncbi.nlm.nih.gov/gene/?term=JH384370
 .. _Q9VMY8_DROME: http://www.uniprot.org/uniprot/Q9VMY8_DROME
 .. _M9NH46_DROME: http://www.uniprot.org/uniprot/M9NH46_DROME
 .. _Q9VAH7_DROME: http://www.uniprot.org/uniprot/Q9VAH7_DROME
@@ -218,6 +226,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _RLA1_DROME: http://www.uniprot.org/uniprot/RLA1_DROME
 .. _L0MN91_DROME: http://www.uniprot.org/uniprot/L0MN91_DROME
 .. _M9PB77_DROME: http://www.uniprot.org/uniprot/M9PB77_DROME
+.. _MCINX014047-RA: http://www.ncbi.nlm.nih.gov/gene/?term=MCINX014047-RA
 .. _CAPS_DROME: http://www.uniprot.org/uniprot/CAPS_DROME
 .. _Q9VVK5_DROME: http://www.uniprot.org/uniprot/Q9VVK5_DROME
 .. _Q9VVA4_DROME: http://www.uniprot.org/uniprot/Q9VVA4_DROME
@@ -231,6 +240,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _LYSP_DROME: http://www.uniprot.org/uniprot/LYSP_DROME
 .. _Q9VB73_DROME: http://www.uniprot.org/uniprot/Q9VB73_DROME
 .. _Q9VE56_DROME: http://www.uniprot.org/uniprot/Q9VE56_DROME
+.. _JH384593: http://www.ncbi.nlm.nih.gov/gene/?term=JH384593
 .. _Q9VEF9_DROME: http://www.uniprot.org/uniprot/Q9VEF9_DROME
 .. _A8JUR0_DROME: http://www.uniprot.org/uniprot/A8JUR0_DROME
 .. _GBLP_DROME: http://www.uniprot.org/uniprot/GBLP_DROME
@@ -253,6 +263,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _M9NF07_DROME: http://www.uniprot.org/uniprot/M9NF07_DROME
 .. _UNK_DROME: http://www.uniprot.org/uniprot/UNK_DROME
 .. _Q9VY45_DROME: http://www.uniprot.org/uniprot/Q9VY45_DROME
+.. _MCINX009212-RA: http://www.ncbi.nlm.nih.gov/gene/?term=MCINX009212-RA
 .. _A8DY44_DROME: http://www.uniprot.org/uniprot/A8DY44_DROME
 .. _Q9V3H7_DROME: http://www.uniprot.org/uniprot/Q9V3H7_DROME
 .. _A1ZB83_DROME: http://www.uniprot.org/uniprot/A1ZB83_DROME
@@ -318,10 +329,12 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _X2J564_DROME: http://www.uniprot.org/uniprot/X2J564_DROME
 .. _X2JFU3_DROME: http://www.uniprot.org/uniprot/X2JFU3_DROME
 .. _Q2PDX2_DROME: http://www.uniprot.org/uniprot/Q2PDX2_DROME
+.. _MCINX001114-RA: http://www.ncbi.nlm.nih.gov/gene/?term=MCINX001114-RA
 .. _M9PE38_DROME: http://www.uniprot.org/uniprot/M9PE38_DROME
 .. _DORS_DROME: http://www.uniprot.org/uniprot/DORS_DROME
 .. _M9NEZ5_DROME: http://www.uniprot.org/uniprot/M9NEZ5_DROME
 .. _A1Z9J3_DROME: http://www.uniprot.org/uniprot/A1Z9J3_DROME
+.. _JH391654: http://www.ncbi.nlm.nih.gov/gene/?term=JH391654
 .. _A1Z8L8_DROME: http://www.uniprot.org/uniprot/A1Z8L8_DROME
 .. _JIL1_DROME: http://www.uniprot.org/uniprot/JIL1_DROME
 .. _Q9W3H4_DROME: http://www.uniprot.org/uniprot/Q9W3H4_DROME
@@ -335,12 +348,15 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _OSP_DROME: http://www.uniprot.org/uniprot/OSP_DROME
 .. _Q9VSL8_DROME: http://www.uniprot.org/uniprot/Q9VSL8_DROME
 .. _MFRN_DROME: http://www.uniprot.org/uniprot/MFRN_DROME
+.. _JH389261: http://www.ncbi.nlm.nih.gov/gene/?term=JH389261
 .. _EIF3M_DROME: http://www.uniprot.org/uniprot/EIF3M_DROME
 .. _FAS3_DROME: http://www.uniprot.org/uniprot/FAS3_DROME
 .. _SPTCA_DROME: http://www.uniprot.org/uniprot/SPTCA_DROME
+.. _JH387963: http://www.ncbi.nlm.nih.gov/gene/?term=JH387963
 .. _E1JHK0_DROME: http://www.uniprot.org/uniprot/E1JHK0_DROME
 .. _Q0E9E2_DROME: http://www.uniprot.org/uniprot/Q0E9E2_DROME
 .. _PERQ1_DROME: http://www.uniprot.org/uniprot/PERQ1_DROME
+.. _MCINX014855-RA: http://www.ncbi.nlm.nih.gov/gene/?term=MCINX014855-RA
 .. _CTLH2_DROME: http://www.uniprot.org/uniprot/CTLH2_DROME
 .. _Q9VQE0_DROME: http://www.uniprot.org/uniprot/Q9VQE0_DROME
 .. _Q9VIX4_DROME: http://www.uniprot.org/uniprot/Q9VIX4_DROME
@@ -375,8 +391,10 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _U518_DROME: http://www.uniprot.org/uniprot/U518_DROME
 .. _Q9VH01_DROME: http://www.uniprot.org/uniprot/Q9VH01_DROME
 .. _Q8IPE8_DROME: http://www.uniprot.org/uniprot/Q8IPE8_DROME
+.. _JH381750: http://www.ncbi.nlm.nih.gov/gene/?term=JH381750
 .. _POE_DROME: http://www.uniprot.org/uniprot/POE_DROME
 .. _Q9XZ01_DROME: http://www.uniprot.org/uniprot/Q9XZ01_DROME
+.. _JH383867: http://www.ncbi.nlm.nih.gov/gene/?term=JH383867
 .. _Q7K2V9_DROME: http://www.uniprot.org/uniprot/Q7K2V9_DROME
 .. _TAF8_DROME: http://www.uniprot.org/uniprot/TAF8_DROME
 .. _Q0E9I0_DROME: http://www.uniprot.org/uniprot/Q0E9I0_DROME
@@ -388,6 +406,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 .. _A1ZAH3_DROME: http://www.uniprot.org/uniprot/A1ZAH3_DROME
 .. _MO25_DROME: http://www.uniprot.org/uniprot/MO25_DROME
 .. _TNG6_HUMAN: http://www.uniprot.org/uniprot/TNG6_HUMAN
+.. _MCINX010883-RA: http://www.ncbi.nlm.nih.gov/gene/?term=MCINX010883-RA
 .. _M9PI47_DROME: http://www.uniprot.org/uniprot/M9PI47_DROME
 
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -477,7 +496,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR1847|c1_g1_i3     | -                     | -                        | -                                                 | -                | 2.8e-06          | 0.003374         |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR36542|c2_g1_i9    | -                     | -                        | -                                                 | -                | 3e-06            | 0.0036302        |
+| TR36542|c2_g1_i9    | `JH391786`_           | unmapped                 | Danaus plexippus                                  | 0.0              | 3e-06            | 0.0036302        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR29837|c0_g3_i5    | -                     | -                        | -                                                 | -                | 3.3e-06          | 0.0037786        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -521,7 +540,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR17706|c1_g1_i4    | `JHD1_DROME`_         | Kdm2                     | Drosophila melanogaster                           | 0.0              | 6.9e-06          | 0.0055868        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR2561|c0_g1_i1     | -                     | -                        | -                                                 | -                | 7.1e-06          | 0.0056297        |
+| TR2561|c0_g1_i1     | `MCINX005382-RA`_     | unmapped                 | Melitaea cinxia                                   | 0.0              | 7.1e-06          | 0.0056297        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR1904|c1_g3_i8     | `CO4A1_DROME`_        | Cg25C                    | Drosophila melanogaster                           | 8e-07            | 7.6e-06          | 0.005831         |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -697,7 +716,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR23113|c0_g1_i4    | `TNG2_DROME`_         | Tango2                   | Drosophila melanogaster                           | 0.0              | 4.77e-05         | 0.0155518        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR38798|c1_g4_i4    | -                     | -                        | -                                                 | -                | 4.53e-05         | 0.0155518        |
+| TR38798|c1_g4_i4    | `JH379599`_           | unmapped                 | Danaus plexippus                                  | 1.19e-05         | 4.53e-05         | 0.0155518        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR21212|c0_g1_i2    | `Q9VNM2_DROME`_       | Osi24                    | Drosophila melanogaster                           | 0.0              | 4.49e-05         | 0.0155518        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -705,7 +724,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR12998|c1_g1_i1    | `Q9VJ61_DROME`_       | CG10376                  | Drosophila melanogaster                           | 0.0              | 4.68e-05         | 0.0155518        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR22888|c0_g1_i1    | -                     | -                        | -                                                 | -                | 4.73e-05         | 0.0155518        |
+| TR22888|c0_g1_i1    | `MCINX007540-RA`_     | unmapped                 | Melitaea cinxia                                   | 0.0              | 4.73e-05         | 0.0155518        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR20433|c4_g3_i4    | -                     | -                        | -                                                 | -                | 4.65e-05         | 0.0155518        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -803,7 +822,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR35415|c0_g2_i7    | -                     | -                        | -                                                 | -                | 8.26e-05         | 0.0207506        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR18535|c0_g1_i1    | -                     | -                        | -                                                 | -                | 8.4e-05          | 0.0208985        |
+| TR18535|c0_g1_i1    | `JH384392`_           | unmapped                 | Danaus plexippus                                  | 0.0              | 8.4e-05          | 0.0208985        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR27273|c0_g1_i1    | `Q8MLQ7_DROME`_       | CG4797                   | Drosophila melanogaster                           | 0.0              | 8.37e-05         | 0.0208985        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -811,7 +830,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR4516|c1_g2_i1     | -                     | -                        | -                                                 | -                | 8.63e-05         | 0.0212638        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR6589|c0_g1_i1     | -                     | -                        | -                                                 | -                | 8.74e-05         | 0.0212731        |
+| TR6589|c0_g1_i1     | `MCINX011917-RA`_     | unmapped                 | Melitaea cinxia                                   | 0.0              | 8.74e-05         | 0.0212731        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR47035|c0_g1_i10   | -                     | -                        | -                                                 | -                | 8.76e-05         | 0.0212731        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -851,7 +870,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR29468|c0_g1_i4    | `C19L1_DROME`_        | CG7741                   | Drosophila melanogaster                           | 0.0              | 0.0001055        | 0.0235264        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR42603|c0_g1_i2    | -                     | -                        | -                                                 | -                | 0.0001047        | 0.0235264        |
+| TR42603|c0_g1_i2    | `JH380043`_           | unmapped                 | Danaus plexippus                                  | 0.0              | 0.0001047        | 0.0235264        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR7800|c0_g1_i2     | -                     | -                        | -                                                 | -                | 0.0001054        | 0.0235264        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -873,7 +892,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR33155|c0_g3_i7    | `Q8IQN2_DROME`_       | ClC-c                    | Drosophila melanogaster                           | 0.0              | 0.0001141        | 0.0244905        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR10908|c5_g1_i6    | -                     | -                        | -                                                 | -                | 0.0001158        | 0.0245423        |
+| TR10908|c5_g1_i6    | `JH384370`_           | unmapped                 | Danaus plexippus                                  | 1.8e-06          | 0.0001158        | 0.0245423        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR18374|c0_g1_i4    | `Q9VMY8_DROME`_       | aux                      | Drosophila melanogaster                           | 0.0              | 0.000116         | 0.0245423        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -893,7 +912,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR45936|c0_g1_i1    | `M9PB77_DROME`_       | Sema-1a                  | Drosophila melanogaster                           | 0.0              | 0.0001266        | 0.0260734        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR21772|c0_g1_i1    | -                     | -                        | -                                                 | -                | 0.0001304        | 0.0267579        |
+| TR21772|c0_g1_i1    | `MCINX014047-RA`_     | unmapped                 | Melitaea cinxia                                   | 1e-07            | 0.0001304        | 0.0267579        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR11793|c0_g1_i1    | -                     | -                        | -                                                 | -                | 0.0001319        | 0.0267776        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -935,7 +954,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR8385|c0_g1_i4     | -                     | -                        | -                                                 | -                | 0.0001522        | 0.0289209        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR11963|c1_g1_i1    | -                     | -                        | -                                                 | -                | 0.0001549        | 0.028928         |
+| TR11963|c1_g1_i1    | `JH384593`_           | unmapped                 | Danaus plexippus                                  | 0.0              | 0.0001549        | 0.028928         |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR12488|c0_g1_i2    | `Q9VEF9_DROME`_       | CG43102                  | Drosophila melanogaster                           | 0.0              | 0.0001537        | 0.028928         |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -993,7 +1012,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR43009|c0_g1_i7    | `Q9VY45_DROME`_       | CG1434                   | Drosophila melanogaster                           | 0.0              | 0.0001851        | 0.031555         |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR44086|c0_g1_i3    | -                     | -                        | -                                                 | -                | 0.0001841        | 0.031555         |
+| TR44086|c0_g1_i3    | `MCINX009212-RA`_     | unmapped                 | Melitaea cinxia                                   | 0.0              | 0.0001841        | 0.031555         |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR5532|c0_g1_i1     | `A8DY44_DROME`_       | Nipped-A                 | Drosophila melanogaster                           | 0.0              | 0.0001842        | 0.031555         |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -1175,7 +1194,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR6853|c1_g1_i12    | `Q2PDX2_DROME`_       | CG34001                  | Drosophila melanogaster                           | 0.0              | 0.0003036        | 0.0399826        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR39860|c0_g3_i2    | -                     | -                        | -                                                 | -                | 0.0003055        | 0.0401377        |
+| TR39860|c0_g3_i2    | `MCINX001114-RA`_     | unmapped                 | Melitaea cinxia                                   | 0.0              | 0.0003055        | 0.0401377        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR15887|c0_g2_i19   | `M9PE38_DROME`_       | Shab                     | Drosophila melanogaster                           | 0.0              | 0.0003065        | 0.0401585        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -1187,7 +1206,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR35711|c0_g2_i1    | -                     | -                        | -                                                 | -                | 0.00032          | 0.0415097        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR21646|c0_g1_i1    | -                     | -                        | -                                                 | -                | 0.0003233        | 0.0417226        |
+| TR21646|c0_g1_i1    | `JH391654`_           | unmapped                 | Danaus plexippus                                  | 0.0              | 0.0003233        | 0.0417226        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR41942|c0_g1_i1    | -                     | -                        | -                                                 | -                | 0.0003226        | 0.0417226        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -1237,7 +1256,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR42648|c0_g1_i1    | `MFRN_DROME`_         | mfrn                     | Drosophila melanogaster                           | 0.0              | 0.0003477        | 0.0422251        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR13593|c0_g1_i2    | -                     | -                        | -                                                 | -                | 0.0003476        | 0.0422251        |
+| TR13593|c0_g1_i2    | `JH389261`_           | unmapped                 | Danaus plexippus                                  | 0.0              | 0.0003476        | 0.0422251        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR27269|c0_g1_i2    | `EIF3M_DROME`_        | Tango7                   | Drosophila melanogaster                           | 0.0              | 0.0003463        | 0.0422251        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -1251,7 +1270,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR27127|c0_g1_i1    | `SPTCA_DROME`_        | alpha-Spec               | Drosophila melanogaster                           | 0.0              | 0.0003554        | 0.042752         |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR36261|c0_g1_i1    | -                     | -                        | -                                                 | -                | 0.0003549        | 0.042752         |
+| TR36261|c0_g1_i1    | `JH387963`_           | unmapped                 | Danaus plexippus                                  | 0.0              | 0.0003549        | 0.042752         |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR20244|c0_g1_i3    | `E1JHK0_DROME`_       | CLIP-190                 | Drosophila melanogaster                           | 0.0              | 0.0003601        | 0.0428352        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -1263,7 +1282,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR30697|c1_g1_i1    | -                     | -                        | -                                                 | -                | 0.0003635        | 0.0430273        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR5045|c0_g1_i1     | -                     | -                        | -                                                 | -                | 0.0003668        | 0.0432451        |
+| TR5045|c0_g1_i1     | `MCINX014855-RA`_     | unmapped                 | Melitaea cinxia                                   | 0.0              | 0.0003668        | 0.0432451        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR41943|c1_g2_i3    | `CTLH2_DROME`_        | CG11880                  | Drosophila melanogaster                           | 0.0              | 0.0003695        | 0.0432451        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -1363,13 +1382,13 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR39163|c0_g1_i7    | `Q8IPE8_DROME`_       | Mtpalpha                 | Drosophila melanogaster                           | 0.0              | 0.0004595        | 0.0488629        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR5732|c0_g3_i1     | -                     | -                        | -                                                 | -                | 0.0004607        | 0.0488629        |
+| TR5732|c0_g3_i1     | `JH381750`_           | unmapped                 | Danaus plexippus                                  | 6.8e-06          | 0.0004607        | 0.0488629        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR3787|c0_g1_i1     | `POE_DROME`_          | poe                      | Drosophila melanogaster                           | 0.0              | 0.0004651        | 0.0491776        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR45434|c1_g2_i7    | `Q9XZ01_DROME`_       | Nep2                     | Drosophila melanogaster                           | 0.0              | 0.0004666        | 0.0492353        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR24778|c0_g1_i4    | -                     | -                        | -                                                 | -                | 0.0004704        | 0.0495328        |
+| TR24778|c0_g1_i4    | `JH383867`_           | unmapped                 | Danaus plexippus                                  | 0.0              | 0.0004704        | 0.0495328        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR1126|c0_g1_i1     | -                     | -                        | -                                                 | -                | 0.0004735        | 0.04961          |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
@@ -1401,7 +1420,7 @@ Each transcript is mapped to *Drosophila melanogaster* if possible. Otherwise, t
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR23999|c1_g3_i1    | -                     | -                        | -                                                 | -                | 0.0004837        | 0.0499375        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
-| TR22038|c0_g1_i1    | -                     | -                        | -                                                 | -                | 0.0004828        | 0.0499375        |
+| TR22038|c0_g1_i1    | `MCINX010883-RA`_     | unmapped                 | Melitaea cinxia                                   | 0.0              | 0.0004828        | 0.0499375        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
 | TR12318|c0_g1_i1    | `M9PI47_DROME`_       | Sap130                   | Drosophila melanogaster                           | 0.0              | 0.0004833        | 0.0499375        |
 +---------------------+-----------------------+--------------------------+---------------------------------------------------+------------------+------------------+------------------+
