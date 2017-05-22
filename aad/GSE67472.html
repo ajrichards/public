@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Christenson 2015 &mdash; Allergic Airway Diseases</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Allergic Airway Diseases" href="index.html" />
+    <link rel="next" title="Voraphani 2014" href="GSE43696.html" />
+    <link rel="prev" title="Analysis of archived expression studies" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Allergic Airway Diseases</span></a></h1>
+        <h2 class="heading"><span>Christenson 2015</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Analysis of archived expression studies</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="GSE43696.html">Voraphani 2014</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="christenson-2015">
+<h1>Christenson 2015<a class="headerlink" href="#christenson-2015" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basic-info">
+<h2>Basic info<a class="headerlink" href="#basic-info" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>GEO: <a class="reference external" href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE67472">GSE67472</a></li>
+<li>reference: unpublished</li>
+<li>platform: Affymetrix Human Genome U133 Plus 2.0 Array</li>
+<li>tissue: bronch biopsy</li>
+<li>tissue environment: ex-vivo</li>
+</ul>
+</div></blockquote>
+<div class="section" id="samples">
+<h3>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="18%" />
+<col width="30%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">asthma</th>
+<th class="head">AR</th>
+<th class="head">controls</th>
+<th class="head">total</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>62</td>
+<td>0</td>
+<td>43</td>
+<td>105</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="gene-expression-analysis">
+<h2>Gene expression analysis<a class="headerlink" href="#gene-expression-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>Tue Aug 09 08:46:38 AM 2016
+total files: 1
+file: 1/1
+file name: GSE67472_series_matrix.txt.gz
+status: Public on Apr 01 2015 
+data processing: Data underwent RMA normalization and Combat batch correction. Probeset IDs were defined using the Entrez Gene custom CDF v14 available for the Affymetrix U133 Plus 2.0 array available at brainarray.mbni.med.umich.edu. 
+type: RNA 
+probes 19008 
+samples 105 
+platform_id: GPL16311 
+covariates extracted from eset...
+	tissue
+	age
+	gender
+	disease_state
+	th2_group
+model: ~0+dx+age+gender+batch+race 
+gene filter 19008/19008
+There were 3566 significant probes
+</pre></div>
+</div>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p>They used a custom CDF file to define probeset IDs.  For more information <a class="reference external" href="http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/genomic_curated_CDF.asp">you can read about it here</a>.  It says that they used version 14 (March, 2011) so I am a little confused, because the purpose of redefining the probesets in the first place is because the mapping is a bit behind UniGene, so it is odd they are using such an old version if they are concerned with lag.</p>
+</div>
+<div class="section" id="heatmaps">
+<h3>Heatmaps<a class="headerlink" href="#heatmaps" title="Permalink to this headline">¶</a></h3>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE67472-1-heatmap.png"><img alt="heatmap" src="_images/GSE67472-1-heatmap.png" style="width: 1080.0px; height: 540.0px;" /></a>
+</div>
+<div class="section" id="outliers-removed">
+<h4>Outliers removed<a class="headerlink" href="#outliers-removed" title="Permalink to this headline">¶</a></h4>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE67472-1-o-heatmap.png"><img alt="intensities" src="_images/GSE67472-1-o-heatmap.png" style="width: 1080.0px; height: 540.0px;" /></a>
+</div>
+<p>Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.</p>
+</div>
+</div>
+<div class="section" id="outlier-analysis">
+<h3>Outlier analysis<a class="headerlink" href="#outlier-analysis" title="Permalink to this headline">¶</a></h3>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE67472-outliers.png"><img alt="pca" src="_images/GSE67472-outliers.png" style="width: 595.5px; height: 307.5px;" /></a>
+</div>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE67472-kernel-densities.png"><img alt="pca" src="_images/GSE67472-kernel-densities.png" style="width: 720.0px; height: 540.0px;" /></a>
+</div>
+</div>
+<div class="section" id="expression-results">
+<h3>Expression results<a class="headerlink" href="#expression-results" title="Permalink to this headline">¶</a></h3>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE67472-1-limma.png"><img alt="limma plots" src="_images/GSE67472-1-limma.png" style="width: 960.0px; height: 480.0px;" /></a>
+</div>
+<div class="section" id="id1">
+<h4>Outliers removed<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE67472-1-o-limma.png"><img alt="limma plots" src="_images/GSE67472-1-o-limma.png" style="width: 960.0px; height: 480.0px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="files">
+<h3>files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="_downloads/GSE67472.log"><tt class="xref download docutils literal"><span class="pre">GSE67472.log</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/runGSE67472.R"><tt class="xref download docutils literal"><span class="pre">runGSE67472.R</span></tt></a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Analysis of archived expression studies</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="GSE43696.html">Voraphani 2014</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2016.
+      Last updated on Aug 10, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

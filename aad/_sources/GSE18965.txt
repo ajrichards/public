@@ -1,0 +1,106 @@
+.. AAD study
+
+Kicic 2010
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE18965 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE18965>`_
+   * reference: [Kicic10]_
+   * platform: Affymetrix Human Genome U133A Array
+   * tissue: primary nasal epithelia cultures
+   * tissue environment: *in-vitro*
+
+
+.. note:: The sample data were taken from the GEO website, because they were not properly embedded in the data
+
+	  
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 9        | 0    | 7        |  16   |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+		    
+Gene expression analysis
+-----------------------------
+
+.. note:: asthma atopic (AA) and (HN) healthy non-atopic were recoded as asthma and control
+
+.. literalinclude:: ../../results/GSE18965-summary.log
+		    
+Heatmaps
+^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE18965-1-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE18965-1-o-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: intensities
+   :figclass: align-center
+
+	      
+Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.
+
+
+Outlier analysis
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE18965-outliers.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+.. figure:: ../../figs/GSE18965-kernel-densities.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+
+      
+Expression results
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE18965-1-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+	   
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE18965-1-o-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+
+files
+^^^^^^^^^^^^^^^^^^^^^^
+
+   * :download:`GSE18965.log <../../geo/GSE18965.log>`
+   * :download:`runGSE18965.R <../../runGSE18965.R>`
+
+		    

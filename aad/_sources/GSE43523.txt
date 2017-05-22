@@ -1,0 +1,27 @@
+.. AAD study
+
+Imoto 2013
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE43523 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE43523>`_
+   * reference: [Imoto13]_
+   * platform: llumina HumanRef-8 v3.0 expression beadchip
+   * tissue: nasal epithelial cells
+   * tissue environment: ex-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 0        | 7    | 5        |  12   |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../geo/GSE43523.log
+		    

@@ -1,0 +1,100 @@
+.. AAD study
+
+Wagener 2014
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE51392 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE51392>`_
+   * reference: [Wagener14]_
+   * platform: Affymetrix HT HG-U133+ PM Array Plate 
+   * tissue: cultured nasal epithelial cells
+   * tissue environment: in-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 6        | 5    | 6        |  17   |
++----------+------+----------+-------+
+
+  * There are 3 phenotypes: healthy, asthma and rhinitis
+  * There are 2 tissues: bronchial epithelium, nasal epithelium
+  * All samples are Caucasian
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../results/GSE51392-summary.log
+		    
+Heatmaps
+^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE51392-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE51392-o-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: intensities
+   :figclass: align-center
+
+	      
+Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.
+
+
+Outlier analysis
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE51392-outliers.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+.. figure:: ../../figs/GSE51392-kernel-densities.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+
+      
+Expression results
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE51392-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+	   
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE51392-o-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+
+files
+^^^^^^^^^^^^^^^^^^^^^^
+
+  * :download:`GSE51392.log <../../geo/GSE51392.log>`
+  * :download:`runGSE51392.R <../../runGSE51392.R>`
+						 

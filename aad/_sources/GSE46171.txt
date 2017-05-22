@@ -1,0 +1,27 @@
+.. AAD study
+
+McErlean 2014
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE46171 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE46171>`_
+   * reference: [McErlean14]_
+   * platform: Agilent-014850 Whole Human Genome Microarray 4x44K G4112F
+   * tissue: nasal mucosa
+   * tissue environment: nasal ex-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 34       | 7    | 9        |  50   |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../geo/GSE46171.log
+		    

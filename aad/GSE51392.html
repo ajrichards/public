@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Wagener 2014 &mdash; Allergic Airway Diseases</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Allergic Airway Diseases" href="index.html" />
+    <link rel="next" title="Outlier detection" href="outliers.html" />
+    <link rel="prev" title="Yang Unpublished" href="yang-unpublished.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Allergic Airway Diseases</span></a></h1>
+        <h2 class="heading"><span>Wagener 2014</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="yang-unpublished.html">Yang Unpublished</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="outliers.html">Outlier detection</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="wagener-2014">
+<h1>Wagener 2014<a class="headerlink" href="#wagener-2014" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basic-info">
+<h2>Basic info<a class="headerlink" href="#basic-info" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>GEO: <a class="reference external" href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE51392">GSE51392</a></li>
+<li>reference: <a class="reference internal" href="references.html#wagener14" id="id1">[Wagener14]</a></li>
+<li>platform: Affymetrix HT HG-U133+ PM Array Plate</li>
+<li>tissue: cultured nasal epithelial cells</li>
+<li>tissue environment: in-vivo</li>
+</ul>
+</div></blockquote>
+<div class="section" id="samples">
+<h3>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="18%" />
+<col width="30%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">asthma</th>
+<th class="head">AR</th>
+<th class="head">controls</th>
+<th class="head">total</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>6</td>
+<td>5</td>
+<td>6</td>
+<td>17</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li>There are 3 phenotypes: healthy, asthma and rhinitis</li>
+<li>There are 2 tissues: bronchial epithelium, nasal epithelium</li>
+<li>All samples are Caucasian</li>
+</ul>
+</div></blockquote>
+<p>The following is a summary of the covariate information extracted from downloaded GSE files.</p>
+<div class="highlight-python"><div class="highlight"><pre>Wed Aug 10 10:02:30 PM 2016
+model: ~0+dx+age+gender+tissue 
+There were 0 significant probes
+</pre></div>
+</div>
+</div>
+<div class="section" id="heatmaps">
+<h3>Heatmaps<a class="headerlink" href="#heatmaps" title="Permalink to this headline">¶</a></h3>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE51392-heatmap.png"><img alt="heatmap" src="_images/GSE51392-heatmap.png" style="width: 1080.0px; height: 540.0px;" /></a>
+</div>
+<div class="section" id="outliers-removed">
+<h4>Outliers removed<a class="headerlink" href="#outliers-removed" title="Permalink to this headline">¶</a></h4>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE51392-o-heatmap.png"><img alt="intensities" src="_images/GSE51392-o-heatmap.png" style="width: 1080.0px; height: 540.0px;" /></a>
+</div>
+<p>Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.</p>
+</div>
+</div>
+<div class="section" id="outlier-analysis">
+<h3>Outlier analysis<a class="headerlink" href="#outlier-analysis" title="Permalink to this headline">¶</a></h3>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE51392-outliers.png"><img alt="pca" src="_images/GSE51392-outliers.png" style="width: 595.5px; height: 307.5px;" /></a>
+</div>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE51392-kernel-densities.png"><img alt="pca" src="_images/GSE51392-kernel-densities.png" style="width: 720.0px; height: 540.0px;" /></a>
+</div>
+</div>
+<div class="section" id="expression-results">
+<h3>Expression results<a class="headerlink" href="#expression-results" title="Permalink to this headline">¶</a></h3>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE51392-limma.png"><img alt="limma plots" src="_images/GSE51392-limma.png" style="width: 960.0px; height: 480.0px;" /></a>
+</div>
+<div class="section" id="id2">
+<h4>Outliers removed<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/GSE51392-o-limma.png"><img alt="limma plots" src="_images/GSE51392-o-limma.png" style="width: 960.0px; height: 480.0px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="files">
+<h3>files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="_downloads/GSE51392.log"><tt class="xref download docutils literal"><span class="pre">GSE51392.log</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/runGSE51392.R"><tt class="xref download docutils literal"><span class="pre">runGSE51392.R</span></tt></a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="yang-unpublished.html">Yang Unpublished</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="outliers.html">Outlier detection</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2016.
+      Last updated on Aug 10, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+.. main file for AAD study
+
+Analysis of archived expression studies
+=======================================================
+
+Working with data in the `NCBI's GEO repository <http://www.ncbi.nlm.nih.gov/geo/>`_ 
+
+Analyzed studies
+--------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   Christenson 2015 <GSE67472>
+   Voraphani 2014 <GSE43696>
+   Giovannini-Cham 2012 <GSE19187>
+   Kicic 2010 <GSE18965>
+   Yang 2012 <GSE8190>
+   Yang 2016 <yang-16>
+   Yang Unpublished <yang-unpublished>
+   Wagener 2014 <GSE51392>
+
+   
+Meta-analysis
+-------------------
+.. toctree::
+   :maxdepth: 1
+
+   Outlier analysis <outliers.rst>
+   tSNE <tsne.rst>
+   Meta-analysis <meta-analysis.rst>
+	      
+
+Exlcuded studies
+---------------------------------------
+
+.. toctree::
+   :maxdepth: 1
+
+   Woodruff 2007 <GSE4302>
+   Choy 2011 <GSE23611>
+   Laprise 2004 <GSE15823>
+   Imoto 2013 <GSE43523>
+   Chamberland 2009 <GSE41649>
+   Yick 2013 <GSE38994>
+   Wagener 2013 <GSE44037>
+   McErlean 2014 <GSE46171>
+	      
+   
+Additional
+-------------------
+   
+.. toctree::
+   :maxdepth: 1
+
+   Notes <notes>
+   References <references>
+
+		 
+	      

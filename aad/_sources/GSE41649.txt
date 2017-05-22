@@ -1,0 +1,27 @@
+.. AAD study
+
+Chamberland  2009
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE41649 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE41649>`_
+   * reference: [Chamberland09]_
+   * platform: Affy U95Av2 or U133a  
+   * tissue: bronch biopsy
+   * tissue environment: ex-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 4        | 0    | 4        | 8     |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../geo/GSE41649.log
+		    

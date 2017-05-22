@@ -1,0 +1,110 @@
+.. AAD study
+
+Giovannini-Chami 2012
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE19187 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE19187>`_
+   * reference: [Giovannini-Chami12]_
+   * platform:  Affymetrix Human Gene 1.0 ST Array
+   * tissue: nasal epithelial brushings
+   * tissue environment: ex-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 14       | 0    | 12       |  26   |
++----------+------+----------+-------+
+
+more specifically
+
++----------+-----------+---------------------------------+----------------------+
+|Healthy   | Rhinitis  | Rhinitis with controlled asthma | Uncontrolled asthma  | 
++==========+===========+=================================+======================+
+| 11       |  14       |  7                              | 6                    |
++----------+-----------+---------------------------------+----------------------+
+
+so basically I removed the 14 Rhinitis and combined the two types of asthma.
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../results/GSE19187-summary.log
+		    
+No differential expression was detected between these two groups of patients.
+
+
+
+Heatmaps
+^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE19187-1-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE19187-1-o-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: intensities
+   :figclass: align-center
+
+	      
+Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.
+
+
+Outlier analysis
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE19187-outliers.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+.. figure:: ../../figs/GSE19187-kernel-densities.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+
+      
+Expression results
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE19187-1-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+	   
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE19187-1-o-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+
+files
+^^^^^^^^^^^^^^^^^^^^^^
+
+   * :download:`GSE19187.log <../../geo/GSE19187.log>`
+   * :download:`runGSE19187.R <../../runGSE19187.R>`
+

@@ -1,0 +1,103 @@
+.. AAD study
+
+Christenson 2015
+================================
+     
+Basic info
+------------------
+
+   * GEO: `GSE67472 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE67472>`_
+   * reference: unpublished
+   * platform: Affymetrix Human Genome U133 Plus 2.0 Array 
+   * tissue: bronch biopsy
+   * tissue environment: ex-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 62       | 0    | 43       |  105  |
++----------+------+----------+-------+
+
+
+Gene expression analysis
+-----------------------------
+
+.. literalinclude:: ../../results/GSE67472-summary.log
+		    
+Notes
+^^^^^^^^^^^
+
+They used a custom CDF file to define probeset IDs.  For more information `you can read about it here <http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/genomic_curated_CDF.asp>`_.  It says that they used version 14 (March, 2011) so I am a little confused, because the purpose of redefining the probesets in the first place is because the mapping is a bit behind UniGene, so it is odd they are using such an old version if they are concerned with lag.
+
+		    
+Heatmaps
+^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE67472-1-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE67472-1-o-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: intensities
+   :figclass: align-center
+
+	      
+Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.
+
+
+Outlier analysis
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE67472-outliers.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+.. figure:: ../../figs/GSE67472-kernel-densities.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+
+      
+Expression results
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE67472-1-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+	   
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE67472-1-o-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+	      
+files
+^^^^^^^^^^^^^^^^^^^^^^
+
+   * :download:`GSE67472.log <../../geo/GSE67472.log>`
+   * :download:`runGSE67472.R <../../runGSE67472.R>`

@@ -1,0 +1,27 @@
+.. AAD study
+
+Woodruff 2007
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE4302 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE4302>`_
+   * reference: [Woodruff07]_
+   * platform: Affymetrix Human Genome U133 Plus 2.0 Array 
+   * tissue: bronch biopsy
+   * tissue environment: ex-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 42       | 0    | 28       |  70   |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../geo/GSE4302.log
+		    

@@ -1,0 +1,96 @@
+.. AAD study
+
+Voraphani 2014
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE43696 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE43696>`_
+   * reference: [Voraphani14]_
+   * platform: Agilent Human GE 4x44K V2
+   * tissue: bronch biopsy
+   * tissue environment: ex-vivo
+
+.. note:: The asthma dx was specified as `severe` and `moderate` so all non-control dxs were set to `asthma`.
+
+     
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 66       | 0    | 25       |  91   |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+		    
+Gene expression analysis
+-----------------------------
+
+.. literalinclude:: ../../results/GSE43696-summary.log
+		    
+Heatmaps
+^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE43696-1-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+
+Outliers removed
+#################
+	      
+.. figure:: ../../figs/GSE43696-1-o-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+	      
+Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.
+	      
+	      
+Outlier analysis
+^^^^^^^^^^^^^^^^^^^
+	      
+.. figure:: ../../figs/GSE43696-outliers.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+.. figure:: ../../figs/GSE43696-kernel-densities.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+	      	      
+Expression results
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE43696-1-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+Outliers removed
+#################
+
+.. figure:: ../../figs/GSE43696-1-o-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+	      
+files
+^^^^^^^^^^^^^^^^^^^^^^
+
+   * :download:`GSE43696.log <../../geo/GSE43696.log>`
+   * :download:`runGSE43696.R <../../runGSE43696.R>`

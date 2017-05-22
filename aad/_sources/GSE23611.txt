@@ -1,0 +1,27 @@
+.. AAD study
+
+Choy 2011
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE23611 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE23611>`_
+   * reference: [Choy11]_
+   * platform: Agilent-014850 Whole Human Genome Microarray 4x44K G4112F 
+   * tissue: bronch biopsy
+   * tissue environment: ex-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 27       | 0    | 13       |  40   |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../geo/GSE23611.log
+		    

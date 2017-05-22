@@ -1,0 +1,27 @@
+.. AAD study
+
+Yick 2013
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE38994 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE38994>`_
+   * reference: [Yick13]_
+   * platform: RNA-Seq
+   * tissue: bronch biopsy
+   * tissue environment: ex-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 4        | 0    | 5        |  9    |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../geo/GSE38994.log
+		    

@@ -1,0 +1,27 @@
+.. AAD study
+
+Wagener 2013
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE44037 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE44037>`_
+   * reference: [Wagener13]_
+   * platform: Affymetrix HT HG-U133+ PM Array Plate
+   * tissue: primary bronchial and nasal epithelial cultures
+   * tissue environment: *in vitro*
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 6        | 5    | 6        |  17   |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../geo/GSE44037.log
+		    

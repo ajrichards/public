@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Meta-analysis - methods &mdash; Allergic Airway Diseases</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Allergic Airway Diseases" href="index.html" />
+    <link rel="next" title="Woodruff 2007" href="GSE4302.html" />
+    <link rel="prev" title="Meta-analysis - tSNE" href="tsne.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Allergic Airway Diseases</span></a></h1>
+        <h2 class="heading"><span>Meta-analysis - methods</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="tsne.html">Meta-analysis - tSNE</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="GSE4302.html">Woodruff 2007</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="meta-analysis-methods">
+<h1>Meta-analysis - methods<a class="headerlink" href="#meta-analysis-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-preparation">
+<h2>Data preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">¶</a></h2>
+<p>If raw data were available we used a quantile normalization.  Studies
+with <em>age</em> and <em>gender</em> covariates were included (7 total).
+Statistical analyses were carried out at the probe level using
+Bioconductor&#8217;s Limma package <a class="reference internal" href="references.html#ritchie15" id="id1">[Ritchie15]</a>.  Raw expression values as
+well as summarized output files were saved for downstream analysis.
+All probes were mapped to current Entrez Gene IDs and if more than one
+probe corresponded to a given ID then the median expression, log(fold
+change), p-value and q-value was recorded. For a given study if there
+are missing expression values among samples the values were imputed
+using a nearest neighbor algorithm.</p>
+</div>
+<div class="section" id="pipeline">
+<h2>Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a></h2>
+<p>To the summary files must be created before running the explanatory meta-analysis.  There are options within the file to run invivo|invitro, outlier|nonoutlier.  The file can also call the individual Rscripts to run each of the study analyses.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="_downloads/createSummaryFiles.py"><tt class="xref download docutils literal"><span class="pre">createSummaryFiles.py</span></tt></a></li>
+<li><a class="reference download internal" href="_downloads/runMetaAnalysis.py"><tt class="xref download docutils literal"><span class="pre">runMetaAnalysis.py</span></tt></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Across all studies there are 23539 unique genes.  The following table
+shows how many genes are missing from the overall list as well as how many
+genes were significant in the individual analyses</p>
+<p>the number in parenthesis refers to the analysis with outliers removed</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="13%" />
+<col width="18%" />
+<col width="14%" />
+<col width="9%" />
+<col width="8%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">study</th>
+<th class="head">missing</th>
+<th class="head">qval &lt; 0.05</th>
+<th class="head">qval &lt; 0.1</th>
+<th class="head">asthma</th>
+<th class="head">control</th>
+<th class="head">outliers</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Giovannini-Chami (GSE19187)</td>
+<td>3903</td>
+<td>51 (31)</td>
+<td>107 (64)</td>
+<td>13</td>
+<td>11</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>Kicic (GSE18965)</td>
+<td>10640</td>
+<td>2 (2)</td>
+<td>25 (2)</td>
+<td>9</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>Yang (GSE8190)</td>
+<td>9237</td>
+<td>243 (0)</td>
+<td>1248 (537)</td>
+<td>19</td>
+<td>11</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>Voraphani (GSE43696)</td>
+<td>4184</td>
+<td>124 (490)</td>
+<td>327 (1120)</td>
+<td>88</td>
+<td>20</td>
+<td>6</td>
+</tr>
+<tr class="row-even"><td>unpublished</td>
+<td>7169</td>
+<td>101 (73)</td>
+<td>280 (224)</td>
+<td>36</td>
+<td>36</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>Wagener (GSE51392)</td>
+<td>3798</td>
+<td>0 (8)</td>
+<td>0 (51)</td>
+<td>12</td>
+<td>12</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>Christenson (GSE67472)</td>
+<td>5038</td>
+<td>3492 (3412)</td>
+<td>4581 (4458)</td>
+<td>62</td>
+<td>43</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>Yang16</td>
+<td>7388</td>
+<td>0 (0)</td>
+<td>1 (2)</td>
+<td>12</td>
+<td>12</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>A summary file of these results is available</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="_downloads/significance-summary.csv"><tt class="xref download docutils literal"><span class="pre">significance-summary.csv</span></tt></a></li>
+</ul>
+</div></blockquote>
+<p>The probes in the genes/probes column are not necessarly the number of
+probes on the array it is the number of probes after filtering that
+can be mapped to a gene name.  The genes portion is the actual number
+of unique genes after probe averaging.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Wagener, Yang, Yang16,  and unpublished are run from the raw data</p>
+</div>
+<div class="section" id="fisher-s-method">
+<h3>Fisher&#8217;s Method<a class="headerlink" href="#fisher-s-method" title="Permalink to this headline">¶</a></h3>
+<p>For more information on the basic approach see the <a class="reference external" href="https://en.wikipedia.org/wiki/Fisher's_method">Fisher&#8217;s method wikipedia entry</a>.  Fisher&#8217;s method combines p-values into a single test statistic</p>
+<p><img class="math" src="_images/math/da313159a32cf3eb3787e8ec44f7834f2be14493.png" alt="X^{2} \sim -2 \sum^{k}_{i=1} \ln(p_{i})"/></p>
+<p>but this does not account for weights among studies. The distribution of <img class="math" src="_images/math/c0b399739427128328b34d5702e0094760780371.png" alt="X^{2}"/> is a chi-squared distribution, but when weights are introduced the null distribution becomes less straightforward.  Another approach that has identical power is to use a weighted Z-score.</p>
+<p><img class="math" src="_images/math/90547e39218602901d1a4c2811b4f96427d9aedc.png" alt="Z \sim \frac{\sum^{k}_{i=1}w_{i}Z_{i}} {\sqrt{\sum^{k}_{i=1} w^{2}_{i} }}"/></p>
+<p>which can be traced back to <a class="reference internal" href="references.html#lindzey54" id="id2">[Lindzey54]</a>.</p>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="tsne.html">Meta-analysis - tSNE</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="GSE4302.html">Woodruff 2007</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2016.
+      Last updated on Aug 10, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

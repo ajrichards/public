@@ -1,0 +1,54 @@
+Thu Dec 03 07:01:00 PM 2015
+file: 1/1
+total samples: 105 
+-------------: 
+covariate: tissue
+	 airway epithelium - 105 
+covariate: age
+	 20 - 2 
+	 21 - 3 
+	 22 - 3 
+	 23 - 6 
+	 24 - 4 
+	 25 - 6 
+	 26 - 4 
+	 27 - 2 
+	 28 - 6 
+	 29 - 3 
+	 30 - 2 
+	 31 - 3 
+	 32 - 1 
+	 33 - 4 
+	 34 - 6 
+	 35 - 4 
+	 36 - 3 
+	 37 - 4 
+	 38 - 1 
+	 39 - 2 
+	 40 - 6 
+	 41 - 4 
+	 42 - 3 
+	 43 - 1 
+	 44 - 1 
+	 45 - 4 
+	 46 - 1 
+	 47 - 2 
+	 49 - 2 
+	 50 - 2 
+	 51 - 1 
+	 54 - 2 
+	 55 - 2 
+	 57 - 2 
+	 59 - 1 
+	 67 - 1 
+	 68 - 1 
+covariate: gender
+	 female - 54 
+	 male - 51 
+covariate: disease state
+	 asthma - 62 
+	 healthy - 43 
+covariate: th2 group
+	  - 43 
+	 high - 40 
+	 low - 22 

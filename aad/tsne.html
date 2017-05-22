@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Meta-analysis - tSNE &mdash; Allergic Airway Diseases</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Allergic Airway Diseases" href="index.html" />
+    <link rel="next" title="Meta-analysis - methods" href="meta-analysis.html" />
+    <link rel="prev" title="Outlier detection" href="outliers.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>Allergic Airway Diseases</span></a></h1>
+        <h2 class="heading"><span>Meta-analysis - tSNE</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="outliers.html">Outlier detection</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="meta-analysis.html">Meta-analysis - methods</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="meta-analysis-tsne">
+<h1>Meta-analysis - tSNE<a class="headerlink" href="#meta-analysis-tsne" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-preparation">
+<h2>Data preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Started with outliers-removed data</li>
+<li>Data were merged into a single matrix (350 x 22939)</li>
+<li>Genes with nans were removed (350 x 11521)</li>
+<li>Matrix was standardized to have unit mean and variance</li>
+<li>Batch effects were corrected for using ComBat (study,gender)</li>
+</ul>
+</div></blockquote>
+<p>To visualize the effects of batch correction the following figure has both corrected and uncorrected projections.  PCA, although distinct from tSNE
+is used to visualize high-dimensional data so it is included here.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/tsne-batch-correction.png"><img alt="tsne-batch-correction" src="_images/tsne-batch-correction.png" style="width: 960.0px; height: 720.0px;" /></a>
+</div>
+<p>The corrected panels from the previous figure are colored according to phenotype in the next figure.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/tsne-dx.png"><img alt="tsne-dx" src="_images/tsne-dx.png" style="width: 960.0px; height: 720.0px;" /></a>
+</div>
+<p>The controls were then excluded from the matrix and both tSNE as well as PCA were re-run.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/tsne-asthma.png"><img alt="tsne-asthma" src="_images/tsne-asthma.png" style="width: 960.0px; height: 720.0px;" /></a>
+</div>
+<p>Given the labeling we have for cases and controls we observe that the cases are tightly clustered and no subtypes are readily distinguishable.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="outliers.html">Outlier detection</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="meta-analysis.html">Meta-analysis - methods</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2016.
+      Last updated on Aug 10, 2016.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+.. AAD study
+
+Yang Unpublished
+================================
+
+Basic info
+------------------
+
+   * GEO: NA
+   * reference: NA
+   * platform: ??? Agilent-012391 Whole Human Genome Oligo Microarray G4112A 
+   * tissue: ??? bronch biopsy
+   * tissue environment: ??? ex-vivo
+     
+Gene expression analysis
+-----------------------------
+
+.. literalinclude:: ../../results/unpublished-summary.log
+		    
+Heatmaps
+^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/unpublished-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/unpublished-o-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: intensities
+   :figclass: align-center
+
+	      
+Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.
+
+
+Outlier analysis
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/unpublished-outliers.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+.. figure:: ../../figs/unpublished-kernel-densities.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+
+      
+Expression results
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/unpublished-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+	   
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/unpublished-o-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+	      
+files
+^^^^^^^^^^^^^^^^^^^^^^
+
+   * :download:`GSE67472.log <../../geo/GSE67472.log>`
+   * :download:`runGSE67472.R <../../runGSE67472.R>`
+

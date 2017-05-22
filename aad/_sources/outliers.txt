@@ -1,0 +1,78 @@
+.. main file for AAD study
+
+Outlier detection
+=======================================================
+
+Summary
+---------------------
+
+Basically, we create an elliptical envelop with respect to the covariance matrix and a specified level of contamination (0.05).  This was done with the first two components for two different lower dimenensional projections of the expression data. The envelop implementation used was [Rousseeuw99]_.
+
+The results of the outlier analysis.  The PCA results were used because the results seemed both more consistent and made more appropriate outlier selections with respect to the density plots.
+
+  * :download:`sample-outliers.csv <../../sample-outliers.csv>`
+
+To determine the sample name for a given studie's outlier look at the covariates file and use the index reported in the above file.  The covariate files are located after each plot.
+    
+
+Decision boundries
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE19187-outliers.png
+   :scale: 20%
+   :align: center
+   :alt: outliers
+   :figclass: align-center
+
+* :download:`GSE19187-1-cov.csv <../../data/GSE19187-1-cov.csv>`
+	      
+.. figure:: ../../figs/GSE18965-outliers.png
+   :scale: 20%
+   :align: center
+   :alt: outliers
+   :figclass: align-center
+
+* :download:`GSE18965-1-cov.csv <../../data/GSE18965-1-cov.csv>`
+	      
+.. figure:: ../../figs/GSE8190-outliers.png
+   :scale: 20%
+   :align: center
+   :alt: outliers
+   :figclass: align-center
+
+* :download:`GSE8190-cov.csv <../../data/GSE8190-cov.csv>`
+	      
+.. figure:: ../../figs/GSE43696-outliers.png
+   :scale: 20%
+   :align: center
+   :alt: outliers
+   :figclass: align-center
+
+* :download:`GSE43696-1-cov.csv <../../data/GSE43696-1-cov.csv>`
+	      
+.. figure:: ../../figs/unpublished-outliers.png
+   :scale: 20%
+   :align: center
+   :alt: outliers
+   :figclass: align-center
+
+* :download:`unpublished-cov.csv <../../data/unpublished-cov.csv>`
+	      
+.. figure:: ../../figs/GSE51392-outliers.png
+   :scale: 20%
+   :align: center
+   :alt: outliers
+   :figclass: align-center
+
+* :download:`GSE51392-1-cov.csv <../../data/GSE51392-1-cov.csv>`
+	      
+.. figure:: ../../figs/GSE67472-outliers.png
+   :scale: 20%
+   :align: center
+   :alt: outliers
+   :figclass: align-center
+
+* :download:`GSE67472-1-cov.csv <../../data/GSE67472-1-cov.csv>`
+
+
+

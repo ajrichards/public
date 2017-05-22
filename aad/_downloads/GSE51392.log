@@ -1,0 +1,39 @@
+Mon Jan 18 09:36:41 PM 2016
+file: 1/1
+status: Public on Oct 18 2013 
+data processing: Array images were analyzed by Affymetrix Expression Console using the robust multichip analysis (RMA) algorithm. The normalized data were further analysed using R (version 2.9) and the Bioconductor Limma package version 3.14.1. Probesets without a known geneID were excluded for further analyses. 
+type: RNA 
+platform_id: GPL13158 
+total samples: 68 
+-------------: 
+covariate: tissue
+	 bronchial_epithelium - 34 
+	 nasal_epithelium - 34 
+covariate: disease state (condition)
+	 disease state (condition): asthma - 24 
+	 disease state (condition): healthy - 24 
+	 disease state (condition): rhinitis - 20 
+covariate: paired samples
+	 1 - 4 
+	 10 - 4 
+	 11 - 4 
+	 12 - 4 
+	 13 - 4 
+	 14 - 4 
+	 15 - 4 
+	 16 - 4 
+	 17 - 4 
+	 2 - 4 
+	 3 - 4 
+	 4 - 4 
+	 5 - 4 
+	 6 - 4 
+	 7 - 4 
+	 8 - 4 
+	 9 - 4 
+covariate: gender
+	 Female - 56 
+	 Male - 12 
+covariate: agent
+	 control - 34 
+	 Poly(I:C) - 34 

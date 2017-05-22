@@ -1,0 +1,27 @@
+.. AAD study
+
+Laprise 2004
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE15823 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE15823>`_
+   * reference: [Laprise04]_
+   * platform: Affy U95Av2 
+   * tissue: bronch biopsy
+   * tissue environment: ex-vivo
+
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 2        | 0    | 2        | 4     |
++----------+------+----------+-------+
+
+The following is a summary of the covariate information extracted from downloaded GSE files.
+
+.. literalinclude:: ../../geo/GSE15823.log
+		    

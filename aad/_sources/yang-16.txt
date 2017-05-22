@@ -1,0 +1,94 @@
+.. AAD study
+
+Yang 2016
+================================
+
+Basic info
+------------------
+
+   * reference: unpublished
+   * platform: Agilent
+   * tissue: bronch
+   * tissue environment: ex-vivo
+
+     
+Samples
+^^^^^^^^^^
+
++----------+----------+-------+
+| asthma   | controls | total |
++==========+==========+=======+
+|  12      | 12       |  24   |
++----------+----------+-------+
+
+
+Gene expression analysis
+-----------------------------
+
+.. literalinclude:: ../../results/yang16-summary.log
+		    
+		    
+Heatmaps
+^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/yang16-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+Outliers removed
+###################	      
+	      
+.. figure:: ../../figs/yang16-o-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+
+Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.
+
+Outlier analysis
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/yang16-outliers.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+.. figure:: ../../figs/yang16-kernel-densities.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+
+
+Expression results
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/yang16-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+
+Outliers removed
+###################	      
+	      
+.. figure:: ../../figs/yang16-o-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+	      
+files
+^^^^^^^^^^^^^^^^^^^^^^
+
+   * :download:`runYang16.R <../../runYang16.R>`
+
+		    

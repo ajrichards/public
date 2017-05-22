@@ -1,0 +1,27 @@
+.. AAD study
+
+Notes and things to keep in mind
+================================
+
+
+In terms of the meta-analysis
+-------------------------------
+
+   * case/control vs other comparisons
+   * use provided normalized data as a first pass
+   * study level covariates: age, gender, smoking, race 
+   * meta-analysis of p-values or exp. ratios should include disease state and laboratory as a co-variate
+
+Potential issues
+--------------------    
+    
+   * are there sample ids that go across studies
+   * need to ensure that a sample is not used twice
+    
+GEO file types
+--------------------
+
+   * GEO Platform (GPL) - These files describe a particular type of microarray. They are annotation files.
+   * GEO Sample (GSM) - Files that contain all the data from asingle chip. For each gene there will be multiple scores including the main one, held in the VALUE column.
+   * GEO Series (GSE) - Lists of GSM files that together form a single experiment.
+   * GEO Dataset (GDS) - Curated files with a combination of a GSE file and its GSM files. They contain normalised exp. levels for each gene from each sample (i.e. just the VALUE field from the GSM file).

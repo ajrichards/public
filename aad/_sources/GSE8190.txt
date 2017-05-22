@@ -1,0 +1,101 @@
+.. AAD study
+
+Yang 2012
+================================
+
+Basic info
+------------------
+
+   * GEO: `GSE8190 <http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE8190>`_
+   * reference: [Yang12]_
+   * platform: Agilent-012391 Whole Human Genome Oligo Microarray G4112A 
+   * tissue: bronch biopsy
+   * tissue environment: ex-vivo
+
+.. note:: 1:control, 2:atopy only, 3:asthma only, 4:atopy+asthma
+     
+Samples
+^^^^^^^^^^
+
++----------+------+----------+-------+
+| asthma   | AR   | controls | total |
++==========+======+==========+=======+
+| 14       | 0    | 13       |  27   |
++----------+------+----------+-------+
+
+
+Gene expression analysis
+-----------------------------
+
+.. literalinclude:: ../../results/GSE8190-summary.log
+		    
+Heatmaps
+^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE8190-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: heatmap
+   :figclass: align-center
+
+
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE8190-o-heatmap.png
+   :scale: 45%
+   :align: center
+   :alt: intensities
+   :figclass: align-center
+
+	      
+Heatmaps of the top 50 genes.  The genes are clustered based on normalized values of intensity.  The quality control check is that the samples cluster according to phenotype.
+
+
+Outlier analysis
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE8190-outliers.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+.. figure:: ../../figs/GSE8190-kernel-densities.png
+   :scale: 15%
+   :align: center
+   :alt: pca
+   :figclass: align-center
+
+
+      
+Expression results
+^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: ../../figs/GSE8190-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+	   
+	      
+Outliers removed
+###################	      
+
+
+.. figure:: ../../figs/GSE8190-o-limma.png
+   :scale: 40%
+   :align: center
+   :alt: limma plots
+   :figclass: align-center
+
+
+files
+^^^^^^^^^^^^^^^^^^^^^^
+
+   * :download:`GSE8190.log <../../geo/GSE8190.log>`
+   * :download:`runGSE8190.R <../../runGSE8190.R>`
+
+		    

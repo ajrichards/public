@@ -1,0 +1,45 @@
+.. main file for AAD study
+
+Meta-analysis - tSNE
+=======================================================
+
+Data preparation
+------------------
+
+   * Started with outliers-removed data
+   * Data were merged into a single matrix (350 x 22939)
+   * Genes with nans were removed (350 x 11521)
+   * Matrix was standardized to have unit mean and variance
+   * Batch effects were corrected for using ComBat (study,gender)
+
+To visualize the effects of batch correction the following figure has both corrected and uncorrected projections.  PCA, although distinct from tSNE
+is used to visualize high-dimensional data so it is included here.
+
+.. figure:: ../../figs/tsne-batch-correction.png
+   :scale: 20%
+   :align: center
+   :alt: tsne-batch-correction
+   :figclass: align-center
+
+The corrected panels from the previous figure are colored according to phenotype in the next figure.
+	      
+.. figure:: ../../figs/tsne-dx.png
+   :scale: 20%
+   :align: center
+   :alt: tsne-dx
+   :figclass: align-center
+
+The controls were then excluded from the matrix and both tSNE as well as PCA were re-run.
+	      
+.. figure:: ../../figs/tsne-asthma.png
+   :scale: 20%
+   :align: center
+   :alt: tsne-asthma
+   :figclass: align-center
+
+Given the labeling we have for cases and controls we observe that the cases are tightly clustered and no subtypes are readily distinguishable.
+
+
+
+
+
