@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Preparation of the reference genome &mdash; Xenopus tropicalis endurance transcriptome</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Xenopus tropicalis endurance transcriptome" href="../index.html" />
+    <link rel="up" title="Cufflinks assembly of transcripts" href="reference.html" />
+    <link rel="next" title="Assembly" href="star-assembly.html" />
+    <link rel="prev" title="Cufflinks assembly of transcripts" href="reference.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/xenopus3_small.jpg" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>Xenopus tropicalis endurance transcriptome</span></a></h1>
+        <h2 class="heading"><span>Preparation of the reference genome</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="reference.html">Cufflinks assembly of transcripts</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="star-assembly.html">Assembly</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="preparation-of-the-reference-genome">
+<h1>Preparation of the reference genome<a class="headerlink" href="#preparation-of-the-reference-genome" title="Permalink to this headline">¶</a></h1>
+<p>In this section we download the reference genome for <em>X. tropicalis</em>, prepare the files, and map quality controlled reads to the genome.</p>
+<div class="section" id="obtaining-the-necessary-files">
+<h2>Obtaining the necessary files<a class="headerlink" href="#obtaining-the-necessary-files" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">obtain the genome and genome annotations</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span>wget ftp://ftp.xenbase.org/pub/Genomics/JGI/Xentr7.1/xenopus_tropicalis_v7.1.tar.gz
+~<span class="nv">$ </span>wget ftp://ftp.xenbase.org/pub/Genomics/JGI/Xentr7.1/Xentr7_2_Stable.gff3.gz
+~<span class="nv">$ </span>tar xzf xenopus_tropicalis_v7.1.tar.gz
+~<span class="nv">$ </span>tar xzf Xentr7_2_Stable.gff3.gz
+</pre></div>
+</div>
+</li>
+<li><p class="first">convert gff3 to gtf file</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span>gffread Xentr7_2_Stable.gff3 -T -o Xentr7_2_Stable.gtf
+</pre></div>
+</div>
+</li>
+<li><p class="first">download xenbase gene mappings</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span>wget ftp://ftp.xenbase.org/pub/GenePageReports/JgiToXenbaseGenePage_7.1.txt
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="run-star">
+<h2>Run STAR<a class="headerlink" href="#run-star" title="Permalink to this headline">¶</a></h2>
+<p>STAR is a powerful and fast program to align RNA-Seq data <a class="reference internal" href="../references.html#dobin13" id="id1">[Dobin13]</a>.  A minimum of 30GB of RAM is recommended to run STAR.
+Most of the following process is handled by a Python script and the generalized process is enumerated below.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="../_downloads/runSTAR.py"><tt class="xref download docutils literal"><span class="pre">runSTAR.py</span></tt></a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first">create a directory for the mapping and add necessary files</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span>/usr/src/STAR/source/STAR --version
+STAR_2.4.0j
+~<span class="nv">$ </span>mkdir ~/sequencing/xenopus/star
+~<span class="nv">$ </span>cp ./20100930/sequences/Xenopus_tropicalis.main_genome.scaffolds.fasta ~/sequencing/xenopus/star/genome.fa
+~<span class="nv">$ </span>cp Xentr7_2_Stable.gtf ~/sequencing/xenopus/star/Xentr7_2_Stable.gtf
+</pre></div>
+</div>
+</li>
+<li><p class="first">index the genome</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span>/usr/src/STAR/source/STAR --runMode genomeGenerate --runThreadN 24 --genomeDir ~/sequencing/xenopus/star
+   --genomeFastaFiles ~/sequencing/xenopus/star/genome.fa --sjdbGTFfile ~/sequencing/xenopus/star/Xentr7_2_Stable.gtf
+   --sjdbOverhang 100
+</pre></div>
+</div>
+</li>
+<li><p class="first">align for each sample e.g.</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span>/usr/src/STAR/source/STAR --runThreadN 24 --genomeDir --genomeDir ~/sequencing/xenopus/star
+   --readFilesIn left_reads_sample_A.fq right_reads_sample_A.fq --outFileNamePrefix ~/sequencing/xenopus/star/A_
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="convet-the-sam-files-so-that-they-are-ready-as-input-for-genome-assembly-and-feature-analysis">
+<h2>Convet the SAM files so that they are ready as input for genome assembly and feature analysis<a class="headerlink" href="#convet-the-sam-files-so-that-they-are-ready-as-input-for-genome-assembly-and-feature-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Each step need to be carried out on each sample. The following operations are carried out using SAMtools <a class="reference internal" href="../references.html#li09" id="id2">[Li09]</a>.</p>
+<ol class="arabic">
+<li><p class="first">convert the SAM to BAM file</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span><span class="nb">cd</span> ~/sequencing/xenopus/star
+~<span class="nv">$ </span>/usr/bin/samtools view -b -S A_Aligned.out.sam &gt; A_aligned.bam
+</pre></div>
+</div>
+</li>
+<li><p class="first">sort the BAM file</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span> /usr/bin/samtools sort -n A_aligned.bam A_aligned_sorted
+</pre></div>
+</div>
+</li>
+<li><p class="first">convert the sorted BAM into SAM</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span>/usr/bin/samtools view -h A_aligned_sorted.bam &gt; A_aligned_sorted.sam
+</pre></div>
+</div>
+</li>
+</ol>
+<p>From the sorted SAM files we can obtain a count matrix for feature analysis.  The sorted BAM files are concatenated and used as input into the genome guided assembly.</p>
+</div>
+<div class="section" id="concatenate-the-bam-files">
+<h2>Concatenate the BAM files<a class="headerlink" href="#concatenate-the-bam-files" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">merge the files</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span>/usr/bin/samtools merge star_all_reads.bam A_aligned_sorted.bam B_aligned_sorted.bam ...
+</pre></div>
+</div>
+</li>
+<li><p class="first">create a coordinate sorted bam file</p>
+<div class="highlight-bash"><div class="highlight"><pre>~<span class="nv">$ </span>/usr/bin/samtools sort star_all_reads.bam star_all_reads_sorted.bam
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://github.com/alexdobin/STAR">STAR on GitHub</a></li>
+<li><a class="reference external" href="https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf">STAR Manual</a></li>
+<li><a class="reference external" href="http://samtools.sourceforge.net/">SAMtools</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="reference.html">Cufflinks assembly of transcripts</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="star-assembly.html">Assembly</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 19, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

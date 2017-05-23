@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Differential expression on filtered transcripts &mdash; Xenopus tropicalis endurance transcriptome</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Xenopus tropicalis endurance transcriptome" href="index.html" />
+    <link rel="next" title="Gene set analysis" href="geneset-analysis.html" />
+    <link rel="prev" title="Gene set analysis" href="geneset-analysis.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="_static/xenopus3_small.jpg" alt="Logo"/><h1 class="heading"><a href="index.html">
+          <span>Xenopus tropicalis endurance transcriptome</span></a></h1>
+        <h2 class="heading"><span>Differential expression on filtered transcripts</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="geneset-analysis.html">Gene set analysis</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="geneset-analysis.html">Gene set analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="differential-expression-on-filtered-transcripts">
+<h1>Differential expression on filtered transcripts<a class="headerlink" href="#differential-expression-on-filtered-transcripts" title="Permalink to this headline">¶</a></h1>
+<p>Here we identify the genes with the most pronounced differential expression. We use the three assemblies to help filter the candidate genes then perform a functional investigation.</p>
+<div class="section" id="adjusted-p-value-threshold-0-5">
+<h2>Adjusted p-value threshold = 0.5<a class="headerlink" href="#adjusted-p-value-threshold-0-5" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="23%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Assembly</td>
+<td>transcripts</td>
+<td>non-outlier</td>
+<td>passed</td>
+</tr>
+<tr class="row-even"><td><em>de novo</em></td>
+<td>2,592,841</td>
+<td>103,481</td>
+<td><strong>852</strong></td>
+</tr>
+<tr class="row-odd"><td>genome guided</td>
+<td>52,543</td>
+<td>29,904</td>
+<td><strong>106</strong></td>
+</tr>
+<tr class="row-even"><td>reference</td>
+<td>28,170</td>
+<td>5,439</td>
+<td><strong>47</strong></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="section" id="comparison-summaries">
+<h3>Comparison summaries<a class="headerlink" href="#comparison-summaries" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>In at least 2 assemblies 42</dt>
+<dd><ul class="first last simple">
+<li>8364-bp - 9/42</li>
+<li>8364-mf - 16/42</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><em>D. rerio</em></dt>
+<dd><ul class="first last simple">
+<li>7955-bp - 6/23</li>
+<li>7955-mf - 12/23</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><em>H. sapiens</em></p>
+<blockquote>
+<div><ul class="simple">
+<li>9606-bp - 35/42</li>
+<li>9606-mf - 37/42</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/venn-05.png"><img alt="venn diagram for assemblies 0.5" src="_images/venn-05.png" style="width: 716.0px; height: 502.6px;" /></a>
+</div>
+</div></blockquote>
+<div class="section" id="individual-genes">
+<h4>Individual genes<a class="headerlink" href="#individual-genes" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="61%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">symbol</th>
+<th class="head">comments</th>
+<th class="head">p-values(&#8216;dn&#8217;;&#8217;gg&#8217;;&#8217;ref&#8217;)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100492948">nudt15</a></td>
+<td>nudix (nucleoside diphosphate linked moiety X)-type motif 15</td>
+<td>0.0375;0.0061;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=448565">acsl1</a></td>
+<td>acyl-CoA synthetase long-chain family member 1 protein</td>
+<td>0.0779;None;0.4736</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=394825">pfkp</a></td>
+<td>phosphofructokinase, platelet</td>
+<td>0.0381;0.186;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100101671">sds</a></td>
+<td>serine dehydratase</td>
+<td>0.4706;0.4478;None</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=780324">pde4b</a></td>
+<td>phosphodiesterase 4B, cAMP-specific</td>
+<td>0.0335;0.001;0.1237</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100145766">lct.2</a></td>
+<td>lactase, gene 2</td>
+<td>0.2238;0.4581;None</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100125042">add2</a></td>
+<td>adducin 2 (beta)</td>
+<td>None;0.3441;0.4886</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=548592">atp1b1</a></td>
+<td>ATPase, Na+/K+ transporting, beta 1 polypeptide</td>
+<td>None;0.4581;0.4886</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=395003">dgat2</a></td>
+<td>diacylglycerol O-acyltransferase 2</td>
+<td>0.3365;0.0726;0.0095</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=101733361">LOC101733361</a></td>
+<td>E3 ubiquitin-protein ligase TRIM39-like</td>
+<td>0.0697;0.0146;None</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=394842">sucla2</a></td>
+<td>succinate-CoA ligase, ADP-forming, beta subunit</td>
+<td>None;0.4478;0.3676</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100127846">macf1</a></td>
+<td>microtubule-actin crosslinking factor 1</td>
+<td>0.4727;0.0358;None</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=594944">slc38a3</a></td>
+<td>solute carrier family 38, member 3</td>
+<td>0.0348;0.0492;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100127718">prdx5</a></td>
+<td>peroxiredoxin 5</td>
+<td>0.1418;0.0726;0.0095</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100127862">lpl</a></td>
+<td>lipoprotein lipase</td>
+<td>0.2805;0.3289;0.4737</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=549215">c14orf159</a></td>
+<td>chromosome 14 open reading frame 159</td>
+<td>0.2855;0.3941;0.3267</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=394747">hadhb</a></td>
+<td>hydroxyacyl-CoA dehydrogenase/3-ketoacyl-CoA thiolase/enoyl-CoA hydratase (t...</td>
+<td>0.1443;0.017;0.2587</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100127868">sod3</a></td>
+<td>superoxide dismutase 3, extracellular</td>
+<td>0.3725;None;0.4886</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=779461">zw10</a></td>
+<td>zw10 kinetochore protein</td>
+<td>0.3074;0.4581;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=550020">cpn1</a></td>
+<td>carboxypeptidase N, polypeptide 1</td>
+<td>0.2415;0.1466;None</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100216156">abca5</a></td>
+<td>ATP-binding cassette, sub-family A (ABC1), member 5</td>
+<td>0.1755;0.203;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100496984">wdr65</a></td>
+<td>WD repeat domain 65</td>
+<td>0.4045;0.0457;0.06</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=549140">btrc</a></td>
+<td>beta-transducin repeat containing E3 ubiquitin protein ligase</td>
+<td>0.0068;0.0;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100497378">rrp9</a></td>
+<td>ribosomal RNA processing 9, small subunit (SSU) processome component, homolo...</td>
+<td>0.4989;0.2902;None</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=448762">myh3</a></td>
+<td>myosin, heavy chain 3, skeletal muscle, embryonic</td>
+<td>0.0178;None;0.4886</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100487011">LOC100487011</a></td>
+<td>NXPE family member 2-like</td>
+<td>0.0701;None;0.0277</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100487160">nrap</a></td>
+<td>nebulin-related anchoring protein</td>
+<td>0.176;0.3235;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100495647">bdh1</a></td>
+<td>3-hydroxybutyrate dehydrogenase, type 1</td>
+<td>0.2261;0.186;0.3979</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=496550">pvalb</a></td>
+<td>parvalbumin</td>
+<td>0.0006;None;0.0095</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100038285">gk</a></td>
+<td>glycerol kinase</td>
+<td>0.309;None;0.2587</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100491666">neb</a></td>
+<td>nebulin</td>
+<td>0.176;0.0358;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100487880">mybpc1</a></td>
+<td>myosin binding protein C, slow type</td>
+<td>0.4897;0.4581;None</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100490673">LOC100490673</a></td>
+<td>acetylcholinesterase-like</td>
+<td>0.0982;0.4478;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100158572">nnt</a></td>
+<td>nicotinamide nucleotide transhydrogenase</td>
+<td>0.2592;None;0.3676</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=394673">act3</a></td>
+<td>actin, alpha sarcomeric/skeletal</td>
+<td>0.2291;None;0.484</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=595048">mccc2</a></td>
+<td>methylcrotonoyl-CoA carboxylase 2 (beta)</td>
+<td>None;0.186;0.2587</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=496756">sdsl</a></td>
+<td>serine dehydratase-like</td>
+<td>0.0847;0.2902;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=448406">dazap1</a></td>
+<td>DAZ associated protein 1</td>
+<td>0.0;0.0001;None</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=493462">ltb4dh</a></td>
+<td>ltb4dh protein</td>
+<td>0.247;0.3318;None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100125790">rufy1</a></td>
+<td>RUN and FYVE domain containing 1</td>
+<td>0.2291;0.0146;None</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=100127580">cpe</a></td>
+<td>carboxypeptidase E</td>
+<td>0.067;0.0204;0.3538</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ncbi.nlm.nih.gov/gene/?term=779997">fam110d</a></td>
+<td>family with sequence similarity 110, member D</td>
+<td>0.4548;None;0.4729</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gene-ontology">
+<h4>Gene Ontology<a class="headerlink" href="#gene-ontology" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="5%" />
+<col width="28%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Rank</th>
+<th class="head">Annots</th>
+<th class="head">GO</th>
+<th class="head">Genes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>16</td>
+<td>protein binding</td>
+<td>RUFY1,GK,NEB,SOD3,BTRC,LOC101733361,LOC100490673,HADHB,ACT3,ZW10,SUCLA2,MCCC2,MACF1,MYBPC1,ATP1B1,LPL</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>14</td>
+<td>small molecule metabolic process</td>
+<td>BDH1,GK,LCT.2,DGAT2,NUDT15,NNT,HADHB,LOC100490673,PFKP,ACSL1,LPL,SUCLA2,MCCC2,LTB4DH</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>10</td>
+<td>metal ion binding</td>
+<td>RUFY1,SOD3,NUDT15,LOC101733361,PDE4B,PFKP,CPE,SUCLA2,PVALB,CPN1</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>8</td>
+<td>ATP binding</td>
+<td>ABCA5,GK,ACT3,MYH3,PFKP,ACSL1,SUCLA2,MCCC2</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>8</td>
+<td>metabolic process</td>
+<td>BDH1,MACF1,LCT.2,ABCA5,MYH3,PFKP,CPE,SUCLA2</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>7</td>
+<td>zinc ion binding</td>
+<td>RUFY1,SOD3,NRAP,LOC101733361,CPE,LTB4DH,CPN1</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>6</td>
+<td>hydrolase activity</td>
+<td>LCT.2,NUDT15,LOC100490673,CPE,LPL,CPN1</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>5</td>
+<td>oxidation-reduction process</td>
+<td>BDH1,NNT,PRDX5,SOD3,LTB4DH</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>5</td>
+<td>protein homodimerization activity</td>
+<td>DGAT2,ADD2,SDS,PVALB,LOC100490673</td>
+</tr>
+<tr class="row-odd"><td>10</td>
+<td>5</td>
+<td>actin binding</td>
+<td>NRAP,MYBPC1,ADD2,MACF1,NEB</td>
+</tr>
+<tr class="row-even"><td>11</td>
+<td>5</td>
+<td>nucleotide binding</td>
+<td>MCCC2,ABCA5,PFKP,DAZAP1,ACT3</td>
+</tr>
+<tr class="row-odd"><td>12</td>
+<td>5</td>
+<td>oxidoreductase activity</td>
+<td>BDH1,NNT,PRDX5,SOD3,LTB4DH</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>5</td>
+<td>cellular lipid metabolic process</td>
+<td>BDH1,GK,ACSL1,DGAT2,HADHB</td>
+</tr>
+<tr class="row-odd"><td>14</td>
+<td>5</td>
+<td>catalytic activity</td>
+<td>BDH1,PFKP,LCT.2,HADHB,SUCLA2</td>
+</tr>
+<tr class="row-even"><td>15</td>
+<td>4</td>
+<td>transferase activity</td>
+<td>GK,HADHB,DGAT2,PFKP</td>
+</tr>
+<tr class="row-odd"><td>16</td>
+<td>4</td>
+<td>phospholipid metabolic process</td>
+<td>DGAT2,LPL,HADHB,LOC100490673</td>
+</tr>
+<tr class="row-even"><td>17</td>
+<td>4</td>
+<td>transport</td>
+<td>ABCA5,ZW10,ATP1B1,SLC38A3</td>
+</tr>
+<tr class="row-odd"><td>18</td>
+<td>4</td>
+<td>muscle filament sliding</td>
+<td>MYH3,MYBPC1,NEB,ACT3</td>
+</tr>
+<tr class="row-even"><td>19</td>
+<td>4</td>
+<td>poly(A) RNA binding</td>
+<td>DAZAP1,MACF1,RRP9,HADHB</td>
+</tr>
+<tr class="row-odd"><td>20</td>
+<td>4</td>
+<td>triglyceride biosynthetic process</td>
+<td>GK,ACSL1,DGAT2,LPL</td>
+</tr>
+<tr class="row-even"><td>21</td>
+<td>3</td>
+<td>carbohydrate metabolic process</td>
+<td>GK,PFKP,LCT.2</td>
+</tr>
+<tr class="row-odd"><td>22</td>
+<td>3</td>
+<td>actin filament binding</td>
+<td>MACF1,ADD2,MYH3</td>
+</tr>
+<tr class="row-even"><td>23</td>
+<td>3</td>
+<td>ligase activity</td>
+<td>MCCC2,LOC101733361,BTRC</td>
+</tr>
+<tr class="row-odd"><td>24</td>
+<td>3</td>
+<td>glycerophospholipid biosynthetic process</td>
+<td>DGAT2,LOC100490673,HADHB</td>
+</tr>
+<tr class="row-even"><td>25</td>
+<td>3</td>
+<td>cell adhesion</td>
+<td>MYBPC1,LOC100490673,ATP1B1</td>
+</tr>
+<tr class="row-odd"><td>26</td>
+<td>3</td>
+<td>muscle organ development</td>
+<td>MYH3,NEB,LOC100490673</td>
+</tr>
+<tr class="row-even"><td>27</td>
+<td>3</td>
+<td>Wnt signaling pathway</td>
+<td>BTRC,MACF1,CPE</td>
+</tr>
+<tr class="row-odd"><td>28</td>
+<td>3</td>
+<td>response to drug</td>
+<td>BDH1,ACSL1,LPL</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="adjusted-p-value-threshold-0-8">
+<h2>Adjusted p-value threshold = 0.8<a class="headerlink" href="#adjusted-p-value-threshold-0-8" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="23%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Assembly</td>
+<td>transcripts</td>
+<td>non-outlier</td>
+<td>passed</td>
+</tr>
+<tr class="row-even"><td><em>de novo</em></td>
+<td>2,592,841</td>
+<td>94,216</td>
+<td><strong>1596</strong></td>
+</tr>
+<tr class="row-odd"><td>genome guided</td>
+<td>52,543</td>
+<td>29,904</td>
+<td><strong>218</strong></td>
+</tr>
+<tr class="row-even"><td>reference</td>
+<td>28,170</td>
+<td>5,439</td>
+<td><strong>293</strong></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<ul>
+<li><p class="first">In at least two assemblies: 145</p>
+<blockquote>
+<div><div class="align-center figure">
+<a class="reference internal image-reference" href="_images/venn-08.png"><img alt="venn diagram for assemblies 0.8" src="_images/venn-08.png" style="width: 698.4px; height: 522.6px;" /></a>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="geneset-analysis.html">Gene set analysis</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="geneset-analysis.html">Gene set analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 19, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

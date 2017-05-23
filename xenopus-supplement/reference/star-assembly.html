@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Assembly &mdash; Xenopus tropicalis endurance transcriptome</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Xenopus tropicalis endurance transcriptome" href="../index.html" />
+    <link rel="up" title="Cufflinks assembly of transcripts" href="reference.html" />
+    <link rel="next" title="Differential expression analysis" href="ref-difexp.html" />
+    <link rel="prev" title="Preparation of the reference genome" href="reference-prep.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/xenopus3_small.jpg" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>Xenopus tropicalis endurance transcriptome</span></a></h1>
+        <h2 class="heading"><span>Assembly</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="reference-prep.html">Preparation of the reference genome</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="ref-difexp.html">Differential expression analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="assembly">
+<h1>Assembly<a class="headerlink" href="#assembly" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">llumina HiSeq 2500, CASAVA 1.8.2, RTA 1.13, Run ID: 130530_SN982_0225_AC20RLACXX</p>
+</div>
+<p>A Python script was used to unzip, concatenate and trim the original reads via system calls (<a class="reference external" href="https://docs.python.org/2/library/subprocess.html">subprocess</a>).  We used <a class="reference external" href="http://www.usadellab.org/cms/?page=trimmomatic">Trimmomatic</a> <a class="reference internal" href="../references.html#bolger14" id="id1">[Bolger14]</a> to trim reads based on quality with default settings (LEADING:5 TRAILING:5 MINLEN:36).</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="../_downloads/preprocessReads.py"><tt class="xref download docutils literal"><span class="pre">preprocessReads.py</span></tt></a></li>
+</ul>
+</div></blockquote>
+<p>There are four output files.  Two are for the <em>paired</em> output where both reads passed, and two are for corresponding <em>unpaired</em> output where only one read passed (see manual).</p>
+<div class="section" id="preparing-the-reference-genome">
+<h2>Preparing the reference genome<a class="headerlink" href="#preparing-the-reference-genome" title="Permalink to this headline">¶</a></h2>
+<p>See the section describing <a class="reference internal" href="reference-prep.html"><em>the preparation of the reference genome</em></a>.</p>
+<div class="section" id="blast-genome-against-swissprot">
+<h3>BLAST genome against SwissProt<a class="headerlink" href="#blast-genome-against-swissprot" title="Permalink to this headline">¶</a></h3>
+<p>First, we obtain the known protein sequences.</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>~$ wget ftp://ftp.xenbase.org/pub/Genomics/JGI/Xentr7.1/Xentr7_2_Stable_Protein.fa.gz
+~$ wget ftp://ftp.xenbase.org/pub/Genomics/JGI/Xentr7.1/Xentr7_2_Stable_Transcript.fa.gz
+~$ gunzip -c Xentr7_2_Stable_Protein.fa.gz &gt; Xentr7_2_Stable_Protein.fa
+~$ gunzip -c Xentr7_2_Stable_Transcript.fa.gz &gt; Xentr7_2_Stable_Transcript.fa
+</pre></div>
+</div>
+<p>Next, we BLAST the transcript against SwissProt (<cite>-c</cite> can be used to initiate cluster mode)</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="../_downloads/runBlast.py"><tt class="xref download docutils literal"><span class="pre">runBlast.py</span></tt></a></li>
+</ul>
+</div></blockquote>
+<p>Then, the data are parsed with one of the two following.</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference download internal" href="../_downloads/runBlastParallelParse.py"><tt class="xref download docutils literal"><span class="pre">runBlastParallelParse.py</span></tt></a></li>
+<li><a class="reference download internal" href="../_downloads/runBlastSummarize.py"><tt class="xref download docutils literal"><span class="pre">runBlastSummarize.py</span></tt></a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="all-of-swissprot">
+<h2>All of SwissProt<a class="headerlink" href="#all-of-swissprot" title="Permalink to this headline">¶</a></h2>
+<p>The best hit by transcript.</p>
+<blockquote>
+<div><div class="align-center figure">
+<a class="reference internal image-reference" href="../_images/ref-trinity-blast-pie-isoforms.png"><img alt="ref trinity blast taxa by isoform" src="../_images/ref-trinity-blast-pie-isoforms.png" style="width: 630.0px; height: 490.0px;" /></a>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>SwissProt
+transcripts: 38683
+genes: 17535
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="xenopus-restricted-swissprot">
+<h2>Xenopus restricted SwissProt<a class="headerlink" href="#xenopus-restricted-swissprot" title="Permalink to this headline">¶</a></h2>
+<p>The best hits only considering <em>Xenopus sp.</em></p>
+<blockquote>
+<div><div class="align-center figure">
+<a class="reference internal image-reference" href="../_images/ref-trinity-blast-pie-frog.png"><img alt="ref trinity blast taxa by gene" src="../_images/ref-trinity-blast-pie-frog.png" style="width: 630.0px; height: 490.0px;" /></a>
+</div>
+<div class="highlight-none"><div class="highlight"><pre>SwissProt [8355,8364]
+transcripts: 20638
+genes: 3750
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Genes correspond to unique gene identifiers, but the number includes orthalogs</p>
+</div>
+</div>
+<div class="section" id="blast-against-xenopus-amino-acid-sequences">
+<h2>BLAST against Xenopus amino acid sequences<a class="headerlink" href="#blast-against-xenopus-amino-acid-sequences" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre>~$ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Xenopus_Silurana_tropicalis/protein/protein.fa.gz
+~$ gunzip -c protein.fa.gz &gt; xtropicalis.fasta
+~$ makeblastdb -in xtropicalis.fasta -dbtype &#39;prot&#39; -out xtropicalis
+~$ less xtropicalis.fasta | grep gi &gt; foo.txt &amp;&amp; wc -l foo.txt
+</pre></div>
+</div>
+</div></blockquote>
+<p>There were 28495 amino acid sequences in the fasta file.</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre>X. tropicalis
+transcripts: 41299
+genes: 20735
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="reference-prep.html">Preparation of the reference genome</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="ref-difexp.html">Differential expression analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 19, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

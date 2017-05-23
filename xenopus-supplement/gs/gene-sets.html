@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Gene sets &mdash; Xenopus tropicalis endurance transcriptome</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Xenopus tropicalis endurance transcriptome" href="../index.html" />
+    <link rel="next" title="Meta-data analysis" href="../results/meta-data.html" />
+    <link rel="prev" title="Database" href="../methods/database.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/xenopus3_small.jpg" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>Xenopus tropicalis endurance transcriptome</span></a></h1>
+        <h2 class="heading"><span>Gene sets</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../methods/database.html">Database</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../results/meta-data.html">Meta-data analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="gene-sets">
+<span id="gene-set-methods"></span><h1>Gene sets<a class="headerlink" href="#gene-sets" title="Permalink to this headline">¶</a></h1>
+<p>We partition the composite genomes of multiple species into functional gene sets.  This is because <strong>Xenopus</strong> is not among the most completely annotated taxa.  In this analysis we consider several ways to generate gene sets.  More specifically, the annotation information used may come from a list of different species or we may include/exclude specific evidence codes.  The result is always a list of functional gene sets. The majority of annotations in the GO are automatically inferred and the are non-curated.  They use specifically the <tt class="docutils literal"><span class="pre">IEA</span></tt> evidence code.  When <tt class="docutils literal"><span class="pre">IEA</span></tt> is excluded we use only curated annotations.</p>
+<p>We are most interested in the following two species of frog.  However, there are other well-annotated species that can help create functional gene sets.</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>Xenopus (Silurana) tropicalis</em> <a class="reference external" href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=8364">[8364]</a></li>
+<li><em>Xenopus laevis</em> <a class="reference external" href="http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=8355">[8355]</a></li>
+</ul>
+</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="54%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxon ID</th>
+<th class="head">Scientific Name</th>
+<th class="head">Common Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>8355</td>
+<td>Xenopus laevis</td>
+<td>African clawed frog</td>
+</tr>
+<tr class="row-odd"><td>8364</td>
+<td>Xenopus (Silurana) tropicalis</td>
+<td>western clawed frog</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="xenopus-annotation-summary">
+<h2>Xenopus annotation Summary<a class="headerlink" href="#xenopus-annotation-summary" title="Permalink to this headline">¶</a></h2>
+<p>In general annotations may be associated directly with an NCBI GeneID or they may be associated with a gene product that has an assigned Uniprot accession (UniprotKB-AC) ID.  All UniprotKB-AC accessions are mapped to UniprotKb-entries.  To clarify the following tables.</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">taxon</span></tt> - matches with the taxon summary table on the top of the page</li>
+<li><tt class="docutils literal"><span class="pre">genes</span> <span class="pre">(annots)</span></tt> - The number of unique GeneIDs from NCBI that are associated with a given taxon</li>
+<li><tt class="docutils literal"><span class="pre">uniprot</span> <span class="pre">(annots)</span></tt>  - The identifiers from uniprot (non-unique) that are associated with a given taxon</li>
+<li><tt class="docutils literal"><span class="pre">coding-genes</span></tt> - GeneIDs that have at least one associated uniprot identifier</li>
+<li><tt class="docutils literal"><span class="pre">combined</span></tt> - uniprot and gene annotations with redundant annotations removed</li>
+<li><tt class="docutils literal"><span class="pre">coverage</span></tt> - <tt class="docutils literal"><span class="pre">combined</span></tt> divided by <tt class="docutils literal"><span class="pre">genes</span></tt></li>
+</ul>
+</div></blockquote>
+<p>The <tt class="docutils literal"><span class="pre">combined</span></tt> number of annotations may be less than the total observed annotations because multiple uniprot ids may map to a single gene id.</p>
+<div class="section" id="including-iea-evidence">
+<h3>Including IEA evidence<a class="headerlink" href="#including-iea-evidence" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="23%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxon</th>
+<th class="head">genes (annots)</th>
+<th class="head">uniprot (annots)</th>
+<th class="head">coding-genes</th>
+<th class="head">combined</th>
+<th class="head">coverage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>8355</td>
+<td>13531 (0)</td>
+<td>3385 (3187)</td>
+<td>2957</td>
+<td>2773</td>
+<td>20.4937</td>
+</tr>
+<tr class="row-odd"><td>8364</td>
+<td>24817 (0)</td>
+<td>1701 (1565)</td>
+<td>1615</td>
+<td>1485</td>
+<td>5.9838</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="excluding-iea-evidence">
+<h3>Excluding IEA evidence<a class="headerlink" href="#excluding-iea-evidence" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="23%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxon</th>
+<th class="head">genes (annots)</th>
+<th class="head">uniprot (annots)</th>
+<th class="head">coding-genes</th>
+<th class="head">combined</th>
+<th class="head">coverage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>8355</td>
+<td>13531 (0)</td>
+<td>3385 (1254)</td>
+<td>2957</td>
+<td>1145</td>
+<td>8.4621</td>
+</tr>
+<tr class="row-odd"><td>8364</td>
+<td>24817 (0)</td>
+<td>1701 (633)</td>
+<td>1615</td>
+<td>592</td>
+<td>2.3855</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="annotation-of-other-model-organisms">
+<h2>Annotation of other model organisms<a class="headerlink" href="#annotation-of-other-model-organisms" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="58%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxon</th>
+<th class="head">Scientific Name</th>
+<th class="head">Common Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>10090</td>
+<td>Mus musculus</td>
+<td>house mouse</td>
+</tr>
+<tr class="row-odd"><td>9606</td>
+<td>Homo sapiens</td>
+<td>human</td>
+</tr>
+<tr class="row-even"><td>7227</td>
+<td>Drosophila melanogaster</td>
+<td>fruit fly</td>
+</tr>
+<tr class="row-odd"><td>7955</td>
+<td>Danio rerio</td>
+<td>leopard danio</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id3">
+<h3>Including IEA evidence<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="23%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxon</th>
+<th class="head">genes (annots)</th>
+<th class="head">uniprot (annots)</th>
+<th class="head">coding-genes</th>
+<th class="head">combined</th>
+<th class="head">coverage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>10090</td>
+<td>69347 (18938)</td>
+<td>16671 (15735)</td>
+<td>15619</td>
+<td>19006</td>
+<td>27.4071</td>
+</tr>
+<tr class="row-odd"><td>9606</td>
+<td>47736 (18114)</td>
+<td>140289 (100435)</td>
+<td>18921</td>
+<td>18244</td>
+<td>38.2185</td>
+</tr>
+<tr class="row-even"><td>7227</td>
+<td>23387 (11563)</td>
+<td>40464 (26100)</td>
+<td>13543</td>
+<td>11870</td>
+<td>50.7547</td>
+</tr>
+<tr class="row-odd"><td>7955</td>
+<td>36579 (14990)</td>
+<td>2926 (2697)</td>
+<td>2669</td>
+<td>15069</td>
+<td>41.1958</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>Excluding IEA evidence<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="20%" />
+<col width="23%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxon</th>
+<th class="head">genes (annots)</th>
+<th class="head">uniprot (annots)</th>
+<th class="head">coding-genes</th>
+<th class="head">combined</th>
+<th class="head">coverage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>10090</td>
+<td>69347 (15763)</td>
+<td>16671 (11428)</td>
+<td>15619</td>
+<td>15842</td>
+<td>22.8445</td>
+</tr>
+<tr class="row-odd"><td>9606</td>
+<td>47736 (14077)</td>
+<td>140289 (17803)</td>
+<td>18921</td>
+<td>14263</td>
+<td>29.8789</td>
+</tr>
+<tr class="row-even"><td>7227</td>
+<td>23387 (10338)</td>
+<td>40464 (12648)</td>
+<td>13543</td>
+<td>10500</td>
+<td>44.8967</td>
+</tr>
+<tr class="row-odd"><td>7955</td>
+<td>36579 (3962)</td>
+<td>2926 (1261)</td>
+<td>2669</td>
+<td>4006</td>
+<td>10.9516</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www-test.geneontology.org/page/current-go-statistics">Statistics about the current GO annotations</a></li>
+<li><a class="reference internal" href="../methods/database.html"><em>Information about the database used for these data</em></a></li>
+<li><a class="reference external" href="http://www.geneontology.org/page/guide-go-evidence-codes">Guide to GO evidence codes</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../methods/database.html">Database</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../results/meta-data.html">Meta-data analysis</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 19, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

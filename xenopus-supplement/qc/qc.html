@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Quality control &mdash; Xenopus tropicalis endurance transcriptome</title>
+    
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Xenopus tropicalis endurance transcriptome" href="../index.html" />
+    <link rel="next" title="Quality scores" href="quality-scores.html" />
+    <link rel="prev" title="Gene set analysis" href="../geneset-analysis.html" /> 
+  </head>
+  <body>
+      <div class="header"><img class="rightlogo" src="../_static/xenopus3_small.jpg" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>Xenopus tropicalis endurance transcriptome</span></a></h1>
+        <h2 class="heading"><span>Quality control</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        «&#160;&#160;<a href="../geneset-analysis.html">Gene set analysis</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="quality-scores.html">Quality scores</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="quality-control">
+<h1>Quality control<a class="headerlink" href="#quality-control" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>The following samples were renamed to simplify the results presentation.</p>
+<blockquote>
+<div><ul class="simple">
+<li>A_Aprime &#8211;&gt; A</li>
+<li>C_Cprime &#8211;&gt; C</li>
+<li>Dprime &#8211;&gt; D</li>
+<li>Eprime &#8211;&gt; E</li>
+<li>F_Fprime &#8211;&gt; F</li>
+<li>G_Gprime &#8211;&gt; G</li>
+<li>Hprime &#8211;&gt; H</li>
+</ul>
+</div></blockquote>
+<p>The following table summarizes the <a class="reference external" href="http://en.wikipedia.org/wiki/Phred_quality_score">quality scores</a> for the sequencing.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="24%" />
+<col width="21%" />
+<col width="13%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Sample</th>
+<th class="head">Yield (Mbases)</th>
+<th class="head"># reads</th>
+<th class="head">Q30</th>
+<th class="head">Mean quality score</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>1792</td>
+<td>17923310</td>
+<td>94.02</td>
+<td>36.42</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>3334</td>
+<td>33344650</td>
+<td>93.97</td>
+<td>36.41</td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td>5702</td>
+<td>57018924</td>
+<td>93.71</td>
+<td>36.31</td>
+</tr>
+<tr class="row-odd"><td>D</td>
+<td>2829</td>
+<td>28291958</td>
+<td>94.07</td>
+<td>36.44</td>
+</tr>
+<tr class="row-even"><td>E</td>
+<td>4133</td>
+<td>41329780</td>
+<td>94.19</td>
+<td>36.49</td>
+</tr>
+<tr class="row-odd"><td>F</td>
+<td>3139</td>
+<td>31394994</td>
+<td>94.06</td>
+<td>36.44</td>
+</tr>
+<tr class="row-even"><td>G</td>
+<td>2329</td>
+<td>23294654</td>
+<td>94.37</td>
+<td>36.54</td>
+</tr>
+<tr class="row-odd"><td>H</td>
+<td>1058</td>
+<td>10576576</td>
+<td>94.00</td>
+<td>36.41</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Q30 indicates the percentage of reads with &gt;= Q30 (PF).</p>
+<blockquote>
+<div><ul class="simple">
+<li>all lanes were run with spikein control data</li>
+<li>the %PF for all lanes was 100</li>
+<li>the percent of perfect read indices was 100 for all lanes</li>
+</ul>
+</div></blockquote>
+<p>Phred quality scores can be intrepreted as follows.  A score of 10
+means that there is a 1 in 10 chance of a bad call or a 0.90% chance
+of accuracy. A score of 20 means a 1 in 100 chance and a score of 30
+means a score of 1 in 1000 chance of being correct.  So quality score
+greater than 30 means that there is &gt; 99.9% chance that the call is
+accurate.  Ideally a mean quality score should be above 30.</p>
+</div>
+<div class="section" id="duplicate-check">
+<h2>Duplicate check<a class="headerlink" href="#duplicate-check" title="Permalink to this headline">¶</a></h2>
+<p>The following section indicates the proportion of reads in each sample
+which are duplicates. These could be biologically meaningful, but they
+can indicate the presence of PCR duplicates which are not
+representative of your biological sample. Only read 1 is checked.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="12%" />
+<col width="21%" />
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">sample</th>
+<th class="head">duplicates</th>
+<th class="head">collapsed duplicates</th>
+<th class="head">singletons</th>
+<th class="head">total reads</th>
+<th class="head">% singletons</th>
+<th class="head">% duplicate</th>
+<th class="head">% unique</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>A</td>
+<td>816924</td>
+<td>6206014</td>
+<td>2755641</td>
+<td>8961655</td>
+<td>0.308</td>
+<td>0.693</td>
+<td>0.132</td>
+</tr>
+<tr class="row-odd"><td>B</td>
+<td>1320499</td>
+<td>11763702</td>
+<td>4908623</td>
+<td>16672325</td>
+<td>0.294</td>
+<td>0.706</td>
+<td>0.112</td>
+</tr>
+<tr class="row-even"><td>C</td>
+<td>2132432</td>
+<td>21863379</td>
+<td>6646083</td>
+<td>28509462</td>
+<td>0.233</td>
+<td>0.767</td>
+<td>0.097</td>
+</tr>
+<tr class="row-odd"><td>D</td>
+<td>1049441</td>
+<td>9535735</td>
+<td>4610244</td>
+<td>14145979</td>
+<td>0.326</td>
+<td>0.674</td>
+<td>0.110</td>
+</tr>
+<tr class="row-even"><td>E</td>
+<td>1941564</td>
+<td>15375232</td>
+<td>5289658</td>
+<td>20664890</td>
+<td>0.256</td>
+<td>0.744</td>
+<td>0.126</td>
+</tr>
+<tr class="row-odd"><td>F</td>
+<td>1338812</td>
+<td>10160529</td>
+<td>5536968</td>
+<td>15697497</td>
+<td>0.353</td>
+<td>0.647</td>
+<td>0.132</td>
+</tr>
+<tr class="row-even"><td>G</td>
+<td>900514</td>
+<td>7177176</td>
+<td>4470151</td>
+<td>11647327</td>
+<td>0.384</td>
+<td>0.616</td>
+<td>0.126</td>
+</tr>
+<tr class="row-odd"><td>H</td>
+<td>437911</td>
+<td>3333163</td>
+<td>1955125</td>
+<td>5288288</td>
+<td>0.370</td>
+<td>0.630</td>
+<td>0.131</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<ul class="simple">
+<li><cite>duplicates</cite> - the number of unique reads with duplicates</li>
+<li><cite>% unique</cite>   - the unique reads with duplicates</li>
+</ul>
+</div>
+<div class="section" id="plots-and-additional-information">
+<h2>Plots and additional information<a class="headerlink" href="#plots-and-additional-information" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quality-scores.html">Quality scores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base-distributions.html">Base distribution overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contaminant-check.html">Contaminant check</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="center-specific-details">
+<h2>Center specific details<a class="headerlink" href="#center-specific-details" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Generated on Illumina HiSeq 2500</li>
+<li>CASAVA 1.8.2</li>
+<li>RTA 1.13</li>
+<li>Run ID: 130530_SN982_0225_AC20RLACXX</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        «&#160;&#160;<a href="../geneset-analysis.html">Gene set analysis</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="quality-scores.html">Quality scores</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer">
+        &copy; Copyright 2015.
+      Last updated on May 19, 2015.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
+  </body>
+</html>

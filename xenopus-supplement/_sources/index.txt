@@ -1,0 +1,31 @@
+.. main file for xenopus transcriptome supplement
+
+Supplement for *Xenopus tropicalis*
+===================================
+
+This is the supplement for the paper entitled "A modular approach reveals composite markers of mobility and dispersal in the western clawed frog *Xenopus tropicalis*".  The analysis of high-throughput sequencing data can involve pipelines of many types, where in addition many of the individual pipeline components can be carried out with more than one method, software tool or set of parameters.  Here we present the details so that the results may be reproduced.  The pipeline was carried out on three assemblies of the *X. tropicalis* endurance transcriptome at both the gene and isoform levels.  Additional supporting materials for the manuscript are also included.
+
+Results by assembly method
+________________________________
+
+.. toctree::
+   :maxdepth: 1
+
+   Trinity de novo assembly  <de-novo/de-novo>   
+   Trinity genome-guided assembly <genome-guided/genome-guided>
+   STAR reference assembly <reference/reference>
+   Filtered differential expression analysis <filtered-analysis>
+   Gene set analysis <geneset-analysis>
+
+Additional contents
+____________________
+
+.. toctree::
+   :maxdepth: 1
+
+
+   Quality control <qc/qc>
+   Database <methods/database>
+   Functional gene sets <gs/gene-sets>
+   Meta-analysis <results/meta-data>
+   references
